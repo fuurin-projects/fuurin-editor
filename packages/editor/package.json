@@ -1,0 +1,9 @@
+{
+  "name": "editor",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^8.0.0"
+  }
+}
