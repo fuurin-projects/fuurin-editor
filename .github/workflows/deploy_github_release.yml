@@ -1,0 +1,37 @@
+name: Deploy Github Release
+
+on: 
+ push:
+   branches: "master"
+   tags: 
+     - "v/*"
+    
+jobs:
+  build_on_win:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: yarn install
+      run: yarn install
+    - name: copy html
+      run: yarn run copy_html
+    - name: compile application
+      run: yarn run compile
+    - name: build application
+      run: yarn run build
+    - name: create release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        draft: true
+        files: |
+          dist/*.exe
+          dist/*.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
