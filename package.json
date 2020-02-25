@@ -5,7 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "yarn workspace editor run start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "yarn workspace editor run compile",
+    "build": "yarn workspace editor run build"
   },
   "workspaces": {
     "packages": [

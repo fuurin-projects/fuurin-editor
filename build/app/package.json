@@ -1,0 +1,19 @@
+{
+  "name": "fuurin-editor",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./js/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "8.0.1"
+  },
+  "files": [
+    "html/*.html",
+    "js/*.js"
+  ]
+}
