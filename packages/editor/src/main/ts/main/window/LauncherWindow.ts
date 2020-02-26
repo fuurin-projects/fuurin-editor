@@ -10,12 +10,16 @@ export default class LauncherWindow {
     const opt = Object.assign(option, {
       width: 680,
       height: 510,
+      backgroundColor: "#f5f5f5",
+      icon: path.resolve(app.getAppPath(), './resources/fuurin_icon_16.png'),
       webPreferences: {
         nodeIntegration: false,
         preload: path.resolve(app.getAppPath(), './js/preload.js'),
       }
     });
     this.rowBrowserWindow = new BrowserWindow(opt);
+
+    this.rowBrowserWindow.setMenu(null);
   }
 
   public getRowBrowserWindow(): BrowserWindow {

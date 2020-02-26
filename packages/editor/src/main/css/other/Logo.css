@@ -3,5 +3,12 @@
     display: block;
     width: 140px;
     height: 140px;
-    border: medium solid #000000;
+    /*border: medium solid #000000;*/
+    image-rendering: pixelated;
+    pointer-events: none;
+    user-select: none;
+}
+
+.version {
+    user-select: none;
 }
