@@ -8,9 +8,9 @@ class LauncherComponent extends React.Component {
   render() {
     return (
       <div>
-        <CenterLayout marginTop={20}><Logo/></CenterLayout>
-        <CenterLayout marginTop={72}><FlatButton text={"新規でゲームを作成する"}/></CenterLayout>
-        <CenterLayout><FlatButton text={"既存のゲームプロジェクトを開く"}/></CenterLayout>
+        <CenterLayout marginTop={40}><Logo/></CenterLayout>
+        <CenterLayout marginTop={72}><FlatButton width={260} text={"新規でゲームを作成する"}/></CenterLayout>
+        <CenterLayout><FlatButton width={260} text={"既存のゲームプロジェクトを開く"}/></CenterLayout>
       </div>
     );
   }
