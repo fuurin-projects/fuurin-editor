@@ -10,6 +10,7 @@ builder.build({
   targets: Platform.WINDOWS.createTarget(),
   config: {
     'appId': `shift02.${packagejson.name}`,
+    buildVersion: `${packagejson.version}`,
     'win': {
       'target': ['dir', 'zip', 'portable'],
     },
