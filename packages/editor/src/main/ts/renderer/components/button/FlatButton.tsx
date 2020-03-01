@@ -1,9 +1,10 @@
-import React, {ReactNode} from "react";
-import styles from "../../../css/button/FlatButton.css";
+import React, {MouseEventHandler, ReactNode} from "react";
+import styles from "../../../../css/button/FlatButton.css";
 
 interface Props {
   text: string,
   width?: number
+  click?: MouseEventHandler<HTMLButtonElement>
 }
 
 export default class FlatButton extends React.Component<Props, any> {
@@ -29,7 +30,11 @@ export default class FlatButton extends React.Component<Props, any> {
     };
 
     return (
-      <button className={styles.base} style={styleGenerator(this.props)}>{this.props.text}</button>
+      <button className={styles.base}
+              style={styleGenerator(this.props)}
+              onClick={this.props.click}>
+        {this.props.text}
+      </button>
     );
   }
 

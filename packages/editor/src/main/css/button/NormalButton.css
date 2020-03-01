@@ -1,0 +1,19 @@
+
+.base {
+    height: 26px;
+    width: 88px;
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    margin: 14px 14px 14px 0;
+    text-decoration: none;
+    color: #000000;
+    background-color: #e1e1e1;
+    border: solid 1px #adadad;
+    transition: all 0.4s ease 0s;
+}
+
+.base:hover {
+    background: #e5f1fb;
+    border-color: #0078d7;
+}

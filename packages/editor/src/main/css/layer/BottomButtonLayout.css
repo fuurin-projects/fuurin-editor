@@ -1,0 +1,12 @@
+
+.container {
+    display: grid;
+    height: 100%;
+}
+
+.bottom {
+    align-self: end;
+    height: 54px;
+    display: flex;
+    justify-content: flex-end;
+}
