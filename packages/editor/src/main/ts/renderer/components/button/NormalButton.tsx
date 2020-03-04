@@ -5,6 +5,7 @@ interface Props {
   text: string,
   width?: number
   click?: MouseEventHandler<HTMLButtonElement>
+  type?: "normal" | "current"
 }
 
 export default class NormalButton extends React.Component<Props, any> {
@@ -15,22 +16,22 @@ export default class NormalButton extends React.Component<Props, any> {
 
   render(): ReactNode {
 
-    const styleGenerator = ({width}: Props) => {
+    const styleGenerator = ({width, type}: Props) => {
 
-      if (!width) {
-        return;
+      let s = {};
+
+      if (width) {
+        s = Object.assign(s, {
+          width: width ? `${width}px` : "0px"
+        })
       }
 
-      return (
-        {
-          width: width ? `${width}px` : "0px"
-        }
-      );
+      return s
 
     };
 
     return (
-      <button className={styles.base}
+      <button className={this.props.type === "current" ? styles.current : styles.base}
               style={styleGenerator(this.props)}
               onClick={this.props.click}>
         {this.props.text}

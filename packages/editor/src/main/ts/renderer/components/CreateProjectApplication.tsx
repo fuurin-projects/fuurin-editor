@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import NewProjectField from "./create_project/NewProjectField";
+import NewProjectFieldGroup from "./create_project/NewProjectFieldGroup";
 import BottomButtonLayout, {BottomButtonLayoutBottom, BottomButtonLayoutMain} from "./layout/BottomButtonLayout";
 import NormalButton from "./button/NormalButton";
 import CancelButton from "./button/CancelButton";
@@ -10,10 +10,10 @@ class LauncherApplication extends React.Component {
     return (
       <BottomButtonLayout>
         <BottomButtonLayoutMain>
-          <NewProjectField/>
+          <NewProjectFieldGroup/>
         </BottomButtonLayoutMain>
         <BottomButtonLayoutBottom>
-          <NormalButton text={"作成"}/><CancelButton/>
+          <NormalButton type={"current"} text={"作成"}/><CancelButton/>
         </BottomButtonLayoutBottom>
       </BottomButtonLayout>
     );

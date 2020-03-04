@@ -1,11 +1,21 @@
-import React, {useState} from "react";
+import React from "react";
 
-const ProjectNameField: React.FunctionComponent = (props) => {
 
-  const [name, setName] = useState("unknown_game");
+interface Prop {
+  name: string
+  setName: (name: string) => void
+}
+
+const ProjectNameField: React.FunctionComponent<Prop> = (props) => {
+
+  const onChangeName: React.ChangeEventHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    props.setName(event.target.value);
+
+  };
 
   return (
-    <input type={"text"} value={name}/>
+    <input type={"text"} onChange={onChangeName} value={props.name}/>
   );
 
 };

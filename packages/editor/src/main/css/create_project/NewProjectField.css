@@ -1,9 +1,0 @@
-.wrapper {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    grid-auto-rows: 40px;
-}
-
-.item {
-    margin: 8px;
-}

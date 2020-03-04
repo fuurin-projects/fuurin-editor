@@ -13,6 +13,7 @@ import IpcRenderer = Electron.IpcRenderer;
  * Windowを拡張
  */
 interface Window {
-  ipcRenderer: IpcRenderer
+  ipcRenderer: IpcRenderer,
+  sep: string
 }
 
