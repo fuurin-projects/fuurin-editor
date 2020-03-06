@@ -16,8 +16,8 @@ const NewProjectFieldGroup: React.FC<any> = (props) => {
   return (
     <>
       <GridLayout>
-        <GridLayoutItem>プロジェクト名</GridLayoutItem><GridLayoutItem><ProjectNameField name={name} setName={setName}/></GridLayoutItem>
-        <GridLayoutItem>作業ディレクトリ</GridLayoutItem><GridLayoutItem><ProjectDirField name={name}/></GridLayoutItem>
+        <GridLayoutItem><span style={{margin: "8px 0",display: "inline-block"}}>プロジェクト名:</span></GridLayoutItem><GridLayoutItem><ProjectNameField name={name} setName={setName}/></GridLayoutItem>
+        <GridLayoutItem><span style={{margin: "8px 0",display: "inline-block"}}>作業ディレクトリ:</span></GridLayoutItem><GridLayoutItem><ProjectDirField name={name}/></GridLayoutItem>
       </GridLayout>
     </>
   );

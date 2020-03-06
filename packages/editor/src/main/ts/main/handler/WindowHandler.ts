@@ -1,7 +1,10 @@
 import Channels from "../../common/Channels";
 import CreateProjectWindow from "../window/CreateProjectWindow";
 import IWindow from "../window/IWindow";
-import {Event} from "electron";
+import {dialog, Event} from "electron";
+import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
+import IpcMainEvent = Electron.IpcMainEvent;
+
 
 export default class WindowHandler {
 
@@ -24,10 +27,23 @@ export default class WindowHandler {
         window.getRowBrowserWindow().close();
       }
 
+      if (channel === Channels.SHOW_SELECT_DIR_DIALOG) {
+
+        dialog.showOpenDialog(window.getRowBrowserWindow(), {
+          defaultPath: args[0],
+          properties: ['openDirectory']
+        }).then((path: OpenDialogReturnValue) => {
+          console.log(path);
+          (event as IpcMainEvent).returnValue = path;
+        });
+
+      }
+
     };
 
     this.eventFunction.set(window.getWindowId(), ipcMessage);
     window.getRowBrowserWindow().webContents.addListener('ipc-message', ipcMessage);
+    window.getRowBrowserWindow().webContents.addListener('ipc-message-sync', ipcMessage);
     return ipcMessage;
 
   }
@@ -36,6 +52,7 @@ export default class WindowHandler {
 
     const listener = this.eventFunction.get(window.getWindowId()) as (event: Event, channel: string, ...args: any[]) => void;
     window.getRowBrowserWindow().webContents.removeListener('ipc-message', listener);
+    window.getRowBrowserWindow().webContents.removeListener('ipc-message-sync', listener);
 
   }
 

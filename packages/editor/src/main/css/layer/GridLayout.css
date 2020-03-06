@@ -1,8 +1,9 @@
 
 .wrapper {
     display: grid;
-    grid-template-columns: 160px 1fr;
-    grid-auto-rows: 40px;
+    grid-template-columns: 120px 1fr;
+    grid-auto-rows: 42px;
+    margin: 8px;
 }
 
 .item {

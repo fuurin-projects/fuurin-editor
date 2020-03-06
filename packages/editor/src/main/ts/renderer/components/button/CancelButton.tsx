@@ -11,7 +11,7 @@ const CancelButton: React.FunctionComponent = (props) => {
   };
 
   return (
-    <NormalButton text={"キャンセル"} click={onClick}/>
+    <NormalButton text={"キャンセル"} click={onClick} margin={"14px 14px 14px 0"}/>
   );
 
 };

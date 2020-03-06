@@ -15,7 +15,7 @@ const ProjectNameField: React.FunctionComponent<Prop> = (props) => {
   };
 
   return (
-    <input type={"text"} onChange={onChangeName} value={props.name}/>
+    <input style={{height: "26px", paddingLeft: "4px"}} type={"text"} onChange={onChangeName} value={props.name}/>
   );
 
 };

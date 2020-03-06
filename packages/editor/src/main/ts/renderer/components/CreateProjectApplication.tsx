@@ -13,7 +13,7 @@ class LauncherApplication extends React.Component {
           <NewProjectFieldGroup/>
         </BottomButtonLayoutMain>
         <BottomButtonLayoutBottom>
-          <NormalButton type={"current"} text={"作成"}/><CancelButton/>
+          <NormalButton type={"current"} text={"作成"} margin={"14px 14px 14px 0"}/><CancelButton/>
         </BottomButtonLayoutBottom>
       </BottomButtonLayout>
     );

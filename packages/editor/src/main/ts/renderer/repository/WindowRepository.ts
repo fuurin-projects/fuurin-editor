@@ -1,4 +1,5 @@
 import Channels from "../../common/Channels";
+import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
 
 export default class WindowRepository {
 
@@ -24,6 +25,12 @@ export default class WindowRepository {
 
   public closeCurrentWindow(): void {
     window.ipcRenderer.send(Channels.CLOSE_WINDOW, "close");
+  }
+
+  public showSelectDirDialog(defaultDir: string): OpenDialogReturnValue {
+
+    return window.ipcRenderer.sendSync(Channels.SHOW_SELECT_DIR_DIALOG, defaultDir);
+
   }
 
 }
