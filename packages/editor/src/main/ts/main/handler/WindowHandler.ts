@@ -24,7 +24,7 @@ export default class WindowHandler {
       }
 
       if (channel === Channels.CLOSE_WINDOW) {
-        window.getRowBrowserWindow().close();
+        window.close("cancel");
       }
 
       if (channel === Channels.SHOW_SELECT_DIR_DIALOG) {

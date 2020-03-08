@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useEffect, useRef, useState} from "react";
+import React, {MouseEventHandler, useEffect, useRef} from "react";
 import SystemRepository from "../../repository/SystemRepository";
 import styles from "../../../../css/create_project/ProjectDirField.css";
 import {Simulate} from "react-dom/test-utils";
@@ -9,12 +9,14 @@ import input = Simulate.input;
 
 interface Prop {
   name: string
+  dir: string
+  setDir: (dir: string) => void
 }
 
 const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
 
   console.log("ProjectDirField");
-  const [dir, setDir] = useState("");
+  // const [dir, setDir] = useState("");
   const isOpenFileDialog = useRef(false);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
       console.log("getDesktopDir");
       const desktopDir = await SystemRepository.getDesktopDir();
       const workDir = desktopDir + window.sep + props.name;
-      setDir(workDir);
+      props.setDir(workDir);
     };
 
     getDesktopDir();
@@ -38,24 +40,24 @@ const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
   const onChangeDir: React.ChangeEventHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 
     isOpenFileDialog.current = true;
-    setDir(event.target.value);
+    props.setDir(event.target.value);
 
   };
 
   const onClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     console.log("ProjectDirField click!");
-    const selectDir = WindowRepository.instance().showSelectDirDialog(dir);
+    const selectDir = WindowRepository.instance().showSelectDirDialog(props.dir);
 
     if (!selectDir.canceled) {
       isOpenFileDialog.current = true;
-      setDir(selectDir.filePaths[0]);
+      props.setDir(selectDir.filePaths[0]);
     }
 
   };
 
   return (
     <>
-      <input className={styles.field} type={"text"} onChange={onChangeDir} value={dir}/>
+      <input className={styles.field} type={"text"} onChange={onChangeDir} value={props.dir}/>
       <NormalButton width={26} text={"…"} paddingLeft={6} margin={"0 0 0 8px"} click={onClick}/>
     </>
   );

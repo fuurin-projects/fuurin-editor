@@ -1,9 +1,26 @@
 import LauncherWindow from "./window/LauncherWindow";
+import {app, BrowserWindow, ipcMain} from 'electron';
+import SystemHandler from "./handler/SystemHandler";
+import Configuration from "./Configuration";
+import ProjectHandler from "./handler/ProjectHandler";
 
 const path = require('path');
 
-import {app, BrowserWindow, ipcMain} from 'electron';
-import SystemHandler from "./handler/SystemHandler";
+async function main() {
+
+  await Configuration.instance().init();
+
+  SystemHandler.init();
+  ProjectHandler.init();
+
+  app.whenReady().then(createWindow);
+
+  ipcMain.on('test-message', (event, arg) => {
+    console.log(arg);
+    event.reply('test-reply', 'foo')
+  });
+
+}
 
 async function createWindow() {
 
@@ -17,11 +34,4 @@ async function createWindow() {
 
 }
 
-SystemHandler.init();
-
-ipcMain.on('test-message', (event, arg) => {
-  console.log(arg);
-  event.reply('test-reply', 'foo')
-});
-
-app.whenReady().then(createWindow);
+main();
