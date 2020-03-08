@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "fuurin-editor",
+  "productName": "FuurinEditor",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
