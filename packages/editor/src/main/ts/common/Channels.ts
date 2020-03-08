@@ -9,5 +9,7 @@ export default class Channels {
 
   public static CREATE_PROJECT = "create_project";
 
+  public static PROJECT_LIST = "project_list";
+
 
 }

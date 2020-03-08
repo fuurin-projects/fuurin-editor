@@ -1,7 +1,7 @@
 import {app, BrowserWindow, BrowserWindowConstructorOptions} from 'electron';
 import path from 'path';
 import WindowHandler from "../handler/WindowHandler";
-import IWindow from "./IWindow";
+import IWindow, {CloseType} from "./IWindow";
 
 export default class LauncherWindow implements IWindow {
 
@@ -45,6 +45,12 @@ export default class LauncherWindow implements IWindow {
     WindowHandler.uninstall(this);
 
     this.rowBrowserWindow = null;
+  }
+
+  public close(type: CloseType): void {
+
+    this.getRowBrowserWindow().close();
+
   }
 
 }
