@@ -15,7 +15,7 @@ const ProjectList: React.FunctionComponent<Props> = (props) => {
   });
 
   return (
-    <>{items}{items}{items}{items}</>
+    <>{items}</>
   )
 
 };

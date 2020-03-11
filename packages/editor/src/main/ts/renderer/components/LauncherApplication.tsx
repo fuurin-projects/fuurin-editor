@@ -38,7 +38,7 @@ class LauncherApplication extends React.Component<Prop, State> {
 
         {
           this.state.projectList.length > 0 &&
-          <div style={{width: "280px", backgroundColor: "#FFFFFF"}}>
+          <div style={{width: "280px", backgroundColor: "#FFFFFF", overflowY: "auto"}}>
             <ProjectList projectList={this.state.projectList}/>
           </div>
         }

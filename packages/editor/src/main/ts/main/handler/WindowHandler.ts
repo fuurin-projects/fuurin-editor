@@ -2,6 +2,8 @@ import Channels from "../../common/Channels";
 import CreateProjectWindow from "../window/CreateProjectWindow";
 import IWindow from "../window/IWindow";
 import {dialog, Event} from "electron";
+import WindowManager from "../WindowManager";
+import Project from "../Project";
 import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
 import IpcMainEvent = Electron.IpcMainEvent;
 
@@ -36,6 +38,22 @@ export default class WindowHandler {
           console.log(path);
           (event as IpcMainEvent).returnValue = path;
         });
+
+      }
+
+      if (channel === Channels.SHOW_PROJECT_WINDOW) {
+
+        const name = args[0];
+        const dir = args[1];
+
+        const project = new Project(name, dir);
+
+        //TODO: 管理してないディレクトリの場合の処理を入れても良いかも
+        WindowManager.instance().openMainWindow(project);
+
+        window.close("open_project");
+
+        (event as IpcMainEvent).returnValue = "success";
 
       }
 

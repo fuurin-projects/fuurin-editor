@@ -107,5 +107,34 @@ module.exports = [
     resolve: {
       extensions: [".ts", ".tsx", ".js"]
     },
+  },
+  //Renderer(メインエディター)プロセス
+  {
+    mode: "development",//"production",
+    target: "web",
+    node: {
+      global: false
+    },
+    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/MainInit.ts"),
+    output: {
+      path: path.resolve(__dirname, "../../build/app/js"),
+      filename: 'main.js'
+    },
+    module: {
+      rules: [
+        {
+          // 拡張子 .ts の場合
+          test: /\.tsx?$/,
+          use: "ts-loader"
+        },
+        {
+          test: /\.css$/,
+          loaders: ['style-loader', 'css-loader?modules'],
+        },
+      ]
+    },
+    resolve: {
+      extensions: [".ts", ".tsx", ".js"]
+    },
   }
 ];

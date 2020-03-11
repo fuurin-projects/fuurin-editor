@@ -1,4 +1,5 @@
 import Configuration from "./Configuration";
+import Project from "./Project";
 
 export default class ProjectManager {
 
@@ -16,9 +17,13 @@ export default class ProjectManager {
     return this.instance_;
   }
 
-  public async createProject(name: string, dir: string): Promise<void> {
+  public async createProject(name: string, dir: string): Promise<Project> {
+
+    const project = new Project(name, dir);
 
     await Configuration.instance().addProject(name, dir);
+
+    return project;
 
   }
 

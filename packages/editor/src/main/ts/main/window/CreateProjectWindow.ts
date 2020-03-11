@@ -4,6 +4,7 @@ import IWindow, {CloseType} from "./IWindow";
 import WindowHandler from "../handler/WindowHandler";
 import Channels from "../../common/Channels";
 import ProjectManager from "../ProjectManager";
+import WindowManager from "../WindowManager";
 import IpcMainEvent = Electron.IpcMainEvent;
 
 export default class CreateProjectWindow implements IWindow {
@@ -48,7 +49,9 @@ export default class CreateProjectWindow implements IWindow {
 
         (event as IpcMainEvent).returnValue = "success";
 
-        await ProjectManager.instance().createProject(args[0], args[1]);
+        const project = await ProjectManager.instance().createProject(args[0], args[1]);
+
+        WindowManager.instance().openMainWindow(project);
 
         parent.close("open_project");
 
