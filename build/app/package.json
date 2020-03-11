@@ -3,7 +3,7 @@
   "productName": "FuurinEditor",
   "version": "0.0.1",
   "description": "",
-  "main": "./js/main.js",
+  "main": "./js/fuurin-editor.js",
   "scripts": {
     "start": "electron .",
     "test": "node test.js"

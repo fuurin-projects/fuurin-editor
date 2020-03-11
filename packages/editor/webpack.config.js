@@ -9,7 +9,7 @@ module.exports = [
     entry: path.resolve(__dirname, "./src/main/ts/main/index.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
-      filename: 'main.js'
+      filename: 'fuurin-editor.js'
     },
     module: {
       rules: [
