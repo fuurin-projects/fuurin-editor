@@ -63,6 +63,28 @@ export default class Configuration {
 
   }
 
+  public async deleteProject(name: string, dir: string) {
+
+    if (this.preference == undefined) {
+      return;
+    }
+
+    console.log(`deleteProject: ${name}. ${dir}`);
+
+    this.preference.projects = this.preference.projects.filter(project => {
+      if (project.name !== name) {
+        return true
+      }
+      if (project.dir !== dir) {
+        return true;
+      }
+      return false;
+    });
+
+    this.writePreference(this.preference!);
+
+  }
+
   public getProjectList(): Project[] {
     return this.preference!.projects;
   }

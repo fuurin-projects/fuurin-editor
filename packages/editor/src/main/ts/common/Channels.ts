@@ -11,6 +11,7 @@ export default class Channels {
   public static SHOW_SELECT_DIR_DIALOG = "show_select_dir_dialog";
 
   public static CREATE_PROJECT = "create_project";
+  public static DELETE_PROJECT = "delete_project";
 
   public static PROJECT_LIST = "project_list";
 

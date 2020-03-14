@@ -26,6 +26,14 @@ export default class ProjectRepository {
 
   }
 
+  public deleteGameProject(project: Project) {
+
+    console.log(`deleteGameProject ${project.name}. ${project.dir}`);
+
+    const message = window.ipcRenderer.sendSync(Channels.DELETE_PROJECT, project.name, project.dir);
+    console.log(message);
+  }
+
   public getProjectList(): Promise<Project[]> {
 
     return new Promise((resolve, reject) => {

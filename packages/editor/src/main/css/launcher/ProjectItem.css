@@ -1,6 +1,8 @@
 
 .base {
     height: 60px;
+    position: relative;
+    cursor: pointer;
 }
 
 .base:nth-child(2n+1) {
@@ -10,6 +12,17 @@
 .base:hover {
     color: #ffffff;
     background-color: #0078d7;
+}
+
+.delete {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: #e5e5e5;
+}
+
+.delete:hover {
+    color: #ffffff;
 }
 
 

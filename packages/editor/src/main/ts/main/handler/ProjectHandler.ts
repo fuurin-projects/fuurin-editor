@@ -11,6 +11,15 @@ export default class ProjectHandler {
       event.returnValue = Configuration.instance().getProjectList();
     });
 
+    ipcMain.on(Channels.DELETE_PROJECT, (event, ...args: any[]) => {
+      console.log("Channels.DELETE_PROJECT");
+      console.log(args);
+
+      Configuration.instance().deleteProject(args[0], args[1]);
+
+      event.returnValue = Configuration.instance().getProjectList();
+    });
+
   }
 
 }
