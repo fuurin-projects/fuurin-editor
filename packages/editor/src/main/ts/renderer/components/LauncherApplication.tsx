@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import * as ReactDOM from 'react-dom';
 import CenterLayout from "./layout/CenterLayout";
 import Logo from "./Logo";
@@ -16,42 +17,50 @@ interface State {
   projectList: Project[];
 }
 
-class LauncherApplication extends React.Component<Prop, State> {
+const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
 
-  constructor(props: Prop) {
-    super(props);
-    this.state = {projectList: []};
-  }
+  const [projectList, setProjectList] = useState<Project[]>([]);
 
+  useEffect(() => {
 
-  async componentDidMount() {
+    let unmounted = false;
 
-    const list = await ProjectRepository.instance().getProjectList();
-    console.log(list);
-    this.setState({projectList: list});
+    function handleListChange(list: Project[]) {
+      if (unmounted) {
+        return;
+      }
+      setProjectList(list);
+    }
 
-  }
+    const projectList = ProjectRepository.instance().getProjectList();
 
-  render() {
-    return (
-      <div style={{display: "flex", height: "100%"}}>
+    projectList.on(handleListChange);
 
-        {
-          this.state.projectList.length > 0 &&
-          <div style={{width: "280px", backgroundColor: "#FFFFFF", overflowY: "auto"}}>
-            <ProjectList projectList={this.state.projectList}/>
-          </div>
-        }
+    return function cleanup() {
+      unmounted = true;
+      projectList.off(handleListChange);
+    }
 
-        <div style={{width: "calc(100% - 280px)"}}>
-          <CenterLayout marginTop={40}><Logo/></CenterLayout>
-          <CenterLayout marginTop={72}><CreateProjectButton width={260}/></CenterLayout>
-          <CenterLayout><FlatButton width={260} text={"既存のゲームプロジェクトを開く"}/></CenterLayout>
+  }, []);
+
+  return (
+
+    <div style={{display: "flex", height: "100%"}}>
+      {
+        projectList.length > 0 &&
+        <div style={{width: "280px", backgroundColor: "#FFFFFF", overflowY: "auto"}}>
+          <ProjectList projectList={projectList}/>
         </div>
+      }
+      <div style={{width: "calc(100% - 280px)"}}>
+        <CenterLayout marginTop={40}><Logo/></CenterLayout>
+        <CenterLayout marginTop={72}><CreateProjectButton width={260}/></CenterLayout>
+        <CenterLayout><FlatButton width={260} text={"既存のゲームプロジェクトを開く"}/></CenterLayout>
       </div>
-    );
-  }
-}
+    </div>
+  );
+
+};
 
 export function createComponent() {
   ReactDOM.render(<LauncherApplication/>, document.querySelector('#launcher'));
