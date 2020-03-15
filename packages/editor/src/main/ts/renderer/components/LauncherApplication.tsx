@@ -43,6 +43,8 @@ const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
 
   }, []);
 
+  const frameWidth = projectList.length > 0 ? "calc(100% - 280px)" : "100%";
+
   return (
 
     <div style={{display: "flex", height: "100%"}}>
@@ -52,7 +54,7 @@ const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
           <ProjectList projectList={projectList}/>
         </div>
       }
-      <div style={{width: "calc(100% - 280px)"}}>
+      <div style={{width: frameWidth}}>
         <CenterLayout marginTop={40}><Logo/></CenterLayout>
         <CenterLayout marginTop={72}><CreateProjectButton width={260}/></CenterLayout>
         <CenterLayout><FlatButton width={260} text={"既存のゲームプロジェクトを開く"}/></CenterLayout>
