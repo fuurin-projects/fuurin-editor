@@ -1,5 +1,4 @@
 import Channels from "../../common/Channels";
-import CreateProjectWindow from "../window/CreateProjectWindow";
 import IWindow from "../window/IWindow";
 import {dialog, Event} from "electron";
 import WindowManager from "../WindowManager";
@@ -18,10 +17,10 @@ export default class WindowHandler {
 
     const ipcMessage = (event: Event, channel: string, ...args: any[]): void => {
 
-      console.log(channel);
+      console.log(`WindowHandler:${channel}`);
       if (channel === Channels.SHOW_CREATE_PROJECT_WINDOW) {
 
-        new CreateProjectWindow(window);
+        WindowManager.instance().showCreateProjectWindow(window);
 
       }
 
