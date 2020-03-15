@@ -1,6 +1,6 @@
 import Channels from "../../common/Channels";
 import {Project} from "../../common/Preference";
-import IpcRendererEvent = Electron.IpcRendererEvent;
+import LiveDate from "./LiveDate";
 
 export default class ProjectRepository {
 
@@ -48,38 +48,7 @@ export default class ProjectRepository {
 
   public getProjectList(): LiveDate<Project[]> {
 
-    return new LiveDate<Project[]>();
-
-  }
-
-
-}
-
-class LiveDate<V> {
-
-  public callbackList = new Map<any, (event: IpcRendererEvent, ...args: any[]) => void>();
-
-  public on(callback: (project: V) => void) {
-
-    const hock = (event: IpcRendererEvent, ...args: any[]) => {
-      console.log(`LiveDate: ${JSON.stringify(args[0])}`);
-      callback(args[0]);
-    };
-
-    this.callbackList.set(callback, hock);
-
-    window.ipcRenderer.addListener(Channels.PROJECT_LIST, hock);
-
-    //初回時は強制で最新のデータを発火
-    window.ipcRenderer.send(Channels.PROJECT_LIST);
-
-  }
-
-  public off(callback: (project: Project[]) => void) {
-
-    const hock = this.callbackList.get(callback);
-
-    window.ipcRenderer.removeListener(Channels.PROJECT_LIST, hock!);
+    return new LiveDate<Project[]>(Channels.PROJECT_LIST);
 
   }
 
