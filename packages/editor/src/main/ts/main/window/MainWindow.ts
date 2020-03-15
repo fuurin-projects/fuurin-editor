@@ -49,7 +49,7 @@ export default class MainWindow implements IWindow {
   }
 
   getWindowId(): string {
-    return "MainWindow";
+    return "MainWindow:" + this.getRowBrowserWindow().id;
   }
 
 }

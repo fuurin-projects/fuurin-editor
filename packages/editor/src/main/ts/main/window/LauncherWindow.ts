@@ -27,7 +27,7 @@ export default class LauncherWindow implements IWindow {
   }
 
   public getWindowId(): string {
-    return "LauncherWindow";
+    return "LauncherWindow:" + this.getRowBrowserWindow().id;
   }
 
   public getRowBrowserWindow(): BrowserWindow {

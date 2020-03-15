@@ -75,7 +75,7 @@ export default class CreateProjectWindow implements IWindow {
   }
 
   public getWindowId(): string {
-    return "LauncherWindow";
+    return "LauncherWindow:" + this.getRowBrowserWindow().id;
   }
 
   public getRowBrowserWindow(): BrowserWindow {
