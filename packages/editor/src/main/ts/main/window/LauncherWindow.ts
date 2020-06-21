@@ -41,6 +41,11 @@ export default class LauncherWindow implements IWindow {
 
   }
 
+
+  getId(): number {
+    return this.getRowBrowserWindow().id;
+  }
+
   public getWindowId(): string {
     return "LauncherWindow:" + this.getRowBrowserWindow().id;
   }
@@ -67,5 +72,6 @@ export default class LauncherWindow implements IWindow {
     this.getRowBrowserWindow().close();
 
   }
+
 
 }
