@@ -1,8 +1,8 @@
 export default class Project {
 
-  private _name: string;
+  private readonly _name: string;
 
-  private _dir: string;
+  private readonly _dir: string;
 
   constructor(name: string, dir: string) {
     this._name = name;
