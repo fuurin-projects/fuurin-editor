@@ -3,6 +3,7 @@ import SystemHandler from "./handler/SystemHandler";
 import Configuration from "./Configuration";
 import ProjectHandler from "./handler/ProjectHandler";
 import WindowManager from "./WindowManager";
+import ICPDispatcher from "./dispatcher/ICPDispatcher";
 
 const path = require('path');
 
@@ -21,6 +22,9 @@ async function main() {
     console.log(arg);
     event.reply('test-reply', 'foo')
   });
+
+  ICPDispatcher.registryICP(ipcMain)
+
 
 }
 

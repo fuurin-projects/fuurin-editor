@@ -24,8 +24,10 @@ export default class WindowRepository {
 
   }
 
-  public showMainWindow(project: Project): void {
-    window.ipcRenderer.sendSync(Channels.SHOW_PROJECT_WINDOW, project.name, project.dir);
+  public async showMainWindow(project: Project): Promise<void> {
+
+    return window.ipcRenderer.invoke(Channels.SHOW_PROJECT_WINDOW, project.name, project.dir);
+
   }
 
   public closeCurrentWindow(): void {

@@ -1,8 +1,9 @@
 import Channels from "../../common/Channels";
 import IWindow from "../window/IWindow";
-import {dialog, Event} from "electron";
+import {dialog, Event, IpcMain} from "electron";
 import WindowManager from "../WindowManager";
 import Project from "../Project";
+import {IcpHandler} from "../dispatcher/LauncherDispatcher";
 import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
 import IpcMainEvent = Electron.IpcMainEvent;
 
@@ -40,6 +41,7 @@ export default class WindowHandler {
 
       }
 
+      /*
       if (channel === Channels.SHOW_PROJECT_WINDOW) {
 
         const name = args[0];
@@ -54,7 +56,7 @@ export default class WindowHandler {
 
         (event as IpcMainEvent).returnValue = "success";
 
-      }
+      }*/
 
     };
 
@@ -70,6 +72,46 @@ export default class WindowHandler {
     const listener = this.eventFunction.get(window.getWindowId()) as (event: Event, channel: string, ...args: any[]) => void;
     window.getRowBrowserWindow().webContents.removeListener('ipc-message', listener);
     window.getRowBrowserWindow().webContents.removeListener('ipc-message-sync', listener);
+
+  }
+
+  private sss = [Channels.SHOW_PROJECT_WINDOW];
+
+  public showProjectWindow: IcpHandler = {
+    channel: Channels.SHOW_PROJECT_WINDOW,
+    fun: (window: IWindow, event: IpcMainEvent, channel: string, ...args: any[]): void => {
+      const name = args[0];
+      const dir = args[1];
+
+      const project = new Project(name, dir);
+
+      //TODO: 管理してないディレクトリの場合の処理を入れても良いかも
+      WindowManager.instance().openMainWindow(project);
+
+      window.close("open_project");
+
+      (event as IpcMainEvent).returnValue = "success";
+    }
+  };
+
+  public static registryICP(ipcMain: IpcMain) {
+
+    ipcMain.handle(Channels.SHOW_PROJECT_WINDOW, (event, ...args: any[]) => {
+      const name = args[0];
+      const dir = args[1];
+
+      const project = new Project(name, dir);
+
+      event.frameId;
+
+      //TODO: 管理してないディレクトリの場合の処理を入れても良いかも
+      WindowManager.instance().openMainWindow(project);
+
+      WindowManager.instance().getWindow(event.frameId)?.close("open_project");
+
+      return "success";
+
+    })
 
   }
 

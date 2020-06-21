@@ -2,6 +2,8 @@ import {BrowserWindow} from "electron";
 
 interface IWindow {
 
+  getId(): number
+
   getWindowId(): string
 
   getRowBrowserWindow(): BrowserWindow

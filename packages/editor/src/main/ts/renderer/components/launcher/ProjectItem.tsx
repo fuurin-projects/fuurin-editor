@@ -23,7 +23,6 @@ const ProjectItem: React.FunctionComponent<Props> = (props) => {
 
     event.stopPropagation();
     ProjectRepository.instance().deleteGameProject(props.project);
-    //WindowRepository.instance().showMainWindow(props.project);
     console.log("Delete")
 
   };

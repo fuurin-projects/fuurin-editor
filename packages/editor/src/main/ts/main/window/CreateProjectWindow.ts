@@ -37,6 +37,7 @@ export default class CreateProjectWindow implements IWindow {
 
     WindowHandler.install(this);
 
+
     this.getRowBrowserWindow().once("close", (event: Event): void => {
       WindowHandler.uninstall(this);
     });
@@ -72,6 +73,10 @@ export default class CreateProjectWindow implements IWindow {
     //this.rowBrowserWindow.once('focus', () => this.rowBrowserWindow?.flashFrame(false));
     //this.rowBrowserWindow.flashFrame(true)
 
+  }
+
+  public getId(): number {
+    return this.getRowBrowserWindow().id;
   }
 
   public getWindowId(): string {

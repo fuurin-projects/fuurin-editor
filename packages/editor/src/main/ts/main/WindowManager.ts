@@ -10,7 +10,7 @@ const path = require('path');
 
 export default class WindowManager {
 
-  private windowList: Map<string, IWindow>;
+  private windowList: Map<number, IWindow>;
 
   private mainWindow: MainWindow | undefined;
 
@@ -18,7 +18,7 @@ export default class WindowManager {
 
   private constructor() {
 
-    this.windowList = new Map<string, IWindow>();
+    this.windowList = new Map<number, IWindow>();
 
   }
 
@@ -35,7 +35,7 @@ export default class WindowManager {
 
     console.log("create LauncherWindow!");
     const launcherWindow = new LauncherWindow();
-    this.windowList.set(launcherWindow.getWindowId(), launcherWindow);
+    this.windowList.set(launcherWindow.getId(), launcherWindow);
 
     let browserWindow: BrowserWindow = launcherWindow.getRowBrowserWindow();
 
@@ -49,7 +49,7 @@ export default class WindowManager {
   public showCreateProjectWindow(window: IWindow) {
 
     const createProjectWindow = new CreateProjectWindow(window);
-    this.windowList.set(createProjectWindow.getWindowId(), createProjectWindow);
+    this.windowList.set(createProjectWindow.getId(), createProjectWindow);
 
   }
 
@@ -59,8 +59,12 @@ export default class WindowManager {
 
   }
 
-  public getWindows(): Map<string, IWindow> {
+  public getWindows(): Map<number, IWindow> {
     return this.windowList;
+  }
+
+  public getWindow(id: number): IWindow | undefined {
+    return this.getWindows().get(id);
   }
 
   public sendAll(chanel: string, ...args: any[]) {
