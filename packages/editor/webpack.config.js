@@ -115,7 +115,7 @@ module.exports = [
     node: {
       global: false
     },
-    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/MainInit.ts"),
+    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/Main.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
       filename: 'main.js'
