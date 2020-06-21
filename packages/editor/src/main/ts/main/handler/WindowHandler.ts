@@ -3,7 +3,6 @@ import IWindow from "../window/IWindow";
 import {dialog, Event, IpcMain} from "electron";
 import WindowManager from "../WindowManager";
 import Project from "../Project";
-import {IcpHandler} from "../dispatcher/LauncherDispatcher";
 import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
 import IpcMainEvent = Electron.IpcMainEvent;
 
@@ -41,23 +40,6 @@ export default class WindowHandler {
 
       }
 
-      /*
-      if (channel === Channels.SHOW_PROJECT_WINDOW) {
-
-        const name = args[0];
-        const dir = args[1];
-
-        const project = new Project(name, dir);
-
-        //TODO: 管理してないディレクトリの場合の処理を入れても良いかも
-        WindowManager.instance().openMainWindow(project);
-
-        window.close("open_project");
-
-        (event as IpcMainEvent).returnValue = "success";
-
-      }*/
-
     };
 
     this.eventFunction.set(window.getWindowId(), ipcMessage);
@@ -75,24 +57,6 @@ export default class WindowHandler {
 
   }
 
-  private sss = [Channels.SHOW_PROJECT_WINDOW];
-
-  public showProjectWindow: IcpHandler = {
-    channel: Channels.SHOW_PROJECT_WINDOW,
-    fun: (window: IWindow, event: IpcMainEvent, channel: string, ...args: any[]): void => {
-      const name = args[0];
-      const dir = args[1];
-
-      const project = new Project(name, dir);
-
-      //TODO: 管理してないディレクトリの場合の処理を入れても良いかも
-      WindowManager.instance().openMainWindow(project);
-
-      window.close("open_project");
-
-      (event as IpcMainEvent).returnValue = "success";
-    }
-  };
 
   public static registryICP(ipcMain: IpcMain) {
 
@@ -114,22 +78,5 @@ export default class WindowHandler {
     })
 
   }
-
-  // private static ipcMessage(event: Event, channel: string, ...args: any[]): void {
-  //   console.log(channel);
-  //   if (channel === Channels.SHOW_CREATE_PROJECT_WINDOW) {
-  //
-  //     const window = this as unknown as LauncherWindow;
-  //     window.getRowBrowserWindow();
-  //
-  //     new CreateProjectWindow(window);
-  //
-  //   }
-  //
-  //   if (channel === Channels.CLOSE_WINDOW) {
-  //
-  //   }
-  //
-  // }
 
 }
