@@ -30,8 +30,8 @@ export default class WindowRepository {
 
   }
 
-  public closeCurrentWindow(): void {
-    window.ipcRenderer.send(Channels.CLOSE_WINDOW, "close");
+  public closeCurrentWindow(): Promise<void> {
+    return window.ipcRenderer.invoke(Channels.CLOSE_WINDOW, "close");
   }
 
   public showSelectDirDialog(defaultDir: string): Promise<OpenDialogReturnValue> {

@@ -1,8 +1,9 @@
 import Channels from "../../common/Channels";
 import IWindow from "../window/IWindow";
-import {dialog, Event, IpcMain} from "electron";
+import {BrowserWindow, dialog, Event, IpcMain} from "electron";
 import WindowManager from "../WindowManager";
 import Project from "../Project";
+import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 
 
 export default class WindowHandler {
@@ -16,10 +17,6 @@ export default class WindowHandler {
     const ipcMessage = (event: Event, channel: string, ...args: any[]): void => {
 
       console.log(`WindowHandler:${channel}`);
-
-      if (channel === Channels.CLOSE_WINDOW) {
-        window.close("cancel");
-      }
 
     };
 
@@ -43,8 +40,7 @@ export default class WindowHandler {
 
     //プロジェクト作成ウィンドウを表示する
     ipcMain.handle(Channels.SHOW_CREATE_PROJECT_WINDOW, (event, ...args: any[]) => {
-
-      const window = WindowManager.instance().getWindow(event.frameId);
+      const window = this.getWindow(event);
       if (window) {
         WindowManager.instance().showCreateProjectWindow(window);
       }
@@ -58,12 +54,10 @@ export default class WindowHandler {
 
       const project = new Project(name, dir);
 
-      event.frameId;
-
       //TODO: 管理してないディレクトリの場合の処理を入れても良いかも
       WindowManager.instance().openMainWindow(project);
 
-      WindowManager.instance().getWindow(event.frameId)?.close("open_project");
+      this.getWindow(event)?.close("open_project");
 
       return "success";
 
@@ -72,7 +66,7 @@ export default class WindowHandler {
     // ディレクトリ選択ダイアログを表示する
     ipcMain.handle(Channels.SHOW_SELECT_DIR_DIALOG, async (event, ...args: any[]) => {
 
-      const window = WindowManager.instance().getWindow(event.frameId);
+      const window = this.getWindow(event);
       if (window) {
 
         const path = await dialog.showOpenDialog(window.getRowBrowserWindow(), {
@@ -85,6 +79,27 @@ export default class WindowHandler {
       }
 
     });
+
+    // ウィンドウをクローズする
+    ipcMain.handle(Channels.CLOSE_WINDOW, (event, ...args: any[]) => {
+      const window = this.getWindow(event);
+      if (window) {
+        window.close("cancel");
+      }
+    });
+
+  }
+
+  /**
+   * イベントを発行したWindowを返す
+   * @param event
+   */
+  public static getWindow(event: IpcMainInvokeEvent): IWindow | undefined {
+
+    const browserWindow = BrowserWindow.fromWebContents(event.sender);
+    if (browserWindow) {
+      return WindowManager.instance().getWindow(browserWindow.id);
+    }
 
   }
 
