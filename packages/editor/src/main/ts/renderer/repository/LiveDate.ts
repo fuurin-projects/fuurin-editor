@@ -1,5 +1,8 @@
 import IpcRendererEvent = Electron.IpcRendererEvent;
 
+/**
+ * Mainからのデータ購読するのをかんたんにするクラス
+ */
 export default class LiveDate<V> {
 
   private readonly channel: string;
@@ -22,7 +25,7 @@ export default class LiveDate<V> {
     window.ipcRenderer.addListener(this.channel, hock);
 
     //初回時は強制で最新のデータを発火
-    window.ipcRenderer.send(this.channel);
+    window.ipcRenderer.invoke(this.channel);
 
   }
 

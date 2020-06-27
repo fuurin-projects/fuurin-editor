@@ -1,6 +1,5 @@
 import {app, ipcMain} from 'electron';
 import Configuration from "./Configuration";
-import ProjectHandler from "./handler/ProjectHandler";
 import WindowManager from "./WindowManager";
 import ICPDispatcher from "./dispatcher/ICPDispatcher";
 
@@ -10,7 +9,7 @@ async function main() {
 
   await Configuration.instance().init();
 
-  ProjectHandler.init();
+  ICPDispatcher.registryICP(ipcMain);
 
   app.whenReady().then(async function () {
     WindowManager.instance().showLauncher();
@@ -20,8 +19,6 @@ async function main() {
     console.log(arg);
     event.reply('test-reply', 'foo')
   });
-
-  ICPDispatcher.registryICP(ipcMain)
 
 
 }

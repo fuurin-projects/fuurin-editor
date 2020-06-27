@@ -27,25 +27,14 @@ export default class ProjectRepository {
 
   }
 
-  public deleteGameProject(project: Project) {
+  public async deleteGameProject(project: Project) {
 
     console.log(`deleteGameProject ${project.name}. ${project.dir}`);
 
-    const message = window.ipcRenderer.sendSync(Channels.DELETE_PROJECT, project.name, project.dir);
+    const message = await window.ipcRenderer.invoke(Channels.DELETE_PROJECT, project.name, project.dir);
     console.log(message);
   }
-
-  public getProjectListOld(): Promise<Project[]> {
-
-    return new Promise((resolve, reject) => {
-
-      const list = window.ipcRenderer.sendSync(Channels.PROJECT_LIST);
-      resolve(list);
-
-    })
-
-  }
-
+  
   public getProjectList(): LiveDate<Project[]> {
 
     return new LiveDate<Project[]>(Channels.PROJECT_LIST);
