@@ -14,6 +14,7 @@ export default class Channels {
 
   public static CREATE_PROJECT = "create_project";
   public static DELETE_PROJECT = "delete_project";
+  public static OPEN_PROJECT = "open_project";
 
   public static PROJECT_LIST = "project_list";
 

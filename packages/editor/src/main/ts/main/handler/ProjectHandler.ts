@@ -50,6 +50,22 @@ export default class ProjectHandler {
 
     });
 
+    // 既存プロジェクトを新規で開く
+    ipcMain.handle(Channels.OPEN_PROJECT, async (event, ...args: any[]) => {
+
+      const project = await ProjectManager.instance().createProject(args[0], args[1]);
+
+      WindowManager.instance().openMainWindow(project);
+
+      const window = this.getWindow(event);
+      if (window) {
+        window.close("open_project");
+      }
+
+      return "success";
+
+    });
+
   }
 
   /**

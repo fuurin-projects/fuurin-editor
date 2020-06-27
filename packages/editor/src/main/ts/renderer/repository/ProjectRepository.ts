@@ -35,6 +35,15 @@ export default class ProjectRepository {
     console.log(message);
   }
 
+  public async openGameProject(gameName: string, dir: string): Promise<void> {
+
+    console.log(`OpenProject: name=${gameName}, dir=${dir}`);
+
+    const message = await window.ipcRenderer.invoke(Channels.OPEN_PROJECT, gameName, dir);
+    console.log(message);
+
+  }
+
   public getProjectList(): LiveDate<Project[]> {
 
     return new LiveDate<Project[]>(Channels.PROJECT_LIST);

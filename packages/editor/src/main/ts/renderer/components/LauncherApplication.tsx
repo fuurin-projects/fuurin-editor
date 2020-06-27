@@ -8,6 +8,8 @@ import FlatButton from "./button/FlatButton";
 import ProjectRepository from "../repository/ProjectRepository";
 import {Project} from "../../common/Preference";
 import ProjectList from "./launcher/ProjectList";
+import SystemRepository from "../repository/SystemRepository";
+import WindowRepository from "../repository/WindowRepository";
 
 interface Prop {
 
@@ -45,6 +47,17 @@ const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
 
   const frameWidth = projectList.length > 0 ? "calc(100% - 280px)" : "100%";
 
+  const handleClick = async () => {
+
+    const desktopDir: string = await SystemRepository.getDesktopDir();
+    const selectDir = await WindowRepository.instance().showSelectDirDialog(desktopDir);
+    // TODO: GameInfoを読み込む処理
+    const fileList = selectDir.filePaths[0].split(window.sep);
+    const gameName = fileList[fileList.length - 1];
+    await ProjectRepository.instance().openGameProject(gameName, selectDir.filePaths[0]);
+
+  };
+
   return (
 
     <div style={{display: "flex", height: "100%"}}>
@@ -57,7 +70,7 @@ const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
       <div style={{width: frameWidth}}>
         <CenterLayout marginTop={40}><Logo/></CenterLayout>
         <CenterLayout marginTop={72}><CreateProjectButton width={260}/></CenterLayout>
-        <CenterLayout><FlatButton width={260} text={"既存のゲームプロジェクトを開く"}/></CenterLayout>
+        <CenterLayout><FlatButton width={260} text={"既存のゲームプロジェクトを開く"} click={handleClick}/></CenterLayout>
       </div>
     </div>
   );
