@@ -6,8 +6,11 @@ import Project from "../Project";
 export default class MainWindow implements IWindow {
 
   private rowBrowserWindow: BrowserWindow | null;
+  private project: Project;
 
   constructor(project: Project, option: BrowserWindowConstructorOptions = {}) {
+
+    this.project = project;
 
     const title = `${project.name} [${project.dir}] - FuurinEditor`;
 
