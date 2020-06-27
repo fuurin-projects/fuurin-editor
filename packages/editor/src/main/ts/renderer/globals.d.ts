@@ -14,6 +14,7 @@ import IpcRenderer = Electron.IpcRenderer;
  */
 interface Window {
   ipcRenderer: IpcRenderer,
+  // セパレター(区切り文字)
   sep: string
 }
 

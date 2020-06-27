@@ -15,12 +15,14 @@ export default class SystemRepository {
 
   public static async getDesktopDir(): Promise<string> {
 
+    return window.ipcRenderer.invoke(Channels.DESKTOP_DIR);
+    /*
     return new Promise((resolve, reject) => {
 
       const dir = window.ipcRenderer.sendSync("desktop_dir");
       resolve(dir);
 
-    })
+    })*/
 
   }
 

@@ -1,13 +1,19 @@
-import {app, ipcMain} from "electron";
+import {app, IpcMain} from "electron";
 import Channels from "../../common/Channels";
 
 export default class SystemHandler {
 
   public static init() {
 
-    ipcMain.on(Channels.DESKTOP_DIR, (event, arg) => {
-      console.log(arg);
-      event.returnValue = app.getPath("home");
+  }
+
+  public static registryICP(ipcMain: IpcMain) {
+
+    //ディスクトップの位置を返す
+    ipcMain.handle(Channels.DESKTOP_DIR, (event, ...args: any[]) => {
+
+      return app.getPath("desktop");
+
     });
 
   }

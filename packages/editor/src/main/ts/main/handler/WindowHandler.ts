@@ -60,6 +60,7 @@ export default class WindowHandler {
 
   public static registryICP(ipcMain: IpcMain) {
 
+    //プロジェクトウィンドウを表示する
     ipcMain.handle(Channels.SHOW_PROJECT_WINDOW, (event, ...args: any[]) => {
       const name = args[0];
       const dir = args[1];

@@ -3,11 +3,15 @@
  */
 import {IpcMain} from "electron";
 import WindowHandler from "../handler/WindowHandler";
+import SystemHandler from "../handler/SystemHandler";
 
 export default class ICPDispatcher {
 
   public static registryICP(ipcMain: IpcMain) {
 
+    //システム自体の処理
+    SystemHandler.registryICP(ipcMain);
+    //ウィンドウに関連する処理
     WindowHandler.registryICP(ipcMain);
 
   }
