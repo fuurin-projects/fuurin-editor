@@ -1,3 +1,6 @@
+/**
+ * エディター自体が保持するプロジェクト(ゲーム)情報
+ */
 export default class Project {
 
   private readonly _name: string;
