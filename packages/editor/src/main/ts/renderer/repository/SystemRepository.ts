@@ -4,12 +4,14 @@ export default class SystemRepository {
 
   public static async getVersion(): Promise<string> {
 
+    return window.ipcRenderer.invoke(Channels.VERSION);
+    /*
     return new Promise((resolve, reject) => {
 
       const version = window.ipcRenderer.sendSync(Channels.VERSION);
       resolve(version);
 
-    })
+    })*/
 
   }
 
