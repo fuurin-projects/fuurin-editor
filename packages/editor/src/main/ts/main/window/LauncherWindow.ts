@@ -1,6 +1,5 @@
 import {app, BrowserWindow, BrowserWindowConstructorOptions} from 'electron';
 import path from 'path';
-import WindowHandler from "../handler/WindowHandler";
 import IWindow, {CloseType} from "./IWindow";
 
 export default class LauncherWindow implements IWindow {
@@ -22,8 +21,6 @@ export default class LauncherWindow implements IWindow {
     });
     this.rowBrowserWindow = new BrowserWindow(opt);
     this.getRowBrowserWindow().setMenu(null);
-
-    WindowHandler.install(this);
 
   }
 
@@ -47,8 +44,6 @@ export default class LauncherWindow implements IWindow {
 
 
   public destroy() {
-
-    WindowHandler.uninstall(this);
 
     this.rowBrowserWindow = null;
   }

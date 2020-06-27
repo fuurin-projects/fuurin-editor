@@ -1,7 +1,6 @@
-import {app, BrowserWindow, BrowserWindowConstructorOptions, Event} from "electron";
+import {app, BrowserWindow, BrowserWindowConstructorOptions} from "electron";
 import path from "path";
 import IWindow, {CloseType} from "./IWindow";
-import WindowHandler from "../handler/WindowHandler";
 
 export default class CreateProjectWindow implements IWindow {
 
@@ -25,7 +24,6 @@ export default class CreateProjectWindow implements IWindow {
       }
     });
 
-    console.log("ss");
     this.rowBrowserWindow = new BrowserWindow(opt);
 
     this.rowBrowserWindow.loadFile(path.resolve(app.getAppPath(), "./html/create_project.html"));
@@ -33,25 +31,6 @@ export default class CreateProjectWindow implements IWindow {
     this.rowBrowserWindow.webContents.toggleDevTools();
 
     this.rowBrowserWindow.setMenu(null);
-
-    WindowHandler.install(this);
-
-
-    this.getRowBrowserWindow().once("close", (event: Event): void => {
-      WindowHandler.uninstall(this);
-    });
-
-
-    // this.rowBrowserWindow.once('closed', (event: Event, window: BrowserWindow) => {
-    //   console.log("blur");
-    // });
-    //this.rowBrowserWindow.flashFrame(true);
-    //this.rowBrowserWindow.flashFrame(true);
-    //this.rowBrowserWindow.flashFrame(true);
-
-
-    //this.rowBrowserWindow.once('focus', () => this.rowBrowserWindow?.flashFrame(false));
-    //this.rowBrowserWindow.flashFrame(true)
 
   }
 
@@ -73,7 +52,6 @@ export default class CreateProjectWindow implements IWindow {
   }
 
   public destroy() {
-    WindowHandler.uninstall(this);
 
     this.rowBrowserWindow = null;
   }

@@ -1,10 +1,9 @@
-import {BrowserWindow, IpcMain} from "electron";
+import {BrowserWindow, IpcMain, IpcMainInvokeEvent} from "electron";
 import Channels from "../../common/Channels";
 import Configuration from "../Configuration";
 import WindowManager from "../WindowManager";
 import ProjectManager from "../ProjectManager";
 import IWindow from "../window/IWindow";
-import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 
 export default class ProjectHandler {
 
