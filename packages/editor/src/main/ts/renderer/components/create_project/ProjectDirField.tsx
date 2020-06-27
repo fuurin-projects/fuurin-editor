@@ -44,9 +44,9 @@ const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
 
   };
 
-  const onClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const onClick: MouseEventHandler<HTMLButtonElement> = async (e) => {
     console.log("ProjectDirField click!");
-    const selectDir = WindowRepository.instance().showSelectDirDialog(props.dir);
+    const selectDir = await WindowRepository.instance().showSelectDirDialog(props.dir);
 
     if (!selectDir.canceled) {
       isOpenFileDialog.current = true;

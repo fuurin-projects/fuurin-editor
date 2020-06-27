@@ -3,8 +3,6 @@ import IWindow from "../window/IWindow";
 import {dialog, Event, IpcMain} from "electron";
 import WindowManager from "../WindowManager";
 import Project from "../Project";
-import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
-import IpcMainEvent = Electron.IpcMainEvent;
 
 
 export default class WindowHandler {
@@ -18,26 +16,9 @@ export default class WindowHandler {
     const ipcMessage = (event: Event, channel: string, ...args: any[]): void => {
 
       console.log(`WindowHandler:${channel}`);
-      if (channel === Channels.SHOW_CREATE_PROJECT_WINDOW) {
-
-        WindowManager.instance().showCreateProjectWindow(window);
-
-      }
 
       if (channel === Channels.CLOSE_WINDOW) {
         window.close("cancel");
-      }
-
-      if (channel === Channels.SHOW_SELECT_DIR_DIALOG) {
-
-        dialog.showOpenDialog(window.getRowBrowserWindow(), {
-          defaultPath: args[0],
-          properties: ['openDirectory']
-        }).then((path: OpenDialogReturnValue) => {
-          console.log(path);
-          (event as IpcMainEvent).returnValue = path;
-        });
-
       }
 
     };
@@ -60,6 +41,16 @@ export default class WindowHandler {
 
   public static registryICP(ipcMain: IpcMain) {
 
+    //プロジェクト作成ウィンドウを表示する
+    ipcMain.handle(Channels.SHOW_CREATE_PROJECT_WINDOW, (event, ...args: any[]) => {
+
+      const window = WindowManager.instance().getWindow(event.frameId);
+      if (window) {
+        WindowManager.instance().showCreateProjectWindow(window);
+      }
+
+    });
+
     //プロジェクトウィンドウを表示する
     ipcMain.handle(Channels.SHOW_PROJECT_WINDOW, (event, ...args: any[]) => {
       const name = args[0];
@@ -76,7 +67,24 @@ export default class WindowHandler {
 
       return "success";
 
-    })
+    });
+
+    // ディレクトリ選択ダイアログを表示する
+    ipcMain.handle(Channels.SHOW_SELECT_DIR_DIALOG, async (event, ...args: any[]) => {
+
+      const window = WindowManager.instance().getWindow(event.frameId);
+      if (window) {
+
+        const path = await dialog.showOpenDialog(window.getRowBrowserWindow(), {
+          defaultPath: args[0],
+          properties: ['openDirectory']
+        });
+
+        console.log(path);
+        return path;
+      }
+
+    });
 
   }
 

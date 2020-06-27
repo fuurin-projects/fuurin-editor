@@ -1,6 +1,6 @@
 import Channels from "../../common/Channels";
 import {Project} from "../../common/Preference";
-import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
+import {OpenDialogReturnValue} from "electron";
 
 export default class WindowRepository {
 
@@ -18,9 +18,9 @@ export default class WindowRepository {
     return this.instance_;
   }
 
-  public showCreateProjectWindow(): void {
+  public showCreateProjectWindow(): Promise<void> {
 
-    window.ipcRenderer.send(Channels.SHOW_CREATE_PROJECT_WINDOW, "create");
+    return window.ipcRenderer.invoke(Channels.SHOW_CREATE_PROJECT_WINDOW, "create");
 
   }
 
@@ -34,9 +34,9 @@ export default class WindowRepository {
     window.ipcRenderer.send(Channels.CLOSE_WINDOW, "close");
   }
 
-  public showSelectDirDialog(defaultDir: string): OpenDialogReturnValue {
+  public showSelectDirDialog(defaultDir: string): Promise<OpenDialogReturnValue> {
 
-    return window.ipcRenderer.sendSync(Channels.SHOW_SELECT_DIR_DIALOG, defaultDir);
+    return window.ipcRenderer.invoke(Channels.SHOW_SELECT_DIR_DIALOG, defaultDir);
 
   }
 
