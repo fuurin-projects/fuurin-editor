@@ -56,4 +56,8 @@ export default class MainWindow implements IWindow {
     return this.getRowBrowserWindow().id;
   }
 
+  getParent(): IWindow | undefined {
+    return undefined;
+  }
+
 }

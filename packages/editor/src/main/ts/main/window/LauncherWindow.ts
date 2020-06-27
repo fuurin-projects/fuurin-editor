@@ -59,5 +59,9 @@ export default class LauncherWindow implements IWindow {
 
   }
 
+  getParent(): IWindow | undefined {
+    return undefined;
+  }
+
 
 }

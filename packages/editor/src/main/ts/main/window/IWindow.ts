@@ -8,6 +8,8 @@ interface IWindow {
 
   getRowBrowserWindow(): BrowserWindow
 
+  getParent(): IWindow | undefined
+
   destroy(): void
 
   close(type: CloseType): void

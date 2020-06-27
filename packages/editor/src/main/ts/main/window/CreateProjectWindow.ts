@@ -2,16 +2,15 @@ import {app, BrowserWindow, BrowserWindowConstructorOptions, Event} from "electr
 import path from "path";
 import IWindow, {CloseType} from "./IWindow";
 import WindowHandler from "../handler/WindowHandler";
-import Channels from "../../common/Channels";
-import ProjectManager from "../ProjectManager";
-import WindowManager from "../WindowManager";
-import IpcMainEvent = Electron.IpcMainEvent;
 
 export default class CreateProjectWindow implements IWindow {
 
   private rowBrowserWindow: BrowserWindow | null;
+  private parent: IWindow;
 
   constructor(parent: IWindow, option: BrowserWindowConstructorOptions = {}) {
+
+    this.parent = parent;
 
     const opt = Object.assign<BrowserWindowConstructorOptions, BrowserWindowConstructorOptions>(option, {
       parent: parent.getRowBrowserWindow(),
@@ -41,25 +40,6 @@ export default class CreateProjectWindow implements IWindow {
     this.getRowBrowserWindow().once("close", (event: Event): void => {
       WindowHandler.uninstall(this);
     });
-
-    //Projectの作成
-    const ipcMessage = async (event: Event, channel: string, ...args: any[]): Promise<void> => {
-
-      console.log(`channel: ${channel}`);
-      if (channel === Channels.CREATE_PROJECT) {
-
-        (event as IpcMainEvent).returnValue = "success";
-
-        const project = await ProjectManager.instance().createProject(args[0], args[1]);
-
-        WindowManager.instance().openMainWindow(project);
-
-        parent.close("open_project");
-
-      }
-
-    };
-    this.getRowBrowserWindow().webContents.addListener('ipc-message-sync', ipcMessage);
 
 
     // this.rowBrowserWindow.once('closed', (event: Event, window: BrowserWindow) => {
@@ -102,6 +82,10 @@ export default class CreateProjectWindow implements IWindow {
 
     this.getRowBrowserWindow().close();
 
+  }
+
+  getParent(): IWindow {
+    return this.parent;
   }
 
 }

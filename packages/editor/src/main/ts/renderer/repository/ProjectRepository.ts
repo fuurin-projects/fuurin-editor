@@ -18,11 +18,11 @@ export default class ProjectRepository {
     return this.instance_;
   }
 
-  public createGameProject(gameName: string, dir: string): void {
+  public async createGameProject(gameName: string, dir: string): Promise<void> {
 
     console.log(`CreateProject: name=${gameName}, dir=${dir}`);
 
-    const message = window.ipcRenderer.sendSync(Channels.CREATE_PROJECT, gameName, dir);
+    const message = await window.ipcRenderer.invoke(Channels.CREATE_PROJECT, gameName, dir);
     console.log(message);
 
   }
@@ -34,7 +34,7 @@ export default class ProjectRepository {
     const message = await window.ipcRenderer.invoke(Channels.DELETE_PROJECT, project.name, project.dir);
     console.log(message);
   }
-  
+
   public getProjectList(): LiveDate<Project[]> {
 
     return new LiveDate<Project[]>(Channels.PROJECT_LIST);

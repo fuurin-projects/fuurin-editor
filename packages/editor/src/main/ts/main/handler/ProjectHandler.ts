@@ -1,7 +1,10 @@
-import {IpcMain} from "electron";
+import {BrowserWindow, IpcMain} from "electron";
 import Channels from "../../common/Channels";
 import Configuration from "../Configuration";
 import WindowManager from "../WindowManager";
+import ProjectManager from "../ProjectManager";
+import IWindow from "../window/IWindow";
+import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 
 export default class ProjectHandler {
 
@@ -31,6 +34,35 @@ export default class ProjectHandler {
       return Configuration.instance().getProjectList();
 
     });
+
+    // プロジェクトの新規作成
+    ipcMain.handle(Channels.CREATE_PROJECT, async (event, ...args: any[]) => {
+
+      const project = await ProjectManager.instance().createProject(args[0], args[1]);
+
+      WindowManager.instance().openMainWindow(project);
+
+      const parentWindow = this.getWindow(event)?.getParent();
+      if (parentWindow) {
+        parentWindow.close("open_project");
+      }
+
+      return "success";
+
+    });
+
+  }
+
+  /**
+   * イベントを発行したWindowを返す
+   * @param event
+   */
+  public static getWindow(event: IpcMainInvokeEvent): IWindow | undefined {
+
+    const browserWindow = BrowserWindow.fromWebContents(event.sender);
+    if (browserWindow) {
+      return WindowManager.instance().getWindow(browserWindow.id);
+    }
 
   }
 
