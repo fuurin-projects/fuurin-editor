@@ -9,6 +9,7 @@ import input = Simulate.input;
 
 interface Prop {
   name: string
+  setName: (name: string) => void
   dir: string
   setDir: (dir: string) => void
 }
@@ -51,6 +52,13 @@ const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
     if (!selectDir.canceled) {
       isOpenFileDialog.current = true;
       props.setDir(selectDir.filePaths[0]);
+
+
+      //Game名が unknown_game のままの場合はフォルダ名で上書きする
+      if (props.name === "unknown_game") {
+        const fileList = selectDir.filePaths[0].split(window.sep);
+        props.setName(fileList[fileList.length - 1]);
+      }
     }
 
   };

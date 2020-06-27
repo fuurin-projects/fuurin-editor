@@ -26,7 +26,7 @@ const NewProjectFieldGroup: React.FC<Props> = (props) => {
     <>
       <GridLayout>
         <Item><span style={spanStyle}>プロジェクト名:</span></Item><Item><ProjectNameField name={props.name} setName={props.setName}/></Item>
-        <Item><span style={spanStyle}>作業ディレクトリ:</span></Item><Item><ProjectDirField name={props.name} dir={props.dir} setDir={props.setDir}/></Item>
+        <Item><span style={spanStyle}>作業ディレクトリ:</span></Item><Item><ProjectDirField name={props.name} dir={props.dir} setDir={props.setDir} setName={props.setName}/></Item>
       </GridLayout>
     </>
   );
