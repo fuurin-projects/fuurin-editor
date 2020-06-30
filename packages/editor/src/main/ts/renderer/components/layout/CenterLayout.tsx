@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react";
-import styles from "../../../css/layer/CenterLayer.css"
+import styles from "../../../../css/layer/CenterLayout.css"
 
 interface Prop {
   marginTop: number

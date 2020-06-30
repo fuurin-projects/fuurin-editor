@@ -9,7 +9,7 @@ module.exports = [
     entry: path.resolve(__dirname, "./src/main/ts/main/index.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
-      filename: 'main.js'
+      filename: 'fuurin-editor.js'
     },
     module: {
       rules: [
@@ -57,10 +57,68 @@ module.exports = [
     node: {
       global: false
     },
-    entry: path.resolve(__dirname, "./src/main/ts/renderer/launcher.ts"),
+    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/Launcher.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
       filename: 'launcher.js'
+    },
+    module: {
+      rules: [
+        {
+          // 拡張子 .ts の場合
+          test: /\.tsx?$/,
+          use: "ts-loader"
+        },
+        {
+          test: /\.css$/,
+          loaders: ['style-loader', 'css-loader?modules'],
+        },
+      ]
+    },
+    resolve: {
+      extensions: [".ts", ".tsx", ".js"]
+    },
+  },
+  //Renderer(新規プロジェクト)プロセス
+  {
+    mode: "development",//"production",
+    target: "web",
+    node: {
+      global: false
+    },
+    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/CreateProject.ts"),
+    output: {
+      path: path.resolve(__dirname, "../../build/app/js"),
+      filename: 'create_project.js'
+    },
+    module: {
+      rules: [
+        {
+          // 拡張子 .ts の場合
+          test: /\.tsx?$/,
+          use: "ts-loader"
+        },
+        {
+          test: /\.css$/,
+          loaders: ['style-loader', 'css-loader?modules'],
+        },
+      ]
+    },
+    resolve: {
+      extensions: [".ts", ".tsx", ".js"]
+    },
+  },
+  //Renderer(メインエディター)プロセス
+  {
+    mode: "development",//"production",
+    target: "web",
+    node: {
+      global: false
+    },
+    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/Main.ts"),
+    output: {
+      path: path.resolve(__dirname, "../../build/app/js"),
+      filename: 'main.js'
     },
     module: {
       rules: [

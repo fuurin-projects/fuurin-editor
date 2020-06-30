@@ -1,0 +1,37 @@
+
+.base {
+    height: 60px;
+    position: relative;
+    cursor: pointer;
+}
+
+.base:nth-child(2n+1) {
+    background-color: aliceblue;
+}
+
+.base:hover {
+    color: #ffffff;
+    background-color: #0078d7;
+}
+
+.delete {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: #e5e5e5;
+}
+
+.delete:hover {
+    color: #ffffff;
+}
+
+
+.itemText {
+    font-size: 12px;
+    line-height: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 30px;
+    padding: 10px 0 4px 24px;
+}

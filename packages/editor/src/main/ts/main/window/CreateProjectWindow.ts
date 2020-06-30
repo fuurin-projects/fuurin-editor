@@ -1,17 +1,21 @@
-import {app, BrowserWindow, BrowserWindowConstructorOptions} from 'electron';
-import path from 'path';
+import {app, BrowserWindow, BrowserWindowConstructorOptions} from "electron";
+import path from "path";
 import IWindow, {CloseType} from "./IWindow";
 
-export default class LauncherWindow implements IWindow {
+export default class CreateProjectWindow implements IWindow {
 
   private rowBrowserWindow: BrowserWindow | null;
+  private parent: IWindow;
 
-  constructor(option: BrowserWindowConstructorOptions = {}) {
+  constructor(parent: IWindow, option: BrowserWindowConstructorOptions = {}) {
+
+    this.parent = parent;
 
     const opt = Object.assign<BrowserWindowConstructorOptions, BrowserWindowConstructorOptions>(option, {
+      parent: parent.getRowBrowserWindow(),
+      modal: true,
       width: 680,
-      height: 510,
-      resizable: false,
+      height: 200,
       backgroundColor: "#f5f5f5",
       icon: path.resolve(app.getAppPath(), './resources/fuurin_icon_16.png'),
       webPreferences: {
@@ -19,13 +23,18 @@ export default class LauncherWindow implements IWindow {
         preload: path.resolve(app.getAppPath(), './js/preload.js'),
       }
     });
+
     this.rowBrowserWindow = new BrowserWindow(opt);
-    this.getRowBrowserWindow().setMenu(null);
+
+    this.rowBrowserWindow.loadFile(path.resolve(app.getAppPath(), "./html/create_project.html"));
+
+    this.rowBrowserWindow.webContents.toggleDevTools();
+
+    this.rowBrowserWindow.setMenu(null);
 
   }
 
-
-  getId(): number {
+  public getId(): number {
     return this.getRowBrowserWindow().id;
   }
 
@@ -42,7 +51,6 @@ export default class LauncherWindow implements IWindow {
     return this.rowBrowserWindow;
   }
 
-
   public destroy() {
 
     this.rowBrowserWindow = null;
@@ -54,9 +62,8 @@ export default class LauncherWindow implements IWindow {
 
   }
 
-  getParent(): IWindow | undefined {
-    return undefined;
+  getParent(): IWindow {
+    return this.parent;
   }
-
 
 }

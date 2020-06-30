@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "fuurin-editor",
+  "productName": "FuurinEditor",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -8,6 +9,8 @@
     "start": "yarn workspace editor run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy_html": "yarn workspace editor run copy_html",
+    "copy_css": "yarn workspace editor run copy_css",
+    "copy_resources": "yarn workspace editor run copy_resources",
     "compile": "yarn workspace editor run compile",
     "build": "yarn workspace editor run build"
   },

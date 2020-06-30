@@ -1,24 +1,26 @@
-import LauncherWindow from "./window/LauncherWindow";
+import {app, ipcMain} from 'electron';
+import Configuration from "./Configuration";
+import WindowManager from "./WindowManager";
+import ICPDispatcher from "./dispatcher/ICPDispatcher";
 
 const path = require('path');
 
-import {app, BrowserWindow, ipcMain} from 'electron';
+async function main() {
 
-async function createWindow() {
+  await Configuration.instance().init();
 
-  console.log("create LauncherWindow!");
-  let launcherWindow: BrowserWindow = new LauncherWindow().getRowBrowserWindow();
+  ICPDispatcher.registryICP(ipcMain);
 
-  launcherWindow.webContents.openDevTools();
+  app.whenReady().then(async function () {
+    WindowManager.instance().showLauncher();
+  });
 
-  // and load the launcher.html of the app.
-  await launcherWindow.loadFile(path.resolve(app.getAppPath(), "./html/launcher.html"));
+  ipcMain.on('test-message', (event, arg) => {
+    console.log(arg);
+    event.reply('test-reply', 'foo')
+  });
+
 
 }
 
-ipcMain.on('test-message', (event, arg) => {
-  console.log(arg);
-  event.reply('test-reply', 'foo')
-});
-
-app.whenReady().then(createWindow);
+main();
