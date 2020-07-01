@@ -63,4 +63,8 @@ export default class MainWindow implements IWindow {
     return undefined;
   }
 
+  public getProject(): Project {
+    return this.project;
+  }
+
 }
