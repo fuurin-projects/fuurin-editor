@@ -29,7 +29,7 @@ export default class Logo extends React.Component<Prop | undefined, State> {
     return (
       <>
         <div>
-          <img src={"../resources/fuurin_icon_16.png"} alt={"ここにかっこいいロゴ画像"} className={styles.image} height={"140px"} width={"140px"}/>
+          <img src={"../resources/images/fuurin_icon_16.png"} alt={"ここにかっこいいロゴ画像"} className={styles.image} height={"140px"} width={"140px"}/>
           <br/>
           <div className={styles.version}>バージョン : {this.state.version}</div>
         </div>
