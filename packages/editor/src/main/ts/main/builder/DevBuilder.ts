@@ -13,6 +13,7 @@ export class DevBuilder {
    */
   public static async buildJS(dir: string) {
 
+    console.log(`buildJS ${dir}`);
     const gameDir = path.resolve(app.getAppPath(), "./resources/game.js");
     console.log(gameDir);
     const text = await fs.readFile(gameDir, 'utf8');

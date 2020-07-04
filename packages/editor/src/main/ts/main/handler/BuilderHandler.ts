@@ -8,11 +8,7 @@ import {DevBuilder} from "../builder/DevBuilder";
  * ゲームを実行可能な形式に出力する処理をまとめているHandler
  */
 export class BuilderHandler {
-
-  public static init() {
-
-  }
-
+  
   public static registryICP(ipcMain: IpcMain) {
 
     //ローカルで実行するためのhtmlやjsファイルを生成
@@ -20,8 +16,6 @@ export class BuilderHandler {
 
       console.log(`handle. ${Channels.BUILD_DEV}`);
       const window = WindowManager.getWindow(event);
-
-      console.log(window);
 
       if (window instanceof MainWindow) {
 
