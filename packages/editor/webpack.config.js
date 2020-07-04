@@ -129,7 +129,7 @@ module.exports = [
         },
         {
           test: /\.css$/,
-          loaders: ['style-loader', 'css-loader?modules'],
+          loaders: ['style-loader', 'css-loader?modules&url=false'],
         },
       ]
     },
