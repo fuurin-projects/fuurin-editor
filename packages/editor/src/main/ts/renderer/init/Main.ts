@@ -1,4 +1,4 @@
-import {createComponent} from "../components/MainApplication";
+import {createComponent} from "../components/application/mainapplication/MainApplication";
 
 /**
  * メイン画面の表示時に最初に呼ばれるメソッド
