@@ -18,5 +18,9 @@ export default class Channels {
 
   public static PROJECT_LIST = "project_list";
 
+  //==========
+  //Builder
+  //==========
+  public static BUILD_DEV = "build_dev";
 
 }

@@ -5,6 +5,7 @@ import {IpcMain} from "electron";
 import WindowHandler from "../handler/WindowHandler";
 import SystemHandler from "../handler/SystemHandler";
 import ProjectHandler from "../handler/ProjectHandler";
+import {BuilderHandler} from "../handler/BuilderHandler";
 
 export default class ICPDispatcher {
 
@@ -16,7 +17,8 @@ export default class ICPDispatcher {
     WindowHandler.registryICP(ipcMain);
     // プロジェクトに関連する処理
     ProjectHandler.registryICP(ipcMain);
-
+    // ゲームのBuild処理
+    BuilderHandler.registryICP(ipcMain);
   }
 
 }

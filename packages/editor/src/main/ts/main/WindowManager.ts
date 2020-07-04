@@ -4,11 +4,12 @@ import IWindow from "./window/IWindow";
 import {app, BrowserWindow} from "electron";
 import LauncherWindow from "./window/LauncherWindow";
 import CreateProjectWindow from "./window/CreateProjectWindow";
+import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 
 const path = require('path');
 
 
-export default class WindowManager {
+export class WindowManager {
 
   private windowList: Map<number, IWindow>;
 
@@ -56,6 +57,8 @@ export default class WindowManager {
   public openMainWindow(project: Project) {
 
     this.mainWindow = new MainWindow(project);
+    this.windowList.set(this.mainWindow.getId(), this.mainWindow);
+
 
   }
 
@@ -73,6 +76,19 @@ export default class WindowManager {
 
       value.getRowBrowserWindow().webContents.send(chanel, ...args);
 
+    }
+
+  }
+
+  /**
+   * イベントを発行したWindowを返す
+   * @param event
+   */
+  public static getWindow(event: IpcMainInvokeEvent): IWindow | undefined {
+
+    const browserWindow = BrowserWindow.fromWebContents(event.sender);
+    if (browserWindow) {
+      return WindowManager.instance().getWindow(browserWindow.id);
     }
 
   }

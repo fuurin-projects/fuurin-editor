@@ -1,7 +1,7 @@
 import {app, ipcMain} from 'electron';
 import Configuration from "./Configuration";
-import WindowManager from "./WindowManager";
 import ICPDispatcher from "./dispatcher/ICPDispatcher";
+import {WindowManager} from "./WindowManager";
 
 const path = require('path');
 
