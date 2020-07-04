@@ -1,0 +1,25 @@
+.main_container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 28px auto 24px;
+    border-top: #c9c9c9 1px solid;
+}
+
+.header {
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 2px 0;
+}
+
+.main {
+    width: 100%;
+    background-color: #ffffff;
+    border-top: #c9c9c9 1px solid;
+    border-bottom: #c9c9c9 1px solid;
+}
+
+.footer {
+    width: 100%;
+    background-color: #f0f0f0;
+
+}
