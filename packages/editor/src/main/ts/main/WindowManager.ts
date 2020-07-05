@@ -4,6 +4,7 @@ import IWindow from "./window/IWindow";
 import {app, BrowserWindow} from "electron";
 import LauncherWindow from "./window/LauncherWindow";
 import CreateProjectWindow from "./window/CreateProjectWindow";
+import {DevGameWindow} from "./window/DevGameWindow";
 import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 
 const path = require('path');
@@ -60,6 +61,11 @@ export class WindowManager {
     this.windowList.set(this.mainWindow.getId(), this.mainWindow);
 
 
+  }
+
+  public openDevGameWindow(project: Project) {
+    const devGameWindow = new DevGameWindow(project);
+    this.windowList.set(devGameWindow.getId(), devGameWindow);
   }
 
   public getWindows(): Map<number, IWindow> {
