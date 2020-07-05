@@ -6,6 +6,7 @@ import WindowHandler from "../handler/WindowHandler";
 import SystemHandler from "../handler/SystemHandler";
 import ProjectHandler from "../handler/ProjectHandler";
 import {BuilderHandler} from "../handler/BuilderHandler";
+import {GameHandler} from "../handler/GameHandler";
 
 export default class ICPDispatcher {
 
@@ -19,6 +20,8 @@ export default class ICPDispatcher {
     ProjectHandler.registryICP(ipcMain);
     // ゲームのBuild処理
     BuilderHandler.registryICP(ipcMain);
+    //
+    GameHandler.registryICP(ipcMain);
   }
 
 }

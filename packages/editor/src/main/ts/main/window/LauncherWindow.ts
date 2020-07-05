@@ -46,6 +46,7 @@ export default class LauncherWindow implements IWindow {
   public destroy() {
 
     this.rowBrowserWindow = null;
+
   }
 
   public close(type: CloseType): void {
