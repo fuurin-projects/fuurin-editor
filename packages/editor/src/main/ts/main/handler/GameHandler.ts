@@ -9,7 +9,7 @@ import MainWindow from "../window/MainWindow";
 export class GameHandler {
   public static registryICP(ipcMain: IpcMain) {
 
-    //ローカルで実行するためのhtmlやjsファイルを生成
+    //ローカルで実行
     ipcMain.handle(Channels.RUN_DEV, async (event, ...args: any[]) => {
 
       console.log(`handle. ${Channels.RUN_DEV}`);

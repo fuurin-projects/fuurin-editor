@@ -20,7 +20,7 @@ export default class ICPDispatcher {
     ProjectHandler.registryICP(ipcMain);
     // ゲームのBuild処理
     BuilderHandler.registryICP(ipcMain);
-    //
+    // デバック処理
     GameHandler.registryICP(ipcMain);
   }
 
