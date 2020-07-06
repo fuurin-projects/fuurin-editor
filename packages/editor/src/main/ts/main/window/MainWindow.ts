@@ -18,8 +18,8 @@ export default class MainWindow implements IWindow {
     const opt = Object.assign<BrowserWindowConstructorOptions, BrowserWindowConstructorOptions>(option, {
       title: title,
       modal: true,
-      width: 880,
-      height: 400,
+      width: 1080,
+      height: 680,
       backgroundColor: "#f5f5f5",
       icon: Icons.getAppIcon(),
       webPreferences: {
