@@ -1,6 +1,7 @@
 import {app, BrowserWindow, BrowserWindowConstructorOptions} from "electron";
 import path from "path";
 import IWindow, {CloseType} from "./IWindow";
+import {Icons} from "../Icons";
 
 export default class CreateProjectWindow implements IWindow {
 
@@ -17,7 +18,7 @@ export default class CreateProjectWindow implements IWindow {
       width: 680,
       height: 200,
       backgroundColor: "#f5f5f5",
-      icon: path.resolve(app.getAppPath(), './resources/fuurin_icon_16.png'),
+      icon: Icons.getAppIcon(),
       webPreferences: {
         nodeIntegration: false,
         preload: path.resolve(app.getAppPath(), './js/preload.js'),

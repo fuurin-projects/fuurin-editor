@@ -19,8 +19,13 @@ export default class Channels {
   public static PROJECT_LIST = "project_list";
 
   //==========
-  //Builder
+  // Builder
   //==========
   public static BUILD_DEV = "build_dev";
+
+  //==========
+  // Game
+  //==========
+  public static RUN_DEV = "run_dev";
 
 }

@@ -7,6 +7,22 @@ import {app} from 'electron';
  */
 export class DevBuilder {
 
+  public static async buildDevHtml(dir: string) {
+
+    console.log(`buildHtml ${dir}`);
+    const htmlDir = path.resolve(app.getAppPath(), "./resources/dev_game.html");
+    const text = await fs.readFile(htmlDir, 'utf8');
+
+    //フォルダを作成
+    await fs.mkdir(path.resolve(dir, "./build/dev"), {recursive: true});
+
+    await fs.writeFile(path.resolve(dir, "./build/dev/index.html"), text, 'utf8');
+
+    console.log(dir);
+
+    return text;
+  }
+
   /**
    * 指定したディレクトリにgame用のjsファイルを出力する
    * @param dir

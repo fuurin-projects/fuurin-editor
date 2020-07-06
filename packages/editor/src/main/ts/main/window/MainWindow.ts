@@ -2,6 +2,7 @@ import IWindow, {CloseType} from "./IWindow";
 import {app, BrowserWindow, BrowserWindowConstructorOptions} from "electron";
 import path from "path";
 import Project from "../Project";
+import {Icons} from "../Icons";
 
 export default class MainWindow implements IWindow {
 
@@ -17,10 +18,10 @@ export default class MainWindow implements IWindow {
     const opt = Object.assign<BrowserWindowConstructorOptions, BrowserWindowConstructorOptions>(option, {
       title: title,
       modal: true,
-      width: 880,
-      height: 400,
+      width: 1080,
+      height: 680,
       backgroundColor: "#f5f5f5",
-      icon: path.resolve(app.getAppPath(), './resources/fuurin_icon_16.png'),
+      icon: Icons.getAppIcon(),
       webPreferences: {
         nodeIntegration: false,
         preload: path.resolve(app.getAppPath(), './js/preload.js'),
