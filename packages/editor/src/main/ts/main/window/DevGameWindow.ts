@@ -23,7 +23,6 @@ export class DevGameWindow implements IWindow {
 
     const opt = Object.assign<BrowserWindowConstructorOptions, BrowserWindowConstructorOptions>(option, {
       title: title,
-      modal: true,
       width: 800,
       height: 600,
       backgroundColor: "#f5f5f5",
@@ -45,6 +44,8 @@ export class DevGameWindow implements IWindow {
     this.rowBrowserWindow.on("closed", () => {
       this.destroy();
     });
+
+    this.getRowBrowserWindow().setMenu(null);
 
   }
 
