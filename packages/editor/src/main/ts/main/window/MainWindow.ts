@@ -4,6 +4,7 @@ import path from "path";
 import Project from "../Project";
 import {Icons} from "../Icons";
 import Channels from "../../common/Channels";
+import {Sleep} from "../../common/Sleep";
 
 export default class MainWindow implements IWindow {
 
@@ -89,6 +90,7 @@ export default class MainWindow implements IWindow {
         });
       });
       this.gameWindow.getRowBrowserWindow().close();
+      await Sleep.sleep(400);
       await isStop;
     }
 

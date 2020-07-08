@@ -8,6 +8,7 @@ import {Provider, useDispatch, useSelector} from "react-redux";
 import {ReRunButton} from "../../button/rerunbutton/ReRunButton";
 import {GameRepository} from "../../../repository/GameRepository";
 import {DevGameStore} from "../../../stores/DevGameStore";
+import {StopButton} from "../../button/stopbutton/StopButton";
 
 //reduxを設定するためのラッパー
 const MainApplicationContainer: React.FunctionComponent = (props) => {
@@ -57,6 +58,7 @@ export const MainApplication: React.FunctionComponent = (props): React.ReactElem
       <div className={styles.main_container}>
         <div className={styles.header}>
           {getRunButton()}
+          <StopButton/>
         </div>
         <div className={styles.main}>メインエディター</div>
         <div className={styles.footer}>
