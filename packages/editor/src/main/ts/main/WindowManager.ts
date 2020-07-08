@@ -62,7 +62,7 @@ export class WindowManager {
 
   }
 
-  public openDevGameWindow(project: Project, parent: IWindow) {
+  public openDevGameWindow(project: Project, parent: MainWindow) {
     const devGameWindow = new DevGameWindow(project, parent);
     this.windowList.set(devGameWindow.getId(), devGameWindow);
   }

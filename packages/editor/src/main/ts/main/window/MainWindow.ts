@@ -9,11 +9,7 @@ export default class MainWindow implements IWindow {
 
   private rowBrowserWindow: BrowserWindow | null;
   private project: Project;
-
-  /**
-   * ゲームを起動しているかどうか
-   */
-  private isRunning: boolean = false;
+  private gameWindow: IWindow | undefined;
 
   constructor(project: Project, option: BrowserWindowConstructorOptions = {}) {
 
@@ -74,18 +70,38 @@ export default class MainWindow implements IWindow {
     return this.project;
   }
 
+
   public isRun(): boolean {
-    return this.isRunning;
+    return this.gameWindow !== undefined;
   }
 
-  public closeGame(): void {
+  /**
+   * GameWindowに停止命令を出す
+   */
+  public async stopGame(): Promise<void> {
+
+    if (this.gameWindow != undefined) {
+
+      //サーバーが停止するのを待つ
+      const isStop = new Promise<void>((resolve, reject) => {
+        this.gameWindow!.getRowBrowserWindow().once("closed", () => {
+          resolve();
+        });
+      });
+      this.gameWindow.getRowBrowserWindow().close();
+      await isStop;
+    }
+
+  }
+
+  public closedGame(): void {
     console.log("stop game");
-    this.isRunning = false;
+    this.gameWindow = undefined;
     this.getRowBrowserWindow().webContents.send(Channels.IS_RUN, this.isRun());
   }
 
-  public runGame(): void {
-    this.isRunning = true;
+  public runGame(gameWindow: IWindow): void {
+    this.gameWindow = gameWindow;
     this.getRowBrowserWindow().webContents.send(Channels.IS_RUN, this.isRun());
   }
 

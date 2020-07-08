@@ -20,7 +20,7 @@ export class DevGameWindow implements IWindow {
 
     this.createDevServer(project);
 
-    parent.runGame();
+    parent.runGame(this);
 
     this.project = project;
     this.parent = parent;
@@ -75,7 +75,7 @@ export class DevGameWindow implements IWindow {
     //MainWindow側にゲームの終了を通知
     const mainWindow = WindowManager.getWindowFromWebContents(this.parent!.getRowBrowserWindow().webContents);
     if (mainWindow instanceof MainWindow) {
-      mainWindow.closeGame();
+      mainWindow.closedGame();
     }
     this.parent = undefined;
   }

@@ -25,6 +25,14 @@ export class GameRepository {
 
   }
 
+  public async stopDev(): Promise<void> {
+
+    const message = await window.ipcRenderer.invoke(Channels.STOP_DEV);
+
+    console.log(message);
+
+  }
+
   public getIsRun(): LiveDate<boolean> {
 
     return new LiveDate<boolean>(Channels.IS_RUN);

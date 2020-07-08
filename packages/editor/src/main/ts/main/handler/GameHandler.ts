@@ -36,6 +36,29 @@ export class GameHandler {
 
     });
 
+    //ローカルで実行中のゲームを終了する
+    ipcMain.handle(Channels.STOP_DEV, async (event, ...args: any[]) => {
+
+      console.log(`handle. ${Channels.STOP_DEV}`);
+      const window = WindowManager.getWindowFromEvent(event);
+
+      if (window instanceof MainWindow) {
+
+        if (!window.isRun()) {
+          //起動してない場合は何もしない
+          return "";
+        }
+
+        await window.stopGame();
+
+        return "";
+
+      }
+
+      return "";
+
+    });
+
     //ゲームを実行中かどうか
     ipcMain.handle(Channels.IS_RUN, async (event, ...args: any[]) => {
 
