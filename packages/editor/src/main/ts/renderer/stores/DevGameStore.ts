@@ -10,7 +10,7 @@ const slice = createSlice({
   name: "dev_game",
   initialState,
   reducers: {
-    runGame: (state, action) => {
+    runGame: (state) => {
       console.log("DevGameStore");
       return Object.assign({}, state, {run: true})
     },

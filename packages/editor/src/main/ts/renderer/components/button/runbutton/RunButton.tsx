@@ -4,7 +4,6 @@ import styles from "./run_button.css";
 import {GameRepository} from "../../../repository/GameRepository";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
-import {DevGameStore} from "../../../stores/DevGameStore";
 
 export const RunButton: React.FunctionComponent = () => {
 
@@ -12,8 +11,6 @@ export const RunButton: React.FunctionComponent = () => {
   const dispatch = useDispatch();
 
   const click = async () => {
-
-    dispatch(DevGameStore.actions.runGame({}));
 
     await BuilderRepository.instance().buildDev();
 

@@ -3,11 +3,17 @@ import {app, BrowserWindow, BrowserWindowConstructorOptions} from "electron";
 import path from "path";
 import Project from "../Project";
 import {Icons} from "../Icons";
+import Channels from "../../common/Channels";
 
 export default class MainWindow implements IWindow {
 
   private rowBrowserWindow: BrowserWindow | null;
   private project: Project;
+
+  /**
+   * ゲームを起動しているかどうか
+   */
+  private isRunning: boolean = false;
 
   constructor(project: Project, option: BrowserWindowConstructorOptions = {}) {
 
@@ -66,6 +72,21 @@ export default class MainWindow implements IWindow {
 
   public getProject(): Project {
     return this.project;
+  }
+
+  public isRun(): boolean {
+    return this.isRunning;
+  }
+
+  public closeGame(): void {
+    console.log("stop game");
+    this.isRunning = false;
+    this.getRowBrowserWindow().webContents.send(Channels.IS_RUN, this.isRun());
+  }
+
+  public runGame(): void {
+    this.isRunning = true;
+    this.getRowBrowserWindow().webContents.send(Channels.IS_RUN, this.isRun());
   }
 
 }

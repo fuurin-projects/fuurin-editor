@@ -1,11 +1,10 @@
 import Project from "./Project";
 import MainWindow from "./window/MainWindow";
 import IWindow from "./window/IWindow";
-import {app, BrowserWindow} from "electron";
+import {app, BrowserWindow, IpcMainInvokeEvent, WebContents} from "electron";
 import LauncherWindow from "./window/LauncherWindow";
 import CreateProjectWindow from "./window/CreateProjectWindow";
 import {DevGameWindow} from "./window/DevGameWindow";
-import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 
 const path = require('path');
 
@@ -63,8 +62,8 @@ export class WindowManager {
 
   }
 
-  public openDevGameWindow(project: Project) {
-    const devGameWindow = new DevGameWindow(project);
+  public openDevGameWindow(project: Project, parent: IWindow) {
+    const devGameWindow = new DevGameWindow(project, parent);
     this.windowList.set(devGameWindow.getId(), devGameWindow);
   }
 
@@ -90,9 +89,22 @@ export class WindowManager {
    * イベントを発行したWindowを返す
    * @param event
    */
-  public static getWindow(event: IpcMainInvokeEvent): IWindow | undefined {
+  public static getWindowFromEvent(event: IpcMainInvokeEvent): IWindow | undefined {
 
     const browserWindow = BrowserWindow.fromWebContents(event.sender);
+    if (browserWindow) {
+      return WindowManager.instance().getWindow(browserWindow.id);
+    }
+
+  }
+
+  /**
+   * WebContentsからWindowを返す
+   * @param webContents
+   */
+  public static getWindowFromWebContents(webContents: WebContents): IWindow | undefined {
+
+    const browserWindow = BrowserWindow.fromWebContents(webContents);
     if (browserWindow) {
       return WindowManager.instance().getWindow(browserWindow.id);
     }

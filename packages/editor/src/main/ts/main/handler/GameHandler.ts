@@ -13,14 +13,20 @@ export class GameHandler {
     ipcMain.handle(Channels.RUN_DEV, async (event, ...args: any[]) => {
 
       console.log(`handle. ${Channels.RUN_DEV}`);
-      const window = WindowManager.getWindow(event);
+      const window = WindowManager.getWindowFromEvent(event);
 
       if (window instanceof MainWindow) {
+
+        if (window.isRun()) {
+          //すでに起動済みなら何もしない
+          return "";
+        }
 
         const project = window.getProject();
 
         //await DevBuilder.buildJS(project.dir);
-        WindowManager.instance().openDevGameWindow(project);
+        WindowManager.instance().openDevGameWindow(project, window);
+
 
         return "";
 
@@ -28,6 +34,18 @@ export class GameHandler {
 
       return "";
 
+    });
+
+    //ゲームを実行中かどうか
+    ipcMain.handle(Channels.IS_RUN, async (event, ...args: any[]) => {
+
+      const window = WindowManager.getWindowFromEvent(event);
+
+      if (window instanceof MainWindow) {
+
+        window?.getRowBrowserWindow().webContents.send(Channels.IS_RUN, window.isRun());
+
+      }
     });
 
   }
