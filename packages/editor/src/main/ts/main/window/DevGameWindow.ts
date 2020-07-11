@@ -5,6 +5,8 @@ import {Icons} from "../Icons";
 import path from "path";
 import express, {Express} from "express";
 import * as http from "http";
+import {WindowManager} from "../WindowManager";
+import MainWindow from "./MainWindow";
 
 export class DevGameWindow implements IWindow {
 
@@ -12,16 +14,21 @@ export class DevGameWindow implements IWindow {
   private project: Project;
   private serverApp: Express | undefined;
   private server: http.Server | undefined;
+  private parent: IWindow | undefined;
 
-  constructor(project: Project, option: BrowserWindowConstructorOptions = {}) {
+  constructor(project: Project, parent: MainWindow, option: BrowserWindowConstructorOptions = {}) {
 
     this.createDevServer(project);
 
+    parent.runGame(this);
+
     this.project = project;
+    this.parent = parent;
 
     const title = `${project.name} [Dev]`;
 
     const opt = Object.assign<BrowserWindowConstructorOptions, BrowserWindowConstructorOptions>(option, {
+      parent: parent.getRowBrowserWindow(),
       title: title,
       width: 800,
       height: 600,
@@ -64,6 +71,13 @@ export class DevGameWindow implements IWindow {
   destroy(): void {
     console.log("close server.");
     this.server?.close();
+
+    //MainWindow側にゲームの終了を通知
+    const mainWindow = WindowManager.getWindowFromWebContents(this.parent!.getRowBrowserWindow().webContents);
+    if (mainWindow instanceof MainWindow) {
+      mainWindow.closedGame();
+    }
+    this.parent = undefined;
   }
 
   getId(): number {

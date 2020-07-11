@@ -15,7 +15,7 @@ export class BuilderHandler {
     ipcMain.handle(Channels.BUILD_DEV, async (event, ...args: any[]) => {
 
       console.log(`handle. ${Channels.BUILD_DEV}`);
-      const window = WindowManager.getWindow(event);
+      const window = WindowManager.getWindowFromEvent(event);
 
       if (window instanceof MainWindow) {
 

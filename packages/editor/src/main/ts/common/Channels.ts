@@ -28,4 +28,8 @@ export default class Channels {
   //==========
   public static RUN_DEV = "run_dev";
 
+  public static STOP_DEV = "stop_dev";
+
+  public static IS_RUN = "is_run";
+
 }

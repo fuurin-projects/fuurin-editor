@@ -1,4 +1,5 @@
 import Channels from "../../common/Channels";
+import LiveDate from "./LiveDate";
 
 export class GameRepository {
 
@@ -21,6 +22,20 @@ export class GameRepository {
     const message = await window.ipcRenderer.invoke(Channels.RUN_DEV);
 
     console.log(message);
+
+  }
+
+  public async stopDev(): Promise<void> {
+
+    const message = await window.ipcRenderer.invoke(Channels.STOP_DEV);
+
+    console.log(message);
+
+  }
+
+  public getIsRun(): LiveDate<boolean> {
+
+    return new LiveDate<boolean>(Channels.IS_RUN);
 
   }
 
