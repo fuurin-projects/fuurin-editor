@@ -1,0 +1,17 @@
+.main {
+
+    height: 100%;
+    background-color: #67c5ff;
+    display: grid;
+    grid-template-columns: 64px 128px auto;
+
+}
+
+.activity_selector {
+    background-color: #f0f0f0;
+    padding: 8px 8px 0 8px;
+}
+
+.activity_sub {
+    background-color: aliceblue;
+}
