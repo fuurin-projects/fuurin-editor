@@ -2,9 +2,11 @@ import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
 
 import {DevGameStore} from "./DevGameStore";
+import {ActivityStore} from "./ActivityStore";
 
 const reducer = combineReducers({
   devGame: DevGameStore.reducer,
+  activity: ActivityStore.reducer
 });
 
 

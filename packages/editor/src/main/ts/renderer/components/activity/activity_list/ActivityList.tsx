@@ -7,10 +7,10 @@ export const ActivityList: React.FunctionComponent = () => {
 
   return (<>
     <div className={styles.main}>
-      <ActivityButton image={"../resources/images/activity_general.png"}/>
-      <ActivityButton image={"../resources/images/activity_tile.png"}/>
-      <ActivityButton image={"../resources/images/activity_world.png"}/>
-      <ActivityButton image={"../resources/images/activity_setting.png"}/>
+      <ActivityButton name={"general"} image={"../resources/images/activity_general.png"}/>
+      <ActivityButton name={"tile"} image={"../resources/images/activity_tile.png"}/>
+      <ActivityButton name={"world"} image={"../resources/images/activity_world.png"}/>
+      <ActivityButton name={"setting"} image={"../resources/images/activity_setting.png"}/>
     </div>
   </>)
 
