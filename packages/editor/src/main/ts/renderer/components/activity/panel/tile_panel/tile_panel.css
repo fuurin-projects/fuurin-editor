@@ -1,0 +1,10 @@
+.main {
+
+    display: grid;
+    grid-template-rows: 80px auto;
+
+}
+
+.tool {
+    background-color: #f0f0f0;
+}
