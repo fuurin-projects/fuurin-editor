@@ -1,0 +1,42 @@
+
+.dialog {
+    min-width: 400px;
+    padding: 0;
+    border: #c9c9c9 1px solid;
+}
+
+.header {
+    padding: 8px;
+    height: 26px;
+    width: 100%;
+    background-color: #dfdfdf;
+    border-bottom: #c9c9c9 1px solid;
+    line-height: 10px;
+}
+
+.dialog_main {
+    margin: 8px;
+    display: grid;
+    grid-template-rows: 34px 34px;
+    grid-template-columns: 100px auto;
+}
+
+.dialog_main > * {
+    padding: 4px 0;
+}
+
+.tile_name_field {
+    height: 26px;
+    width: 100%;
+}
+
+.label {
+    line-height: 26px;
+}
+
+.footer {
+    padding: 8px;
+    height: 34px;
+    width: 100%;
+}
+

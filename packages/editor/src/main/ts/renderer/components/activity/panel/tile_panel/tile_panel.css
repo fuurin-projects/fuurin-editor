@@ -8,3 +8,28 @@
 .tool {
     background-color: #f0f0f0;
 }
+
+.dialog {
+    padding: 16px;
+    border: #c9c9c9 1px solid;
+}
+
+.dialog > div {
+    display: grid;
+    grid-template-rows: 34px 34px;
+    grid-template-columns: 100px auto;
+}
+
+.dialog > div > * {
+    padding: 4px 0;
+}
+
+.field {
+    height: 26px;
+    width: 100%;
+}
+
+.label {
+    line-height: 26px;
+}
+
