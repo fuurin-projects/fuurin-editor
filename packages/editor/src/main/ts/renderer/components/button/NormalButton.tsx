@@ -52,7 +52,7 @@ export default class NormalButton extends React.Component<Props, any> {
     };
 
     return (
-      <button className={this.props.type === "current" ? styles.current : styles.base}
+      <button type="button" className={this.props.type === "current" ? styles.current : styles.base}
               style={styleGenerator(this.props)}
               onClick={this.props.click}>
         {this.props.text}
