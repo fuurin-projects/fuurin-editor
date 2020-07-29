@@ -32,4 +32,9 @@ export default class Channels {
 
   public static IS_RUN = "is_run";
 
+  //==========
+  // Tile
+  //==========
+  public static REGISTER_TILE = "register_tile";
+
 }
