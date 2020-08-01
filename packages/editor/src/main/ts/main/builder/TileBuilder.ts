@@ -1,6 +1,7 @@
 import Project from "../Project";
-import {constants, promises as fs} from "fs";
+import {constants, Dirent, promises as fs} from "fs";
 import * as path from "path";
+import {createVFile, VFile} from "../../common/VFile";
 
 export class TileBuilder {
 
@@ -27,16 +28,23 @@ export class TileBuilder {
 
   }
 
-  public static async getTileList(project: Project, dir: string): Promise<string[]> {
+  public static async getTileList(project: Project, dir: string): Promise<VFile[]> {
 
-    let dataDir = `${this.TILE_DATA_PATH}/base/`;
+    let dataDir = "";
+    let vDataDir = "";
     if (dir === "$") {
       dataDir = `${this.TILE_DATA_PATH}`;
+      vDataDir = ``
     } else {
       dataDir = `${this.TILE_DATA_PATH}/${dir}`;
+      vDataDir = `${dir}`
     }
 
-    return await fs.readdir(path.resolve(project.dir, dataDir))
+    const fileStrings: Dirent[] = await fs.readdir(path.resolve(project.dir, dataDir), {withFileTypes: true});
+
+    return fileStrings.map(dirent => {
+      return createVFile(dirent.isDirectory(), path.basename(dirent.name), path.join(vDataDir, path.basename(dirent.name)))
+    });
 
   }
 

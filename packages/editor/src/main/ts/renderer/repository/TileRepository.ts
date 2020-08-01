@@ -1,5 +1,6 @@
 import Channels from "../../common/Channels";
 import LiveDate from "./LiveDate";
+import {VFile} from "../../common/VFile";
 
 export class TileRepository {
 
@@ -25,9 +26,9 @@ export class TileRepository {
 
   }
 
-  public getTileList(folderPath: string = "$"): LiveDate<string[]> {
+  public getTileList(folderPath: string = "$"): LiveDate<VFile[]> {
 
-    return new LiveDate<string[]>(Channels.TILE_LIST, folderPath);
+    return new LiveDate<VFile[]>(Channels.TILE_LIST, folderPath);
 
   }
 

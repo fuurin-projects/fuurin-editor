@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import {useLiveDate} from "../../../../hook/useLiveDate";
 import {TileRepository} from "../../../../repository/TileRepository";
+import {VFile} from "../../../../../common/VFile";
 
 export const TileList: React.FunctionComponent = () => {
 
 
   return (<>
 
-    <Folder dir={"$"}/>
+    <Folder dir={"$"} isTop={true} name={"top"}/>
 
   </>)
 
@@ -15,23 +16,62 @@ export const TileList: React.FunctionComponent = () => {
 
 type FolderProp = {
   dir: string
+  isTop: boolean
+  name: string
 }
 
-const Folder: React.FunctionComponent<FolderProp> = ({dir}) => {
+const Folder: React.FunctionComponent<FolderProp> = ({dir, isTop, name}) => {
 
   const tiles = useLiveDate(TileRepository.instance().getTileList(dir), []);
+  const [open, setOpen] = useState(isTop);
 
-  const getFolder = (folderList: string[]) => {
+  const click = () => {
 
-    return folderList.map(text => {
-      return <div>{text}</div>
+    setOpen(!open);
+
+  };
+
+  const getFolder = (isTop: boolean, name: string, open: boolean) => {
+
+    const buttonText = open ? "↓" : "→";
+
+    if (isTop) {
+      return
+    }
+
+    return (
+      <>
+        <div>
+          <button type={"button"} onClick={click}>{buttonText}</button>
+          Folder: {name}
+        </div>
+      </>
+    )
+
+  };
+
+  const getFolderList = (open: boolean, folderList: VFile[]) => {
+
+    if (!open) {
+      return;
+    }
+
+    return folderList.map(vFile => {
+
+      if (vFile.isDirectory) {
+        return <Folder dir={vFile.path} isTop={false} name={vFile.name}/>
+      } else {
+        return <div>File: {vFile.name}</div>
+      }
+
     })
 
   };
 
   return (<>
 
-    {getFolder(tiles!)}
+    {getFolder(isTop, name, open)}
+    {getFolderList(open, tiles!)}
 
   </>)
 
