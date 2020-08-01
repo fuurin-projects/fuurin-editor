@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./tile_panel.css";
 import {AddTile} from "../add-tile/AddTile";
+import {TileList} from "../tile_list/TileList";
 
 
 export const TilePanel: React.FunctionComponent = () => {
@@ -12,8 +13,7 @@ export const TilePanel: React.FunctionComponent = () => {
       <AddTile/>
       <button>グループを新規追加</button>
     </div>
-    <div>ItemList</div>
-
+    <TileList/>
 
   </div>)
 

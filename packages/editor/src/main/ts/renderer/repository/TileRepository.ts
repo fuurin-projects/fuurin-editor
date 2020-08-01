@@ -1,4 +1,5 @@
 import Channels from "../../common/Channels";
+import LiveDate from "./LiveDate";
 
 export class TileRepository {
 
@@ -21,6 +22,12 @@ export class TileRepository {
     const message = await window.ipcRenderer.invoke(Channels.REGISTER_TILE, name, dir);
 
     console.log(message);
+
+  }
+
+  public getTileList(folderPath: string = "$"): LiveDate<string[]> {
+
+    return new LiveDate<string[]>(Channels.TILE_LIST, folderPath);
 
   }
 

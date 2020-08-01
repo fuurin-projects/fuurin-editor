@@ -25,10 +25,28 @@ export class TileHandler {
 
         await TileBuilder.createTile(project, args[0], args[1]);
 
-        //await DevBuilder.buildJS(project.dir);
-        //await DevBuilder.buildDevHtml(project.dir);
+      }
+
+    });
+
+    //タイル情報を取得して返す
+    ipcMain.handle(Channels.TILE_LIST, async (event, ...args: any[]) => {
+
+      console.log(`handle. ${Channels.TILE_LIST}`);
+
+      const window = WindowManager.getWindowFromEvent(event);
+
+      if (window instanceof MainWindow) {
+
+        const project = window.getProject();
+
+        const files = await TileBuilder.getTileList(project, args[0]);
+
+        window.getRowBrowserWindow().webContents.send(`${Channels.TILE_LIST}#${args[0]}`, files);
 
       }
+
+      return []
 
     });
 

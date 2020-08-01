@@ -37,5 +37,6 @@ export default class Channels {
   // Tile
   //==========
   public static REGISTER_TILE = "register_tile";
+  public static TILE_LIST = "tile_list";
 
 }

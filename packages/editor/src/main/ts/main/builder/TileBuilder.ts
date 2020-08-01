@@ -5,7 +5,7 @@ import * as path from "path";
 export class TileBuilder {
 
   private static TILE_IMAGE_PATH = "./data/assets/textures/tile/";
-  private static TILE_DATA_PATH = "./data/assets/tile_states";
+  private static TILE_DATA_PATH = "./data/assets/tile_states/";
 
   public static async createTile(project: Project, name: string, fileDir: string) {
 
@@ -24,6 +24,19 @@ export class TileBuilder {
     const dataPath = `${this.TILE_DATA_PATH}/base/${name}.json`;
 
     await fs.writeFile(path.resolve(project.dir, dataPath), data);
+
+  }
+
+  public static async getTileList(project: Project, dir: string): Promise<string[]> {
+
+    let dataDir = `${this.TILE_DATA_PATH}/base/`;
+    if (dir === "$") {
+      dataDir = `${this.TILE_DATA_PATH}`;
+    } else {
+      dataDir = `${this.TILE_DATA_PATH}/${dir}`;
+    }
+
+    return await fs.readdir(path.resolve(project.dir, dataDir))
 
   }
 
