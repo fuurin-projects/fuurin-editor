@@ -7,8 +7,13 @@ export const AddTile: React.FunctionComponent = () => {
   const ref = useRef<HTMLDialogElement>(null);
   const refForm = useRef<HTMLFormElement>(null);
 
+  const [name, setName] = useState("");
   const [dir, setDir] = useState("");
   const [key, setKey] = useState("");
+
+  const handleTileNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value)
+  };
 
   const click = async () => {
 
@@ -31,6 +36,7 @@ export const AddTile: React.FunctionComponent = () => {
   const closeDialog = () => {
     ref.current!.close();
     setKey("" + Date.now());
+    setName("");
   };
 
 
@@ -47,8 +53,9 @@ export const AddTile: React.FunctionComponent = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.header}>Tileを新規追加</div>
         <div className={styles.dialog_main}>
-          <span className={styles.label}>タイルの名前</span><span><input type="text" placeholder="Tile名" className={styles.tile_name_field}/></span>
-          <span className={styles.label}>タイルの画像</span><DirInput onChange={onChangeName}/>
+          <span className={styles.label}>タイルの名前</span><span><input type="text" required placeholder="Tile名" className={styles.tile_name_field} onChange={handleTileNameChange}
+                                                                   value={name}/></span>
+          <span className={styles.label}>タイルの画像</span><DirInput onChange={onChangeName} required={true}/>
         </div>
 
         <div className={styles.footer}>

@@ -7,9 +7,10 @@ import SystemRepository from "../../../repository/SystemRepository";
 type Prop = {
   defaultDir?: string
   onChange?: (value: string) => void
+  required?: boolean
 }
 
-export const DirInput: React.FunctionComponent<Prop> = ({onChange, defaultDir}) => {
+export const DirInput: React.FunctionComponent<Prop> = ({onChange, defaultDir, required}) => {
 
   const [dir, setDir] = useState("");
 
@@ -50,7 +51,9 @@ export const DirInput: React.FunctionComponent<Prop> = ({onChange, defaultDir}) 
 
   return (<>
     <span className={styles.main}>
-      <input className={styles.text} type="text" placeholder="Tile画像" value={dir} onChange={onChangeName}/>
+
+      {required && <input required className={styles.text} type="text" placeholder="Tile画像" value={dir} onChange={onChangeName}/>}
+      {!required && <input className={styles.text} type="text" placeholder="Tile画像" value={dir} onChange={onChangeName}/>}
       <NormalButton width={26} text={"…"} paddingLeft={6} margin={"0 0 0 8px"} click={handleClick}/>
     </span>
   </>)
