@@ -40,4 +40,10 @@ export default class WindowRepository {
 
   }
 
+  public showSelectFileDialog(defaultDir: string, extensions?: string[]): Promise<OpenDialogReturnValue> {
+
+    return window.ipcRenderer.invoke(Channels.SHOW_SELECT_FILE_DIALOG, defaultDir, extensions);
+
+  }
+
 }

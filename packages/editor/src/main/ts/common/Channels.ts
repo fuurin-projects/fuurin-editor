@@ -11,6 +11,7 @@ export default class Channels {
   public static CLOSE_WINDOW = "close_window";
 
   public static SHOW_SELECT_DIR_DIALOG = "show_select_dir_dialog";
+  public static SHOW_SELECT_FILE_DIALOG = "show_select_file_dialog";
 
   public static CREATE_PROJECT = "create_project";
   public static DELETE_PROJECT = "delete_project";

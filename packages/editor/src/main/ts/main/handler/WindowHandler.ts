@@ -2,8 +2,9 @@ import Channels from "../../common/Channels";
 import IWindow from "../window/IWindow";
 import {BrowserWindow, dialog, IpcMain} from "electron";
 import Project from "../Project";
-import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 import {WindowManager} from "../WindowManager";
+import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
+import OpenDialogOptions = Electron.OpenDialogOptions;
 
 
 export default class WindowHandler {
@@ -45,6 +46,31 @@ export default class WindowHandler {
           defaultPath: args[0],
           properties: ['openDirectory']
         });
+
+        console.log(path);
+        return path;
+      }
+
+    });
+
+    // ファイル選択ダイアログを表示する
+    ipcMain.handle(Channels.SHOW_SELECT_FILE_DIALOG, async (event, ...args: any[]) => {
+
+      const window = this.getWindow(event);
+      if (window) {
+
+        let options: OpenDialogOptions = {
+          defaultPath: args[0],
+          properties: ['openFile']
+        };
+
+        if (args[1]) {
+          options.filters = [
+            {name: 'extensions file', extensions: args[1]}
+          ]
+        }
+
+        const path = await dialog.showOpenDialog(window.getRowBrowserWindow(), options);
 
         console.log(path);
         return path;

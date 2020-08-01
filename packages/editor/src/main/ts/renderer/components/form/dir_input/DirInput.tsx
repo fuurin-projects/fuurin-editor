@@ -5,12 +5,14 @@ import WindowRepository from "../../../repository/WindowRepository";
 import SystemRepository from "../../../repository/SystemRepository";
 
 type Prop = {
-  defaultDir?: string
+  isDir: boolean
+  defaultDir?: string,
+  extensions?: string[]
   onChange?: (value: string) => void
   required?: boolean
 }
 
-export const DirInput: React.FunctionComponent<Prop> = ({onChange, defaultDir, required}) => {
+export const DirInput: React.FunctionComponent<Prop> = ({isDir, onChange, defaultDir, extensions, required}) => {
 
   const [dir, setDir] = useState("");
 
@@ -30,7 +32,10 @@ export const DirInput: React.FunctionComponent<Prop> = ({onChange, defaultDir, r
       if (!defaultDir) {
         defaultDir = await SystemRepository.getDesktopDir();
       }
-      const openDialogReturnValue = await WindowRepository.instance().showSelectDirDialog(defaultDir);
+      const openDialogReturnValue = isDir ?
+        await WindowRepository.instance().showSelectDirDialog(defaultDir) :
+        await WindowRepository.instance().showSelectFileDialog(defaultDir, extensions);
+
       const filePath = openDialogReturnValue.filePaths[0];
 
       if (openDialogReturnValue.canceled) {

@@ -1,6 +1,7 @@
 import React, {FormEventHandler, useRef, useState} from "react";
 import styles from "./add_tile.css";
 import {DirInput} from "../../../form/dir_input/DirInput";
+import {TileRepository} from "../../../../repository/TileRepository";
 
 export const AddTile: React.FunctionComponent = () => {
 
@@ -28,7 +29,7 @@ export const AddTile: React.FunctionComponent = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    //await TileRepository.instance().registerTile();
+    await TileRepository.instance().registerTile(name, dir);
 
     closeDialog();
   };
@@ -55,7 +56,7 @@ export const AddTile: React.FunctionComponent = () => {
         <div className={styles.dialog_main}>
           <span className={styles.label}>タイルの名前</span><span><input type="text" required placeholder="Tile名" className={styles.tile_name_field} onChange={handleTileNameChange}
                                                                    value={name}/></span>
-          <span className={styles.label}>タイルの画像</span><DirInput onChange={onChangeName} required={true}/>
+          <span className={styles.label}>タイルの画像</span><DirInput isDir={false} extensions={["png"]} onChange={onChangeName} required={true}/>
         </div>
 
         <div className={styles.footer}>

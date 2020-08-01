@@ -1,5 +1,8 @@
 import {IpcMain} from "electron";
 import Channels from "../../common/Channels";
+import {WindowManager} from "../WindowManager";
+import MainWindow from "../window/MainWindow";
+import {TileBuilder} from "../builder/TileBuilder";
 
 /**
  * Tile関係の処理をまとめているHandler
@@ -13,17 +16,19 @@ export class TileHandler {
 
       console.log(`handle. ${Channels.REGISTER_TILE}`);
 
-      /*
+
       const window = WindowManager.getWindowFromEvent(event);
 
       if (window instanceof MainWindow) {
 
         const project = window.getProject();
 
-        await DevBuilder.buildJS(project.dir);
-        await DevBuilder.buildDevHtml(project.dir);
+        await TileBuilder.createTile(project, args[0], args[1]);
 
-      }*/
+        //await DevBuilder.buildJS(project.dir);
+        //await DevBuilder.buildDevHtml(project.dir);
+
+      }
 
     });
 
