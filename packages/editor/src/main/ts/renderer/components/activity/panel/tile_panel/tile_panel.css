@@ -38,3 +38,10 @@
     white-space: nowrap;
 }
 
+.list_wrapper {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    min-width: 100%;
+}
+

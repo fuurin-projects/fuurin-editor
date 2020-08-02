@@ -3,7 +3,7 @@
     height: 100%;
     background-color: #67c5ff;
     display: grid;
-    grid-template-columns: 64px 128px auto;
+    grid-template-columns: 64px 200px auto;
 
 }
 

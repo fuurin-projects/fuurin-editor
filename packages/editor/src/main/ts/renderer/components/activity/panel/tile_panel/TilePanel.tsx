@@ -21,7 +21,9 @@ export const TilePanel: React.FunctionComponent = () => {
     </div>
     {/*<TileList/>*/}
     <div className={styles.list}>
-      <FolderTree dir={"$"} srcFun={dirFun}/>
+      <div className={styles.list_wrapper}> {/*CSSのoverflowが個要素での幅計算時に参照できないためCSSHack*/}
+        <FolderTree dir={"$"} srcFun={dirFun}/>
+      </div>
     </div>
 
   </div>)
