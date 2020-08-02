@@ -3,7 +3,6 @@ export type VFile = {
   isDirectory: boolean
   name: string
   path: string
-
 }
 
 export const createVFile = (

@@ -2,7 +2,7 @@
 
     display: grid;
     grid-template-rows: 80px auto;
-
+    height: 100%;
 }
 
 .tool {
@@ -17,7 +17,7 @@
 .dialog > div {
     display: grid;
     grid-template-rows: 34px 34px;
-    grid-template-columns: 100px auto;
+    grid-template-columns: 100px 1fr;
 }
 
 .dialog > div > * {
@@ -31,5 +31,10 @@
 
 .label {
     line-height: 26px;
+}
+
+.list {
+    overflow-x: auto;
+    white-space: nowrap;
 }
 

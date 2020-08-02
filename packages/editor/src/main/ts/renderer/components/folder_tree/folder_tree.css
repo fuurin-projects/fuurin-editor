@@ -1,0 +1,64 @@
+.folder_tree {
+
+}
+
+.folder_tree_deep {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.folder {
+    width: 100%;
+    height: 20px;
+    outline: none;
+}
+
+.folder:focus {
+    background-color: #9be581;
+    color: #ffffff;
+}
+
+.folder_button {
+    border: none;
+    height: 16px;
+    width: 16px;
+    margin: 2px;
+}
+
+.folder_button_open {
+
+}
+
+.folder_button_close {
+
+}
+
+.folder_text {
+    display: inline-block;
+}
+
+.file {
+    width: 100%;
+    height: 20px;
+    outline: none;
+}
+
+.file:focus {
+    background-color: #9be581;
+    color: #ffffff;
+}
+
+.file_space {
+    height: 16px;
+    width: 16px;
+    margin: 2px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.file_text {
+    display: inline-block;
+    vertical-align: top;
+}

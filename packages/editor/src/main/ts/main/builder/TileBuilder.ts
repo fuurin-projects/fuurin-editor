@@ -43,6 +43,7 @@ export class TileBuilder {
     const fileStrings: Dirent[] = await fs.readdir(path.resolve(project.dir, dataDir), {withFileTypes: true});
 
     return fileStrings.map(dirent => {
+
       return createVFile(dirent.isDirectory(), path.basename(dirent.name), path.join(vDataDir, path.basename(dirent.name)))
     });
 
