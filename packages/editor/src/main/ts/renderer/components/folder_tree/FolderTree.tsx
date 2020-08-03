@@ -42,7 +42,7 @@ const Folder: React.FunctionComponent<FolderProp> = ({path, name, srcFun, deep})
 
   const [open, setOpen] = useState(false);
 
-  const buttonText = open ? "↓" : "→";
+  const buttonText = open ? "" : "";
 
   const buttonStyles = open ? styles.folder_button_open : styles.folder_button_close;
 
@@ -59,7 +59,8 @@ const Folder: React.FunctionComponent<FolderProp> = ({path, name, srcFun, deep})
     <div className={styles.folder} tabIndex={0}>
       <span className={styles.folder_tree_deep} style={customStyle}/>
       <button className={`${buttonStyles} ${styles.folder_button}`} type={"button"} onClick={click}>{buttonText}</button>
-      <div className={styles.folder_text}>{deep + " : " + name}</div>
+      <span className={styles.folder_icon}/>
+      <div className={styles.folder_text}>{name}</div>
       <span className={styles.file_space}/>
     </div>
     {open && <FolderTree dir={path} srcFun={srcFun} deep={deep + 1}/>}
@@ -82,8 +83,9 @@ const File: React.FunctionComponent<FileProp> = ({path, name, deep}) => {
     <div className={styles.file} tabIndex={0}>
       <span className={styles.folder_tree_deep} style={customStyle}/>
       <span className={styles.file_space}/>
+      <span className={styles.file_icon}/>
       <div className={styles.file_text}>
-        {deep + " : " + name}
+        {name}
       </div>
       <span className={styles.file_space}/>
     </div>

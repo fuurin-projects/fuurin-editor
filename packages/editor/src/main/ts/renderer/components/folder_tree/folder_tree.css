@@ -16,7 +16,7 @@
 }
 
 .folder:focus {
-    background-color: #9be581;
+    background-color: #517fff;
     color: #ffffff;
 }
 
@@ -25,18 +25,35 @@
     height: 16px;
     width: 16px;
     margin: 2px;
+    background-image: url("../resources/images/arrows.png");
+    background-color: rgba(1, 1, 1, 0);
+    transition: transform .1s;
+    outline: none;
 }
 
 .folder_button_open {
-
+    transform: rotate(90deg);
 }
 
 .folder_button_close {
-
+    transform: rotate(0);
 }
 
 .folder_text {
     display: inline-block;
+    vertical-align: top;
+    padding-top: 4px;
+    height: 16px;
+    line-height: 16px;
+}
+
+.folder_icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin: 2px;
+    vertical-align: top;
+    background-image: url("../resources/images/folder.png");
 }
 
 .file {
@@ -46,7 +63,7 @@
 }
 
 .file:focus {
-    background-color: #9be581;
+    background-color: #517fff;
     color: #ffffff;
 }
 
@@ -61,4 +78,16 @@
 .file_text {
     display: inline-block;
     vertical-align: top;
+    padding-top: 4px;
+    height: 16px;
+    line-height: 16px;
+}
+
+.file_icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin: 2px;
+    vertical-align: top;
+    background-image: url("../resources/images/file.png");
 }
