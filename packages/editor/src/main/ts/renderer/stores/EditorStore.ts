@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 // Stateの初期状態
 const initialState = {
-  currentEditor: 0,
+  currentEditor: -1,
   editorList: new Array<EditorItem>()
 };
 
