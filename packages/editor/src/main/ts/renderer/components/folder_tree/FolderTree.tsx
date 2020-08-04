@@ -9,17 +9,25 @@ export type FolderTreeProp = {
   dir: string
   srcFun: (dir: string) => LiveDate<VFile[]>
   deep?: number
+  onItemDoubleClick?: ItemDoubleClickEventHandler
 }
 
-export const FolderTree: React.FunctionComponent<FolderTreeProp> = ({dir, srcFun, deep = 0}) => {
+export type ItemDoubleClickEvent = {
+  path: string
+  name: string
+}
+
+export type ItemDoubleClickEventHandler = (e: ItemDoubleClickEvent) => void;
+
+export const FolderTree: React.FunctionComponent<FolderTreeProp> = ({dir, srcFun, deep = 0, onItemDoubleClick}) => {
 
   const tiles = useLiveDate(srcFun(dir), []);
 
   const tilesDom = tiles.map((vFile: VFile) => {
     if (vFile.isDirectory) {
-      return <Folder key={vFile.path + ":" + vFile.name} path={vFile.path} name={vFile.name} srcFun={srcFun} deep={deep}/>
+      return <Folder key={vFile.path + ":" + vFile.name} path={vFile.path} name={vFile.name} srcFun={srcFun} deep={deep} onItemDoubleClick={onItemDoubleClick}/>
     } else {
-      return <File key={vFile.path + ":" + vFile.name} path={vFile.path} name={vFile.name} deep={deep}/>
+      return <File key={vFile.path + ":" + vFile.name} path={vFile.path} name={vFile.name} deep={deep} onItemDoubleClick={onItemDoubleClick}/>
     }
   });
 
@@ -36,9 +44,10 @@ type FolderProp = {
   name: string
   srcFun: (dir: string) => LiveDate<VFile[]>
   deep: number
+  onItemDoubleClick?: ItemDoubleClickEventHandler
 }
 
-const Folder: React.FunctionComponent<FolderProp> = ({path, name, srcFun, deep}) => {
+const Folder: React.FunctionComponent<FolderProp> = ({path, name, srcFun, deep, onItemDoubleClick}) => {
 
   const [open, setOpen] = useState(false);
 
@@ -52,18 +61,22 @@ const Folder: React.FunctionComponent<FolderProp> = ({path, name, srcFun, deep})
 
   };
 
+  const handleDoubleClick = (e: React.MouseEvent<Element, MouseEvent>) => {
+    setOpen(!open);
+  };
+
   const customStyle: React.CSSProperties = {};
   customStyle.width = `${deep * 16}px`;
 
   return (<>
-    <div className={styles.folder} tabIndex={0}>
+    <div className={styles.folder} tabIndex={0} onDoubleClick={handleDoubleClick}>
       <span className={styles.folder_tree_deep} style={customStyle}/>
       <button className={`${buttonStyles} ${styles.folder_button}`} type={"button"} onClick={click}>{buttonText}</button>
       <span className={styles.folder_icon}/>
       <div className={styles.folder_text}>{name}</div>
       <span className={styles.file_space}/>
     </div>
-    {open && <FolderTree dir={path} srcFun={srcFun} deep={deep + 1}/>}
+    {open && <FolderTree dir={path} srcFun={srcFun} deep={deep + 1} onItemDoubleClick={onItemDoubleClick}/>}
   </>)
 
 };
@@ -72,15 +85,24 @@ type FileProp = {
   path: string
   name: string
   deep: number
+  onItemDoubleClick?: ItemDoubleClickEventHandler
 }
 
-const File: React.FunctionComponent<FileProp> = ({path, name, deep}) => {
+const File: React.FunctionComponent<FileProp> = ({path, name, deep, onItemDoubleClick}) => {
 
   const customStyle: React.CSSProperties = {};
   customStyle.marginLeft = `${deep * 16}px`;
 
+  const handleDoubleClick = (e: React.MouseEvent<Element, MouseEvent>) => {
+
+    if (onItemDoubleClick) {
+      onItemDoubleClick({path: path, name: name});
+    }
+
+  };
+
   return (<>
-    <div className={styles.file} tabIndex={0}>
+    <div className={styles.file} tabIndex={0} onDoubleClick={handleDoubleClick}>
       <span className={styles.folder_tree_deep} style={customStyle}/>
       <span className={styles.file_space}/>
       <span className={styles.file_icon}/>

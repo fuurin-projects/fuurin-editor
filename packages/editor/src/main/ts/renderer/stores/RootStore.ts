@@ -3,10 +3,12 @@ import {configureStore} from "@reduxjs/toolkit";
 
 import {DevGameStore} from "./DevGameStore";
 import {ActivityStore} from "./ActivityStore";
+import {EditorStore} from "./EditorStore";
 
 const reducer = combineReducers({
   devGame: DevGameStore.reducer,
-  activity: ActivityStore.reducer
+  activity: ActivityStore.reducer,
+  editor: EditorStore.reducer
 });
 
 
