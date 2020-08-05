@@ -33,6 +33,6 @@ export {slice as EditorStore};
 
 export type EditorItem = {
 
-  path: string | undefined;
+  path: string;
 
 }

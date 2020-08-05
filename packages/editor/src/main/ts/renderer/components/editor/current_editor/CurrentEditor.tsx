@@ -2,11 +2,12 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
 import {EmptyEditor} from "../editor_list/empty_editor/EmptyEditor";
+import {EditorManager} from "../../../editor/EditorManager";
 
 export const CurrentEditor: React.FunctionComponent = () => {
 
   const currentEditor = useSelector((state: RootState) => state.editor.currentEditor);
-  const editorList = useSelector((state: RootState) => state.editor.editorList);
+  const editorTabList = useSelector((state: RootState) => state.editor.editorList);
 
   const getEditor = () => {
 
@@ -14,11 +15,23 @@ export const CurrentEditor: React.FunctionComponent = () => {
       return <EmptyEditor/>
     }
 
-    return (
-      <>
-        {currentEditor}:{currentEditor >= 0 && editorList[currentEditor].path}
-      </>
-    );
+    const editorPath = editorTabList[currentEditor].path;
+
+    const editor = EditorManager.instance().getEditor(editorPath);
+    const EditorComponent = editor?.getEditorComponent();
+
+    console.log(editorPath);
+
+    if (EditorComponent) {
+      return (
+        <>
+          <EditorComponent path={editorPath}/>
+        </>
+      );
+    } else {
+      return <EmptyEditor/>
+    }
+
 
   };
 
