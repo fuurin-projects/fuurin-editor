@@ -21,7 +21,7 @@ export class TileBuilder {
     const dataDir = `${this.TILE_DATA_PATH}/base/`;
     await fs.mkdir(path.resolve(project.dir, dataDir), {recursive: true});
 
-    const data = JSON.stringify(new TileState(false, imagePath));
+    const data = JSON.stringify(createTileState(false, imagePath));
     const dataPath = `${this.TILE_DATA_PATH}/base/${name}.json`;
 
     await fs.writeFile(path.resolve(project.dir, dataPath), data);
@@ -49,18 +49,39 @@ export class TileBuilder {
 
   }
 
+  public static async getTileImage(project: Project, tilePath: string): Promise<ArrayBuffer> {
 
-}
+    if (tilePath.startsWith("tile@")) {
+      tilePath = tilePath.replace("tile@", "");
+    }
 
-class TileState {
+    const dataPath = `${this.TILE_DATA_PATH}/${tilePath}`;
 
-  private collision = true;
+    const tileJson: TileState = JSON.parse(await fs.readFile(path.resolve(project.dir, dataPath), "utf8"));
 
-  private image = "";
 
-  constructor(collision: boolean, image: string) {
-    this.collision = collision;
-    this.image = image;
+    const buffer: Buffer = await fs.readFile(path.resolve(project.dir, tileJson.image));
+
+    const arrayBuffer = new Uint8Array(buffer).buffer;
+
+    return arrayBuffer;
+
   }
 
+
 }
+
+type TileState = {
+
+  collision: boolean;
+
+  image: string;
+
+}
+
+const createTileState = (collision: boolean, image: string): TileState => {
+  return {
+    collision: collision,
+    image: image
+  }
+};

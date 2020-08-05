@@ -16,5 +16,8 @@
     border: #c9c9c9 2px solid;
     height: 256px;
     width: 256px;
+    image-rendering: pixelated;
+    pointer-events: none;
+    user-select: none;
 }
 

@@ -32,4 +32,13 @@ export class TileRepository {
 
   }
 
+  public async getTileImage(tilePath: string): Promise<Blob | null> {
+
+    const imageData: ArrayBuffer = await window.ipcRenderer.invoke(Channels.GET_TILE_IMAGE, tilePath);
+
+    const blob = new Blob([imageData], {type: 'image/png'});
+
+    return blob;
+  }
+
 }
