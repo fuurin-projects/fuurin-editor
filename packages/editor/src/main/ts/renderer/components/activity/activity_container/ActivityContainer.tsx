@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
 import {ActivityPanel} from "../activity_panel/ActivityPanel";
 import {EditorContainer} from "../../editor/editor_container/EditorContainer";
+import {SplitPanel} from "../../layout/split_panel/SplitPanel";
 
 
 export const ActivityContainer: React.FunctionComponent = () => {
@@ -14,8 +15,12 @@ export const ActivityContainer: React.FunctionComponent = () => {
   return (<>
     <div className={styles.main}>
       <div className={styles.activity_selector}><ActivityList/></div>
-      <div className={styles.activity_sub}><ActivityPanel/></div>
-      <div><EditorContainer/></div>
+      <div className={styles.activity_sub}>
+        <SplitPanel defaultWidth={670}>
+          <ActivityPanel/>
+          <EditorContainer/>
+        </SplitPanel>
+      </div>
     </div>
   </>)
 

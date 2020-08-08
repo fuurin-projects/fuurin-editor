@@ -1,0 +1,48 @@
+.main {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.item {
+    margin: 0;
+    padding: 0;
+}
+
+
+.item_second {
+    flex-grow: 1;
+    flex-shrink: 2;
+}
+
+.separator_wrapper {
+    position: relative;
+}
+
+.separator {
+    width: 2px;
+    height: 100%;
+    background-color: #c9c9c9;
+    border-left: #c9c9c9 1px solid;
+    cursor: e-resize;
+}
+
+.separator:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background-color: aliceblue;
+    left: -20px;
+}
+
+.separator:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background-color: aliceblue;
+}
+
