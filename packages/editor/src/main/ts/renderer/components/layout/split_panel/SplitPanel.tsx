@@ -11,6 +11,8 @@ export const SplitPanel: React.FunctionComponent<SplitPanelPlop> = (props) => {
   const isActive = useRef(false);
   const currentX = useRef(0);
 
+  const refBase = useRef<HTMLDivElement>(null);
+
   const unFocus = useCallback((document, window) => {
     if (document.selection) {
       document.selection.empty();
@@ -59,26 +61,22 @@ export const SplitPanel: React.FunctionComponent<SplitPanelPlop> = (props) => {
     let offset = e.clientX - currentX.current;
     currentX.current = e.clientX;
 
-    //clientXで計算した値よりmovementXが大きかったらmovementXを利用
-    // if (Math.abs(offset) < Math.abs(e.movementX)) {
-    //   offset = e.movementX;
-    // }
-    console.log("ok2: " + offset + " " + e.movementX + " " + e.clientX + " " + e.nativeEvent.clientX);
-
-    console.log("ok200■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-
     setWidth((width_) => {
-      console.log("ok400");
+      if (width_ + offset < 0) {
+        return 0;
+      }
+      if (refBase.current!.getBoundingClientRect().width - 3 < (width_ + offset)) {
+        return refBase.current!.getBoundingClientRect().width - 3;
+      }
       return width_ + offset;
     });
-    //setWidth(width + offset);
 
 
   }, [setWidth]);
 
   return (<>
 
-    <div className={styles.main}>
+    <div className={styles.main} ref={refBase}>
       <SplitPanelItem width={width}>
         {childrenList[0]}
       </SplitPanelItem>
