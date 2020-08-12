@@ -49,7 +49,12 @@ export class TileBuilder {
 
   }
 
-  public static async getTileImage(project: Project, tilePath: string): Promise<ArrayBuffer> {
+  public static async getTileImage(project: Project, tilePath: string): Promise<ArrayBuffer | null> {
+
+
+    if (!tilePath.endsWith(".json")) {
+      return null;
+    }
 
     if (tilePath.startsWith("tile@")) {
       tilePath = tilePath.replace("tile@", "");

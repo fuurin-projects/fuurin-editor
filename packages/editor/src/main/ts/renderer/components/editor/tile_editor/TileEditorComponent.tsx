@@ -17,7 +17,6 @@ export const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path})
         refImage.current!.src = URL.createObjectURL(blob);
       }
 
-
     };
 
     fun();

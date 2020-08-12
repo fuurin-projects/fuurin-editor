@@ -62,7 +62,6 @@ export class TileHandler {
 
         const project = window.getProject();
 
-
         return await TileBuilder.getTileImage(project, args[0]);
 
       }
