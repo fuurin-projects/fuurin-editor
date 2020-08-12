@@ -4,6 +4,8 @@ export interface IEditor {
 
   isEditor(path: string): boolean
 
+  getDisplayText(path: string): string
+
   getEditorComponent(): FunctionComponent<EditorProp>
 
 }

@@ -18,8 +18,15 @@ export const TilePanel: React.FunctionComponent = () => {
   }, []);
 
   const handleDoubleClick = (e: ItemDoubleClickEvent) => {
-    dispatch(EditorStore.actions.openEditor({path: "tile@" + e.path}));
+    dispatch(EditorStore.actions.openEditor({path: "tile@" + e.path, name: e.name}));
   };
+
+  const displayText = useCallback((text: string) => {
+
+    return text.replace(".json", "");
+
+  }, []);
+
 
   return (<div className={styles.main}>
 
@@ -30,7 +37,7 @@ export const TilePanel: React.FunctionComponent = () => {
     {/*<TileList/>*/}
     <div className={styles.list}>
       <div className={styles.list_wrapper}> {/*CSSのoverflowが個要素での幅計算時に参照できないためCSSHack*/}
-        <FolderTree dir={"$"} srcFun={dirFun} onItemDoubleClick={handleDoubleClick}/>
+        <FolderTree dir={"$"} srcFun={dirFun} onItemDoubleClick={handleDoubleClick} displayText={displayText}/>
       </div>
     </div>
 
