@@ -16,7 +16,7 @@ export const ActivityContainer: React.FunctionComponent = () => {
     <div className={styles.main}>
       <div className={styles.activity_selector}><ActivityList/></div>
       <div className={styles.activity_sub}>
-        <SplitPanel defaultWidth={670}>
+        <SplitPanel defaultWidth={200}>
           <ActivityPanel/>
           <EditorContainer/>
         </SplitPanel>
