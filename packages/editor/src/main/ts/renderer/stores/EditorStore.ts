@@ -25,8 +25,18 @@ const slice = createSlice({
 
 
     },
+    changeEditor: (state, action: PayloadAction<number>) => {
+
+      const number = action.payload;
+
+      if (state.editorList.length > number) {
+        state.currentEditor = number;
+      }
+
+    },
   }
 });
+
 
 export {slice as EditorStore};
 
@@ -34,5 +44,6 @@ export {slice as EditorStore};
 export type EditorItem = {
 
   path: string;
+  name: string;
 
 }
