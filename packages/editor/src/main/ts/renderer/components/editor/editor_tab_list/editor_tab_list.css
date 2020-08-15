@@ -16,3 +16,22 @@
 .item:hover {
     background-color: #dfdfdf;
 }
+
+.item_text {
+    display: inline-block;
+}
+
+.item_icon {
+    display: inline-block;
+}
+
+.item_close {
+    height: 16px;
+    width: 16px;
+    border: none;
+    margin: 4px 0 0 8px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../resources/images/close.svg");
+}

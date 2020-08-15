@@ -34,6 +34,17 @@ const slice = createSlice({
       }
 
     },
+    closeEditor: (state, action: PayloadAction<number>) => {
+
+      const number = action.payload;
+
+      if (state.editorList.length > number) {
+        state.currentEditor = number - 1;
+        state.editorList = state.editorList.filter((item, index: number) => index !== number);
+      }
+
+    },
+
   }
 });
 

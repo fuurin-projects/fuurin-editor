@@ -1,4 +1,4 @@
-import React, {CSSProperties, useCallback} from "react";
+import React, {CSSProperties, MouseEventHandler, useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "./editor_tab_list.css";
 import {RootState} from "../../../stores/RootStore";
@@ -50,6 +50,14 @@ export const EditorTabListItem: React.FunctionComponent<EditorTabListItemProp> =
     dispatch(EditorStore.actions.changeEditor(index));
   };
 
+  const handleCloseClick: MouseEventHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    dispatch(EditorStore.actions.closeEditor(index));
+
+  };
+
   const getDisplayText = useCallback((path: string, text: string) => {
 
     const editor = EditorManager.instance().getEditor(path);
@@ -63,7 +71,11 @@ export const EditorTabListItem: React.FunctionComponent<EditorTabListItemProp> =
 
 
   return (<>
-    <div style={customStyle} className={styles.item} onClick={handleClick}>{getDisplayText(path, name)}</div>
+    <div style={customStyle} className={styles.item} onClick={handleClick}>
+      <div className={styles.item_icon}/>
+      <div className={styles.item_text}>{getDisplayText(path, name)}</div>
+      <button className={styles.item_close} onClick={handleCloseClick}/>
+    </div>
 
   </>)
 
