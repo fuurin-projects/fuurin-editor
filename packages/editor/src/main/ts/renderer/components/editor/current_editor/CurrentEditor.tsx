@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./current_editor.css";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
 import {EmptyEditor} from "../editor_list/empty_editor/EmptyEditor";
@@ -36,7 +37,9 @@ export const CurrentEditor: React.FunctionComponent = () => {
   };
 
   return (<>
-    {getEditor()}
+    <div className={styles.main}>
+      {getEditor()}
+    </div>
   </>)
 
 };

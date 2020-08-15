@@ -1,0 +1,5 @@
+.main {
+    height: calc(100% - 28px);
+    margin: 0;
+    padding: 0;
+}
