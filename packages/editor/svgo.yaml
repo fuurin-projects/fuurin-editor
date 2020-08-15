@@ -1,0 +1,4 @@
+plugins:
+  - removeAttrs:
+      attrs: '(style|color|font-weight|font-family|overflow)'
+  - removeViewBox: false
