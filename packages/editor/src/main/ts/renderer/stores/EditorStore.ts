@@ -41,6 +41,11 @@ const slice = createSlice({
       if (state.editorList.length > number) {
         state.currentEditor = number - 1;
         state.editorList = state.editorList.filter((item, index: number) => index !== number);
+
+        //まだタブが残っているのにcurrentEditorが0以下になった場合に0に戻す
+        if (state.currentEditor < 0 && state.editorList.length > 0) {
+          state.currentEditor = 0;
+        }
       }
 
     },
