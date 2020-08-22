@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 // Stateの初期状態
 const initialState = {
-  currentActivity: ""
+  currentActivity: "general"
 };
 
 // Sliceを生成する
