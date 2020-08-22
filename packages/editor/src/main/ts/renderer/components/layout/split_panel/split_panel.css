@@ -1,0 +1,57 @@
+.main {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+}
+
+.item {
+    margin: 0;
+    padding: 0;
+}
+
+
+.item_second {
+    flex-grow: 1;
+    flex-shrink: 2;
+    width: 1px; /*flexの場合に1pxでも指定しないとresizeにjsのeventの動作が遅延するのでハック的に入れている*/
+}
+
+.separator_wrapper {
+    position: relative;
+}
+
+.separator {
+    width: 1px;
+    height: 100%;
+    background-color: #c9c9c9;
+    cursor: e-resize;
+
+}
+
+.separator:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    left: -8px;
+}
+
+.separator:active:before {
+    width: 200px;
+    left: -200px;
+}
+
+.separator:after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 100%;
+}
+
+.separator:active:after {
+    width: 200px;
+}
+

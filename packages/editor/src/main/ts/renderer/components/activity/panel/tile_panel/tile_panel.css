@@ -1,0 +1,47 @@
+.main {
+
+    display: grid;
+    grid-template-rows: 80px auto;
+    height: 100%;
+}
+
+.tool {
+    background-color: #f0f0f0;
+}
+
+.dialog {
+    padding: 16px;
+    border: #c9c9c9 1px solid;
+}
+
+.dialog > div {
+    display: grid;
+    grid-template-rows: 34px 34px;
+    grid-template-columns: 100px 1fr;
+}
+
+.dialog > div > * {
+    padding: 4px 0;
+}
+
+.field {
+    height: 26px;
+    width: 100%;
+}
+
+.label {
+    line-height: 26px;
+}
+
+.list {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.list_wrapper {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    min-width: 100%;
+}
+

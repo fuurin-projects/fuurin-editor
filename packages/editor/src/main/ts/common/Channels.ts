@@ -11,6 +11,7 @@ export default class Channels {
   public static CLOSE_WINDOW = "close_window";
 
   public static SHOW_SELECT_DIR_DIALOG = "show_select_dir_dialog";
+  public static SHOW_SELECT_FILE_DIALOG = "show_select_file_dialog";
 
   public static CREATE_PROJECT = "create_project";
   public static DELETE_PROJECT = "delete_project";
@@ -31,5 +32,14 @@ export default class Channels {
   public static STOP_DEV = "stop_dev";
 
   public static IS_RUN = "is_run";
+
+  //==========
+  // Tile
+  //==========
+  public static REGISTER_TILE = "register_tile";
+
+  public static TILE_LIST = "tile_list";
+
+  public static GET_TILE_IMAGE = "get_tile_image";
 
 }

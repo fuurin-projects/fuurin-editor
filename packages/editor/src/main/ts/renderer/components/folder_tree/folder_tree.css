@@ -1,0 +1,97 @@
+.folder_tree {
+
+}
+
+.folder_tree_deep {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.folder {
+    width: 100%;
+    height: 20px;
+    outline: none;
+    cursor: default;
+    user-select: none;
+}
+
+.folder:focus {
+    background-color: #517fff;
+    color: #ffffff;
+}
+
+.folder_button {
+    border: none;
+    height: 16px;
+    width: 16px;
+    margin: 2px;
+    background-image: url("../resources/images/arrows.png");
+    background-color: rgba(1, 1, 1, 0);
+    transition: transform .1s;
+    outline: none;
+}
+
+.folder_button_open {
+    transform: rotate(90deg);
+}
+
+.folder_button_close {
+    transform: rotate(0);
+}
+
+.folder_text {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 4px;
+    height: 16px;
+    line-height: 16px;
+}
+
+.folder_icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin: 2px;
+    vertical-align: top;
+    background-image: url("../resources/images/folder.png");
+}
+
+.file {
+    width: 100%;
+    height: 20px;
+    outline: none;
+    cursor: default;
+    user-select: none;
+}
+
+.file:focus {
+    background-color: #517fff;
+    color: #ffffff;
+}
+
+.file_space {
+    height: 16px;
+    width: 16px;
+    margin: 2px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.file_text {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 4px;
+    height: 16px;
+    line-height: 16px;
+}
+
+.file_icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin: 2px;
+    vertical-align: top;
+    background-image: url("../resources/images/file.png");
+}
