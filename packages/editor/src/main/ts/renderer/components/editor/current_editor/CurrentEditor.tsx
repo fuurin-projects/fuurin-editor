@@ -2,8 +2,9 @@ import React from "react";
 import styles from "./current_editor.css";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
-import {EmptyEditor} from "../editor_list/empty_editor/EmptyEditor";
+import {EmptyEditor} from "../editors/empty_editor/EmptyEditor";
 import {EditorManager} from "../../../editor/EditorManager";
+import {NotFoundEditor} from "../editors/not_found_editor/NotFoundEditor";
 
 export const CurrentEditor: React.FunctionComponent = () => {
 
@@ -30,7 +31,7 @@ export const CurrentEditor: React.FunctionComponent = () => {
         </>
       );
     } else {
-      return <EmptyEditor/>
+      return <NotFoundEditor path={editorPath}/>
     }
 
 
