@@ -1,6 +1,6 @@
 import {EditorProp, IEditor} from "./IEditor";
 import React from "react";
-import {TileEditorComponent} from "../components/editor/tile_editor/TileEditorComponent";
+import {TileEditorComponent} from "../components/editor/editors/tile_editor/TileEditorComponent";
 
 export class TileEditor implements IEditor {
 

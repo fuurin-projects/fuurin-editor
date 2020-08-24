@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from "react";
-import {EditorProp} from "../../../editor/IEditor";
+import {EditorProp} from "../../../../editor/IEditor";
 import styles from "./tile_editor.css";
-import {TileRepository} from "../../../repository/TileRepository";
+import {TileRepository} from "../../../../repository/TileRepository";
 
 
 export const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
