@@ -1,5 +1,5 @@
 import React, {MouseEventHandler, ReactNode} from "react";
-import styles from "../../../../css/button/FlatButton.css";
+import styles from "../../../css/button/FlatButton.css";
 
 interface Props {
   text: string,

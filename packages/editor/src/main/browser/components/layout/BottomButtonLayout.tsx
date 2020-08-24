@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../../../css/layer/BottomButtonLayout.css"
+import styles from "../../../css/layer/BottomButtonLayout.css"
 
 
 const BottomButtonLayout: React.FunctionComponent = (props) => {

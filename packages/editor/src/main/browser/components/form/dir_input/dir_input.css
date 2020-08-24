@@ -4,5 +4,5 @@
 
 .text {
     width: calc(100% - 34px);
-    composes: form_base from "../../../../../css/theme.css";
+    composes: form_base from "../../../../css/theme.css";
 }

@@ -6,7 +6,7 @@ import Logo from "./Logo";
 import CreateProjectButton from "./button/CreateProjectButton";
 import FlatButton from "./button/FlatButton";
 import ProjectRepository from "../repository/ProjectRepository";
-import {Project} from "../../common/Preference";
+import {Project} from "../../ts/common/Preference";
 import ProjectList from "./launcher/ProjectList";
 import SystemRepository from "../repository/SystemRepository";
 import WindowRepository from "../repository/WindowRepository";

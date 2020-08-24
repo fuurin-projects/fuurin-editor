@@ -1,5 +1,5 @@
 import React from "react";
-import {Project} from "../../../common/Preference";
+import {Project} from "../../../ts/common/Preference";
 import ProjectItem from "./ProjectItem";
 
 interface Props {

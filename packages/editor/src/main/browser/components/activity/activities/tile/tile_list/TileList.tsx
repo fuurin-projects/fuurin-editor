@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useLiveDate} from "../../../../../hook/useLiveDate";
 import {TileRepository} from "../../../../../repository/TileRepository";
-import {VFile} from "../../../../../../common/VFile";
+import {VFile} from "../../../../../../ts/common/VFile";
 
 export const TileList: React.FunctionComponent = () => {
 

@@ -1,6 +1,6 @@
 import React, {MouseEvent, MouseEventHandler} from "react";
-import {Project} from "../../../common/Preference";
-import styles from "../../../../css/launcher/ProjectItem.css";
+import {Project} from "../../../ts/common/Preference";
+import styles from "../../../css/launcher/ProjectItem.css";
 import WindowRepository from "../../repository/WindowRepository";
 import ProjectRepository from "../../repository/ProjectRepository";
 

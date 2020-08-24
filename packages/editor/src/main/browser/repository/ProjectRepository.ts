@@ -1,5 +1,5 @@
-import Channels from "../../common/Channels";
-import {Project} from "../../common/Preference";
+import Channels from "../../ts/common/Channels";
+import {Project} from "../../ts/common/Preference";
 import LiveDate from "./LiveDate";
 
 export default class ProjectRepository {

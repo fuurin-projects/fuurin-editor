@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react";
-import styles from "../../../css/other/Logo.css";
+import styles from "../../css/other/Logo.css";
 import SystemRepository from "../repository/SystemRepository";
 
 interface Prop {

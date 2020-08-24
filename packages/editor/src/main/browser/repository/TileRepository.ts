@@ -1,6 +1,6 @@
-import Channels from "../../common/Channels";
+import Channels from "../../ts/common/Channels";
 import LiveDate from "./LiveDate";
-import {VFile} from "../../common/VFile";
+import {VFile} from "../../ts/common/VFile";
 
 export class TileRepository {
 

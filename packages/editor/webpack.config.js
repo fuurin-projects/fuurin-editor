@@ -57,7 +57,7 @@ module.exports = [
     node: {
       global: false
     },
-    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/Launcher.ts"),
+    entry: path.resolve(__dirname, "./src/main/browser/init/Launcher.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
       filename: 'launcher.js'
@@ -86,7 +86,7 @@ module.exports = [
     node: {
       global: false
     },
-    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/CreateProject.ts"),
+    entry: path.resolve(__dirname, "./src/main/browser/init/CreateProject.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
       filename: 'create_project.js'
@@ -115,7 +115,7 @@ module.exports = [
     node: {
       global: false
     },
-    entry: path.resolve(__dirname, "./src/main/ts/renderer/init/Main.ts"),
+    entry: path.resolve(__dirname, "./src/main/browser/init/Main.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
       filename: 'main.js'

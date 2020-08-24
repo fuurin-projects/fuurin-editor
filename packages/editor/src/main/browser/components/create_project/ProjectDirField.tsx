@@ -1,6 +1,6 @@
 import React, {MouseEventHandler, useEffect, useRef} from "react";
 import SystemRepository from "../../repository/SystemRepository";
-import styles from "../../../../css/create_project/ProjectDirField.css";
+import styles from "../../../css/create_project/ProjectDirField.css";
 import {Simulate} from "react-dom/test-utils";
 import WindowRepository from "../../repository/WindowRepository";
 import NormalButton from "../button/NormalButton";

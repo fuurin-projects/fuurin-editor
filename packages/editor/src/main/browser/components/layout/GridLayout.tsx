@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react";
-import styles from "../../../../css/layer/GridLayout.css"
+import styles from "../../../css/layer/GridLayout.css"
 
 
 export class GridLayout extends React.Component<any, any> {

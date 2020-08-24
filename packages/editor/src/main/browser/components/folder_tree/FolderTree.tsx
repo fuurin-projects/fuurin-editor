@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useLiveDate} from "../../hook/useLiveDate";
-import {VFile} from "../../../common/VFile";
+import {VFile} from "../../../ts/common/VFile";
 import LiveDate from "../../repository/LiveDate";
 import styles from "./folder_tree.css";
 

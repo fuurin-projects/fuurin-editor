@@ -1,4 +1,4 @@
-import Channels from "../../common/Channels";
+import Channels from "../../ts/common/Channels";
 
 export class BuilderRepository {
 
