@@ -6,7 +6,7 @@ module.exports = [
   {
     mode: "development",
     target: "electron-main",
-    entry: path.resolve(__dirname, "./src/main/ts/main/index.ts"),
+    entry: path.resolve(__dirname, "./src/main/ts/node/index.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
       filename: 'fuurin-editor.js'
@@ -32,7 +32,7 @@ module.exports = [
   {
     mode: "development",
     target: "electron-main",
-    entry: path.resolve(__dirname, "./src/main/ts/main/preload.ts"),
+    entry: path.resolve(__dirname, "./src/main/ts/node/preload.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
       filename: 'preload.js'
