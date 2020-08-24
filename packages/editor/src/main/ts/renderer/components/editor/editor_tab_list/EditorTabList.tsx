@@ -62,11 +62,8 @@ export const EditorTabListItem: React.FunctionComponent<EditorTabListItemProp> =
 
     const editor = EditorManager.instance().getEditor(path);
 
-    if (editor) {
-      return editor.getDisplayText(text);
-    }
+    return editor.getDisplayText(text);
 
-    return text;
   }, [EditorManager.instance()]);
 
 

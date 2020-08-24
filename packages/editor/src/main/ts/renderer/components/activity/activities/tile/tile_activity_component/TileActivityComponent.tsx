@@ -1,13 +1,13 @@
 import React, {useCallback} from "react";
-import styles from "./tile_panel.css";
+import styles from "./tile_activity_component.css";
 import {AddTile} from "../add-tile/AddTile";
-import {FolderTree, ItemDoubleClickEvent} from "../../../folder_tree/FolderTree";
-import {TileRepository} from "../../../../repository/TileRepository";
+import {FolderTree, ItemDoubleClickEvent} from "../../../../folder_tree/FolderTree";
+import {TileRepository} from "../../../../../repository/TileRepository";
 import {useDispatch} from "react-redux";
-import {EditorStore} from "../../../../stores/EditorStore";
+import {EditorStore} from "../../../../../stores/EditorStore";
 
 
-export const TilePanel: React.FunctionComponent = () => {
+export const TileActivityComponent: React.FunctionComponent = () => {
 
   const dispatch = useDispatch();
 

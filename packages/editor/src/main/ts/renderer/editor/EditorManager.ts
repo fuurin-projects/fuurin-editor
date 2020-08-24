@@ -1,14 +1,18 @@
 import {IEditor} from "./IEditor";
 import {TileEditor} from "./TileEditor";
+import {NotFoundEditor} from "./NotFoundEditor";
 
 export class EditorManager {
 
   private static instance_: EditorManager;
 
   private editorList: Array<IEditor>;
+  private notFoundEditor: IEditor;
 
   private constructor() {
     this.editorList = [];
+
+    this.notFoundEditor = new NotFoundEditor();
 
     this.addDefaultEditor();
   }
@@ -30,7 +34,7 @@ export class EditorManager {
     this.editorList.push(editor);
   }
 
-  public getEditor(path: string): IEditor | null {
+  public getEditor(path: string): IEditor {
 
     for (let editor of this.editorList) {
 
@@ -40,7 +44,7 @@ export class EditorManager {
 
     }
 
-    return null;
+    return this.notFoundEditor;
 
   }
 

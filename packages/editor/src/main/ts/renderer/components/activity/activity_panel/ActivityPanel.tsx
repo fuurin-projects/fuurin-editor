@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./activity_panel.css";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
-import {TilePanel} from "../panel/tile_panel/TilePanel";
+import {TileActivityComponent} from "../activities/tile/tile_activity_component/TileActivityComponent";
 
 export const ActivityPanel: React.FunctionComponent = () => {
 
@@ -11,7 +11,7 @@ export const ActivityPanel: React.FunctionComponent = () => {
   const getPanel = (name: string) => {
     switch (name) {
       case "tile":
-        return <TilePanel/>;
+        return <TileActivityComponent/>;
     }
     return (<>{name}</>);
   };
