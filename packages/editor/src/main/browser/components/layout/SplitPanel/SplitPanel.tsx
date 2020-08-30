@@ -1,5 +1,5 @@
 import React, {CSSProperties, MouseEventHandler, useCallback, useRef, useState} from "react";
-import styles from "./split_panel.css";
+import styles from "./SplitPanel.css";
 
 export type SplitPanelPlop = {
   defaultWidth: number

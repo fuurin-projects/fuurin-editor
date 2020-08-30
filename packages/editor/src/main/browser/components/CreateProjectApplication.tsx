@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useState} from 'react';
 import * as ReactDOM from 'react-dom';
 import NewProjectFieldGroup from "./create_project/NewProjectFieldGroup";
-import BottomButtonLayout, {BottomButtonLayoutBottom, BottomButtonLayoutMain} from "./layout/BottomButtonLayout";
+import BottomButtonLayout, {BottomButtonLayoutBottom, BottomButtonLayoutMain} from "./layout/BottomButtonLayout/BottomButtonLayout";
 import NormalButton from "./button/NormalButton";
 import CancelButton from "./button/CancelButton";
 import ProjectRepository from "../repository/ProjectRepository";

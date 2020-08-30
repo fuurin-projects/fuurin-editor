@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
 import {ActivityPanel} from "../activity_panel/ActivityPanel";
 import {EditorContainer} from "../../editor/editor_container/EditorContainer";
-import {SplitPanel} from "../../layout/split_panel/SplitPanel";
+import {SplitPanel} from "../../layout/SplitPanel/SplitPanel";
 
 
 export const ActivityContainer: React.FunctionComponent = () => {

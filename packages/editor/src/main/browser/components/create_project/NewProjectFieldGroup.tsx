@@ -1,5 +1,5 @@
 import React from "react";
-import {GridLayout, GridLayoutItem as Item} from "../layout/GridLayout";
+import {GridLayout, GridLayoutItem as Item} from "../layout/GridLayout/GridLayout";
 import ProjectNameField from "./ProjectNameField";
 import ProjectDirField from "./ProjectDirField";
 
