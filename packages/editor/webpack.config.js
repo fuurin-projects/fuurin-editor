@@ -50,6 +50,28 @@ module.exports = [
       extensions: [".ts", ".js"]
     },
   },
+  //外部ライブラリ(globalに配置する系)
+  {
+    mode: "development",
+    target: "web",
+    entry: path.resolve(__dirname, "./src/main/browser/extra.ts"),
+    output: {
+      path: path.resolve(__dirname, "../../build/app/js"),
+      filename: 'extra.js'
+    },
+    module: {
+      rules: [
+        {
+          // 拡張子 .ts の場合
+          test: /\.ts$/,
+          use: "ts-loader"
+        }
+      ]
+    },
+    resolve: {
+      extensions: [".ts", ".js"]
+    },
+  },
   //Renderer(スタート画面)プロセス
   {
     mode: "development",//"production",
@@ -77,6 +99,10 @@ module.exports = [
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js"]
+    },
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM '
     },
   },
   //Renderer(新規プロジェクト)プロセス
@@ -107,6 +133,10 @@ module.exports = [
     resolve: {
       extensions: [".ts", ".tsx", ".js"]
     },
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM '
+    },
   },
   //Renderer(メインエディター)プロセス
   {
@@ -136,5 +166,9 @@ module.exports = [
     resolve: {
       extensions: [".ts", ".tsx", ".js"]
     },
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM '
+    }
   }
 ];
