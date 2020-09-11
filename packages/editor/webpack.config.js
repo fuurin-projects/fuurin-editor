@@ -54,6 +54,7 @@ module.exports = [
   {
     mode: "development",
     target: "web",
+    devtool: "source-map",
     entry: path.resolve(__dirname, "./src/main/browser/extra.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
@@ -145,6 +146,7 @@ module.exports = [
     node: {
       global: false
     },
+    devtool: "source-map",
     entry: path.resolve(__dirname, "./src/main/browser/init/Main.ts"),
     output: {
       path: path.resolve(__dirname, "../../build/app/js"),
