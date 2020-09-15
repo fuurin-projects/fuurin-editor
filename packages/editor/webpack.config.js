@@ -77,6 +77,7 @@ module.exports = [
   {
     mode: "development",//"production",
     target: "web",
+    devtool: "source-map",
     node: {
       global: false
     },
@@ -110,6 +111,7 @@ module.exports = [
   {
     mode: "development",//"production",
     target: "web",
+    devtool: "source-map",
     node: {
       global: false
     },
