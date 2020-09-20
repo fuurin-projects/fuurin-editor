@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import * as ReactDOM from 'react-dom';
 import CenterLayout from "./layout/CenterLayout/CenterLayout";
-import Logo from "./Logo";
+import Logo from "./Logo/Logo";
 import CreateProjectButton from "./button/CreateProjectButton";
 import FlatButton from "./button/FlatButton";
 import ProjectRepository from "../repository/ProjectRepository";

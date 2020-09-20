@@ -95,8 +95,24 @@ module.exports = [
         },
         {
           test: /\.css$/,
-          loaders: ['style-loader', 'css-loader?modules'],
+          loaders: [
+            'style-loader', 'css-loader?modules'
+          ],
         },
+        {
+          test: /\.(jpg|png|gif)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: path.join('../resources/images/component/'),
+
+              }
+            }
+
+          ]
+        }
       ]
     },
     resolve: {

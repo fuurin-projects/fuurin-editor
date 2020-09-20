@@ -1,6 +1,7 @@
 import React, {ReactNode} from "react";
-import styles from "../../css/other/Logo.css";
-import SystemRepository from "../repository/SystemRepository";
+import styles from "./Logo.css";
+import logoImage from "../../../resources/images/fuurin_icon_16.png"
+import SystemRepository from "../../repository/SystemRepository";
 
 interface Prop {
 
@@ -29,7 +30,7 @@ export default class Logo extends React.Component<Prop | undefined, State> {
     return (
       <>
         <div>
-          <img src={"../resources/images/fuurin_icon_16.png"} alt={"ここにかっこいいロゴ画像"} className={styles.image} height={"140px"} width={"140px"}/>
+          <img src={logoImage} alt={"ここにかっこいいロゴ画像"} className={styles.image} height={"140px"} width={"140px"}/>
           <br/>
           <div className={styles.version}>バージョン : {this.state.version}</div>
         </div>
