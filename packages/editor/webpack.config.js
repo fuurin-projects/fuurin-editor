@@ -106,8 +106,7 @@ module.exports = [
               loader: 'file-loader',
               options: {
                 name: '[name].[ext]',
-                outputPath: path.join('../resources/images/component/'),
-
+                outputPath: path.join('../resources/images/icon/'),
               }
             }
 
