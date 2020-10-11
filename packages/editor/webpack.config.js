@@ -106,7 +106,7 @@ module.exports = [
               loader: 'file-loader',
               options: {
                 name: '[name].[ext]',
-                outputPath: path.join('../resources/images/icon/'),
+                outputPath: path.posix.join('../resources/images/icon/'),
               }
             }
 
@@ -146,6 +146,19 @@ module.exports = [
           test: /\.css$/,
           loaders: ['style-loader', 'css-loader?modules'],
         },
+        {
+          test: /\.(jpg|png|gif)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: path.posix.join('../resources/images/icon/'),
+              }
+            }
+
+          ]
+        },
       ]
     },
     resolve: {
@@ -179,6 +192,19 @@ module.exports = [
         {
           test: /\.css$/,
           loaders: ['style-loader', 'css-loader?modules&url=false'],
+        },
+        {
+          test: /\.(jpg|png|gif)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: path.posix.join('../resources/images/icon/'),
+              }
+            }
+
+          ]
         },
       ]
     },
