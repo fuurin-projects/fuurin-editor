@@ -5,7 +5,7 @@ import {RunButton} from "../../button/runbutton/RunButton";
 import styles from "./main_application.css";
 import {RootState, RootStore} from "../../../stores/RootStore";
 import {Provider, useDispatch, useSelector} from "react-redux";
-import {ReRunButton} from "../../button/rerunbutton/ReRunButton";
+import {ReRunButton} from "../../button/ReRunButton/ReRunButton";
 import {GameRepository} from "../../../repository/GameRepository";
 import {DevGameStore} from "../../../stores/DevGameStore";
 import {StopButton} from "../../button/stopbutton/StopButton";

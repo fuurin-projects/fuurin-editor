@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "./re_run_button.css";
 import {GameRepository} from "../../../repository/GameRepository";
+import {Icons} from "../../../Icons";
+import {ToolbarButton} from "../ToolbarButton/ToolbarButton";
 
 /**
  * 再起動ボタン
@@ -16,7 +17,7 @@ export const ReRunButton: React.FunctionComponent = () => {
   };
 
   return (<>
-    <button className={styles.main} onClick={click}/>
+    <ToolbarButton onClick={click} image={Icons.RE_RUN}/>
   </>)
 
 };
