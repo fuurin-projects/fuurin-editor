@@ -70,6 +70,25 @@ export class TileHandler {
 
     });
 
+    //Tile画像のパスを返す
+    ipcMain.handle(Channels.GET_TILE_IMAGE_PATH, async (event, ...args: any[]) => {
+
+      console.log(`handle. ${Channels.GET_TILE_IMAGE_PATH}`);
+
+      const window = WindowManager.getWindowFromEvent(event);
+
+      if (window instanceof MainWindow) {
+
+        const project = window.getProject();
+
+        return await TileBuilder.getTileImagePath(project, args[0]);
+
+      }
+
+      return null;
+
+    });
+
 
   }
 

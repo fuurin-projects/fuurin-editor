@@ -21,7 +21,7 @@ export class TileBuilder {
     const dataDir = `${this.TILE_DATA_PATH}/base/`;
     await fs.mkdir(path.resolve(project.dir, dataDir), {recursive: true});
 
-    const data = JSON.stringify(createTileState(false, imagePath));
+    const data = JSON.stringify(createTileState(false, imagePath.replace("./data/assets/textures/", "textures@")));
     const dataPath = `${this.TILE_DATA_PATH}/base/${name}.json`;
 
     await fs.writeFile(path.resolve(project.dir, dataPath), data);
@@ -51,6 +51,32 @@ export class TileBuilder {
 
   public static async getTileImage(project: Project, tilePath: string): Promise<ArrayBuffer | null> {
 
+    if (!tilePath.endsWith(".json")) {
+      return null;
+    }
+
+    if (tilePath.startsWith("tile@")) {
+      tilePath = tilePath.replace("tile@", "");
+    }
+
+    const dataPath = `${this.TILE_DATA_PATH}/${tilePath}`;
+
+    const tileJson: TileState = JSON.parse(await fs.readFile(path.resolve(project.dir, dataPath), "utf8"));
+
+    const buffer: Buffer = await fs.readFile(path.resolve(project.dir, tileJson.image));
+
+    const arrayBuffer = new Uint8Array(buffer).buffer;
+
+    return arrayBuffer;
+
+  }
+
+  /**
+   * Tileのパスを元にタイルで使用する画像データのパスを返却する
+   * @param project プロジェクト
+   * @param tilePath タイルのパス
+   */
+  public static async getTileImagePath(project: Project, tilePath: string): Promise<string | null> {
 
     if (!tilePath.endsWith(".json")) {
       return null;
@@ -64,12 +90,7 @@ export class TileBuilder {
 
     const tileJson: TileState = JSON.parse(await fs.readFile(path.resolve(project.dir, dataPath), "utf8"));
 
-
-    const buffer: Buffer = await fs.readFile(path.resolve(project.dir, tileJson.image));
-
-    const arrayBuffer = new Uint8Array(buffer).buffer;
-
-    return arrayBuffer;
+    return tileJson.image ? tileJson.image : null;
 
   }
 

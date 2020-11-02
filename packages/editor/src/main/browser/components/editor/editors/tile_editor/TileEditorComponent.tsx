@@ -11,10 +11,12 @@ export const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path})
   useEffect(() => {
 
     const fun = async () => {
-      const blob: Blob | null = await TileRepository.instance().getTileImage(path);
+      const blob: Blob | null = await TileRepository.instance().getTilePreviewImage(path);
 
       if (blob) {
         refImage.current!.src = URL.createObjectURL(blob);
+      } else {
+        refImage.current!.src = "";
       }
 
     };

@@ -8,6 +8,7 @@ import ProjectHandler from "../handler/ProjectHandler";
 import {BuilderHandler} from "../handler/BuilderHandler";
 import {GameHandler} from "../handler/GameHandler";
 import {TileHandler} from "../handler/TileHandler";
+import {ImageHandler} from "../handler/ImageHandler";
 
 export default class ICPDispatcher {
 
@@ -25,6 +26,8 @@ export default class ICPDispatcher {
     GameHandler.registryICP(ipcMain);
     // Tile関係
     TileHandler.registryICP(ipcMain);
+    // 画像関係
+    ImageHandler.registryICP(ipcMain);
   }
 
 }
