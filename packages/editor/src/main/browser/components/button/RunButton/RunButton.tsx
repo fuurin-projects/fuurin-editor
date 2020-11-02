@@ -1,13 +1,11 @@
 import React from "react";
 import {BuilderRepository} from "../../../repository/BuilderRepository";
-import styles from "./run_button.css";
 import {GameRepository} from "../../../repository/GameRepository";
-import {useSelector} from "react-redux";
-import {RootState} from "../../../stores/RootStore";
+import {Icons} from "../../../Icons";
+import {ToolbarButton} from "../ToolbarButton/ToolbarButton";
 
 export const RunButton: React.FunctionComponent = () => {
 
-  const isRun = useSelector((state: RootState) => state.devGame.run);
 
   const click = async () => {
 
@@ -18,8 +16,7 @@ export const RunButton: React.FunctionComponent = () => {
   };
 
   return (<>
-    <button className={styles.main} onClick={click}/>
-    {isRun && <>動作中</>}
+    <ToolbarButton onClick={click} image={Icons.RUN}/>
   </>)
 
 };

@@ -4,7 +4,10 @@ import activityTile from "../resources/images/activity_tile.png"
 import activityWorld from "../resources/images/activity_world.png"
 import activitySetting from "../resources/images/activity_setting.png"
 
+import run from "../resources/images/run.png"
 import reRun from "../resources/images/re_run.png"
+import stop from "../resources/images/stop.png"
+import stopDisable from "../resources/images/stop_disable.png"
 
 export class Icons {
 
@@ -17,6 +20,9 @@ export class Icons {
   public static ACTIVITY_SETTING = activitySetting;
 
   // ツールバーのアイコン
+  public static RUN = run;
   public static RE_RUN = reRun;
+  public static STOP = stop;
+  public static STOP_DISABLE = stopDisable;
 
 }

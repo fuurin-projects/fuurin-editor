@@ -1,8 +1,9 @@
 import React from "react";
-import styles from "./stop_button.css";
 import {GameRepository} from "../../../repository/GameRepository";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
+import {Icons} from "../../../Icons";
+import {ToolbarButton} from "../ToolbarButton/ToolbarButton";
 
 export const StopButton: React.FunctionComponent = () => {
 
@@ -20,9 +21,9 @@ export const StopButton: React.FunctionComponent = () => {
 
   const getButton = () => {
     if (isRun) {
-      return (<button className={styles.main} onClick={click}/>)
+      return (<ToolbarButton onClick={click} image={Icons.STOP}/>)
     } else {
-      return (<button disabled={true} className={styles.main} style={disableStyle}/>)
+      return (<ToolbarButton disabled={true} image={Icons.STOP_DISABLE}/>)
     }
   };
 
