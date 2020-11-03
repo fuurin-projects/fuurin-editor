@@ -3,11 +3,12 @@ import styles from "./SplitPanel.css";
 
 export type SplitPanelPlop = {
   defaultWidth: number
+  secondMain?: boolean
 }
 
-export const SplitPanel: React.FunctionComponent<SplitPanelPlop> = (props) => {
+export const SplitPanel: React.FunctionComponent<SplitPanelPlop> = ({defaultWidth, secondMain = false, children}) => {
 
-  const [width, setWidth] = useState(props.defaultWidth);
+  const [width, setWidth] = useState(defaultWidth);
   const isActive = useRef(false);
   const currentX = useRef(0);
 
@@ -21,7 +22,7 @@ export const SplitPanel: React.FunctionComponent<SplitPanelPlop> = (props) => {
     }
   }, []);
 
-  const childrenList = React.Children.toArray(props.children);
+  const childrenList = React.Children.toArray(children);
 
   const handleMouseDown: MouseEventHandler = useCallback((e) => {
 
@@ -62,13 +63,31 @@ export const SplitPanel: React.FunctionComponent<SplitPanelPlop> = (props) => {
     currentX.current = e.clientX;
 
     setWidth((width_) => {
-      if (width_ + offset < 0) {
-        return 0;
+
+
+      if (secondMain) {
+        //右がメインの場合
+        if (width_ - offset < 0) {
+          return 0;
+        }
+        if (refBase.current!.getBoundingClientRect().width - 3 < (width_ - offset)) {
+          return refBase.current!.getBoundingClientRect().width - 3;
+        }
+        return width_ - offset;
+
+      } else {
+        //左がメインの場合
+        if (width_ + offset < 0) {
+          return 0;
+        }
+        if (refBase.current!.getBoundingClientRect().width - 3 < (width_ + offset)) {
+          return refBase.current!.getBoundingClientRect().width - 3;
+        }
+        return width_ + offset;
+
       }
-      if (refBase.current!.getBoundingClientRect().width - 3 < (width_ + offset)) {
-        return refBase.current!.getBoundingClientRect().width - 3;
-      }
-      return width_ + offset;
+
+
     });
 
 
@@ -77,11 +96,11 @@ export const SplitPanel: React.FunctionComponent<SplitPanelPlop> = (props) => {
   return (<>
 
     <div className={styles.main} ref={refBase}>
-      <SplitPanelItem width={width}>
+      <SplitPanelItem className={secondMain ? styles.item_second : undefined} width={secondMain ? undefined : width}>
         {childrenList[0]}
       </SplitPanelItem>
       <Separator onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseLeave}/>
-      <SplitPanelItem className={styles.item_second}>
+      <SplitPanelItem className={secondMain ? undefined : styles.item_second} width={secondMain ? width : undefined}>
         {childrenList[1]}
       </SplitPanelItem>
     </div>
