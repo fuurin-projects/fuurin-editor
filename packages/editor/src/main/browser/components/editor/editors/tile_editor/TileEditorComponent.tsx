@@ -2,9 +2,10 @@ import React, {useEffect, useRef} from "react";
 import {EditorProp} from "../../../../editor/IEditor";
 import styles from "./tile_editor.css";
 import {TileRepository} from "../../../../repository/TileRepository";
+import {SplitPanel} from "../../../layout/SplitPanel/SplitPanel";
 
 
-export const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
+const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
 
   const refImage = useRef<HTMLImageElement>(null);
 
@@ -26,15 +27,20 @@ export const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path})
   }, [path]);
 
   return (<>
-    <div className={styles.main}>
-      <div>
-        {path}
+    <SplitPanel defaultWidth={200} secondMain={true}>
+      <div className={styles.main}>
+        <div>
+          {path}
+        </div>
+        <div className={styles.image_container}>
+          <img ref={refImage} className={styles.image} alt={"Tile画像"}/>
+        </div>
+        <div>その他</div>
       </div>
-      <div className={styles.image_container}>
-        <img ref={refImage} className={styles.image} alt={"Tile画像"}/>
-      </div>
-      <div>その他</div>
-    </div>
+      <div>プロパティー</div>
+    </SplitPanel>
   </>)
 
 };
+
+export {TileEditorComponent};

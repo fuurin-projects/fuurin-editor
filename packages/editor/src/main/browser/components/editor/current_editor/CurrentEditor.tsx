@@ -5,7 +5,7 @@ import {RootState} from "../../../stores/RootStore";
 import {EmptyEditor} from "../editors/empty_editor/EmptyEditor";
 import {EditorManager} from "../../../editor/EditorManager";
 
-export const CurrentEditor: React.FunctionComponent = () => {
+const CurrentEditor: React.FunctionComponent = () => {
 
   const currentEditor = useSelector((state: RootState) => state.editor.currentEditor);
   const editorTabList = useSelector((state: RootState) => state.editor.editorList);
@@ -34,3 +34,5 @@ export const CurrentEditor: React.FunctionComponent = () => {
   </>)
 
 };
+
+export {CurrentEditor}
