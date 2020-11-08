@@ -3,6 +3,7 @@ import {EditorProp} from "../../../../editor/IEditor";
 import styles from "./tile_editor.css";
 import {TileRepository} from "../../../../repository/TileRepository";
 import {SplitPanel} from "../../../layout/SplitPanel/SplitPanel";
+import {SubPanel} from "../../../templates/SubPanel/SubPanel";
 
 
 const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
@@ -37,7 +38,7 @@ const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
         </div>
         <div>その他</div>
       </div>
-      <div>プロパティー</div>
+      <SubPanel title={"プロパティー"}>各種データ</SubPanel>
     </SplitPanel>
   </>)
 
