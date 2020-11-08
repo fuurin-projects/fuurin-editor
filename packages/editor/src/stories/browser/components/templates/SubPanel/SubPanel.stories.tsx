@@ -3,7 +3,7 @@ import React from "react";
 import {SubPanel, SubPanelProp} from "../../../../../main/browser/components/templates/SubPanel/SubPanel";
 
 export default {
-  title: 'atoms/SubPanel',
+  title: 'templates/SubPanel',
   component: SubPanel,
 } as Meta;
 
