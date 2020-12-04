@@ -1,18 +1,19 @@
 import {Text, TextProp} from '../../../../../main/browser/components/atoms/Text/Text';
 import {Meta, Story} from "@storybook/react/types-6-0";
-import React from "react";
+import React, {PropsWithChildren} from "react";
 
 export default {
   title: 'atoms/Text',
   component: Text,
   argTypes: {
-    text: {control: 'text'},
+    children: {control: 'text'},
   },
 } as Meta;
 
-const Template: Story<TextProp> = (args) => <Text {...args} />;
+const Template: Story<PropsWithChildren<TextProp>> = ({children}) => <Text>{children}</Text>;
 
 export const デフォルト = Template.bind({});
 デフォルト.args = {
+  children: "テスト用文字列",
   text: "テスト用文字列"
 };
