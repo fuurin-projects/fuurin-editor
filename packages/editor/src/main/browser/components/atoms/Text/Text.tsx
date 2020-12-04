@@ -3,13 +3,13 @@ import styles from "./Text.css"
 
 
 type TextProp = {
-  text: string
+  text?: string
 }
 
-const Text: React.FC<TextProp> = ({text}) => {
+const Text: React.FC<TextProp> = ({text, children}) => {
 
   return (
-    <span className={styles.normal}>{text}</span>
+    <span className={styles.normal}>{children}</span>
   );
 
 

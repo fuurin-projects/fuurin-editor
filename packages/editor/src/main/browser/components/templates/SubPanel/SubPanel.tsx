@@ -10,7 +10,7 @@ const SubPanel: React.FC<SubPanelProp> = ({title, children}) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}><Text text={title}/></div>
+      <div className={styles.title}><Text>{title}</Text></div>
       <div className={styles.content}>{children}</div>
     </div>
   );
