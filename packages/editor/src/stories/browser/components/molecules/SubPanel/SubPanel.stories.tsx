@@ -1,9 +1,9 @@
 import {Meta, Story} from "@storybook/react/types-6-0";
 import React from "react";
-import {SubPanel, SubPanelProp} from "../../../../../main/browser/components/templates/SubPanel/SubPanel";
+import {SubPanel, SubPanelProp} from "../../../../../main/browser/components/molecules/SubPanel/SubPanel";
 
 export default {
-  title: 'templates/SubPanel',
+  title: 'molecules/SubPanel',
   component: SubPanel,
 } as Meta;
 
