@@ -4,13 +4,13 @@ import * as ReactDOM from 'react-dom';
 import CenterLayout from "./layout/CenterLayout/CenterLayout";
 import {Logo} from "./atoms/Logo/Logo";
 import CreateProjectButton from "./button/CreateProjectButton";
-import FlatButton from "./button/FlatButton";
 import ProjectRepository from "../repository/ProjectRepository";
 import {Project} from "../../ts/common/Preference";
 import ProjectList from "./launcher/ProjectList";
 import SystemRepository from "../repository/SystemRepository";
 import WindowRepository from "../repository/WindowRepository";
 import {Version} from "./atoms/Version/Version";
+import {Button} from "./atoms/Button/Button";
 
 interface Prop {
 
@@ -73,7 +73,9 @@ const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
         <CenterLayout marginTop={40}><Logo/></CenterLayout>
         <CenterLayout marginTop={16}><Version prefix={"バージョン : "}/></CenterLayout>
         <CenterLayout marginTop={72}><CreateProjectButton width={260}/></CenterLayout>
-        <CenterLayout><FlatButton width={260} text={"既存のゲームプロジェクトを開く"} click={handleClick}/></CenterLayout>
+        <CenterLayout>
+          <div style={{width: "260px"}}><Button large={true} fullWidth={true} onClick={handleClick}>既存のゲームプロジェクトを開く</Button></div>
+        </CenterLayout>
       </div>
     </div>
   );

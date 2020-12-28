@@ -1,0 +1,39 @@
+.main {
+    min-height: 24px;
+    min-width: 72px;
+    vertical-align: middle;
+    outline: none;
+    border-radius: 2px;
+    padding-top: 2px;
+}
+
+.main:focus-visible {
+    border: #6688c6 2px solid;
+}
+
+.main:focus {
+    border: #6688c6 2px solid;
+}
+
+.normal {
+    border: #c9c9c9 2px solid;
+    background-color: #ffffff;
+}
+
+.primitive {
+    color: #ffffff;
+    border: #6688c6 2px solid;
+    background-color: #0078ff;
+}
+
+.normal_size {
+
+}
+
+.large_size {
+    min-height: 40px;
+}
+
+.full_width {
+    width: 100%;
+}
