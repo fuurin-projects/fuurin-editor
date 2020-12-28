@@ -1,4 +1,4 @@
-import IpcRendererEvent = Electron.IpcRendererEvent;
+import {IpcRendererEvent} from "electron";
 
 /**
  * Mainからのデータ購読するのをかんたんにするクラス

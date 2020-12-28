@@ -1,16 +1,8 @@
-import * as React from 'react';
-import {useEffect, useState} from 'react';
-import * as ReactDOM from 'react-dom';
-import CenterLayout from "./layout/CenterLayout/CenterLayout";
-import {Logo} from "./atoms/Logo/Logo";
-import CreateProjectButton from "./button/CreateProjectButton";
-import ProjectRepository from "../repository/ProjectRepository";
+import React, {useCallback, useState} from 'react';
+import ReactDOM from 'react-dom';
 import {Project} from "../../ts/common/Preference";
 import ProjectList from "./launcher/ProjectList";
-import SystemRepository from "../repository/SystemRepository";
-import WindowRepository from "../repository/WindowRepository";
-import {Version} from "./atoms/Version/Version";
-import {Button} from "./atoms/Button/Button";
+import {LauncherMainPanel} from "./organism/LauncherMainPanel/LauncherMainPanel";
 
 interface Prop {
 
@@ -22,43 +14,14 @@ interface State {
 
 const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
 
-  const [projectList, setProjectList] = useState<Project[]>([]);
-
-  useEffect(() => {
-
-    let unmounted = false;
-
-    function handleListChange(list: Project[]) {
-      if (unmounted) {
-        return;
-      }
-      setProjectList(list);
-    }
-
-    const projectList = ProjectRepository.instance().getProjectList();
-
-    projectList.on(handleListChange);
-
-    return function cleanup() {
-      unmounted = true;
-      projectList.off(handleListChange);
-    }
-
-  }, [setProjectList]);
-
+  //初回読み込みをさせるためにダミーのデータを設定
+  const [projectList, setProjectList] = useState<Project[]>([{dir: "", name: ""}]);
 
   const frameWidth = projectList.length > 0 ? "calc(100% - 280px)" : "100%";
 
-  const handleClick = async () => {
-
-    const desktopDir: string = await SystemRepository.getDesktopDir();
-    const selectDir = await WindowRepository.instance().showSelectDirDialog(desktopDir);
-    // TODO: GameInfoを読み込む処理
-    const fileList = selectDir.filePaths[0].split(window.sep);
-    const gameName = fileList[fileList.length - 1];
-    await ProjectRepository.instance().openGameProject(gameName, selectDir.filePaths[0]);
-
-  };
+  const onProjectLoaded = useCallback((projectList: Project[]) => {
+    setProjectList(projectList);
+  }, [setProjectList]);
 
   return (
 
@@ -66,16 +29,11 @@ const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
       {
         projectList.length > 0 &&
         <div style={{width: "280px", backgroundColor: "#FFFFFF", overflowY: "auto"}}>
-          <ProjectList projectList={projectList}/>
+          <ProjectList onProjectLoaded={onProjectLoaded}/>
         </div>
       }
       <div style={{width: frameWidth}}>
-        <CenterLayout marginTop={40}><Logo/></CenterLayout>
-        <CenterLayout marginTop={16}><Version prefix={"バージョン : "}/></CenterLayout>
-        <CenterLayout marginTop={72}><CreateProjectButton width={260}/></CenterLayout>
-        <CenterLayout>
-          <div style={{width: "260px"}}><Button large={true} fullWidth={true} onClick={handleClick}>既存のゲームプロジェクトを開く</Button></div>
-        </CenterLayout>
+        <LauncherMainPanel/>
       </div>
     </div>
   );
