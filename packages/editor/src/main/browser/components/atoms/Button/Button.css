@@ -7,23 +7,24 @@
     padding-top: 2px;
 }
 
-.main:focus-visible {
-    border: #6688c6 2px solid;
-}
-
-.main:focus {
-    border: #6688c6 2px solid;
-}
-
 .normal {
     border: #c9c9c9 2px solid;
     background-color: #ffffff;
+}
+
+.normal:hover {
+    background-color: var(--main-focus-background-color);
 }
 
 .primitive {
     color: #ffffff;
     border: #6688c6 2px solid;
     background-color: #0078ff;
+}
+
+.primitive:hover {
+    color: #0078ff;
+    background-color: #ffffff;
 }
 
 .normal_size {

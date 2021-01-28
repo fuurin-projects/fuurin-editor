@@ -1,8 +1,8 @@
 import React from "react";
+import styles from "./LauncherMainPanel.css";
 import CenterLayout from "../../layout/CenterLayout/CenterLayout";
 import {Logo} from "../../atoms/Logo/Logo";
 import {Version} from "../../atoms/Version/Version";
-import CreateProjectButton from "../../button/CreateProjectButton";
 import {Button} from "../../atoms/Button/Button";
 import SystemRepository from "../../../repository/SystemRepository";
 import WindowRepository from "../../../repository/WindowRepository";
@@ -10,7 +10,12 @@ import ProjectRepository from "../../../repository/ProjectRepository";
 
 const LauncherMainPanel: React.FunctionComponent = () => {
 
-  const handleClick = async () => {
+  const handleNewGameClick = async () => {
+    await WindowRepository.instance().showCreateProjectWindow();
+  }
+
+  //既存のプロジェクトを開く
+  const handleOpenGameClick = async () => {
 
     const desktopDir: string = await SystemRepository.getDesktopDir();
     const selectDir = await WindowRepository.instance().showSelectDirDialog(desktopDir);
@@ -22,12 +27,16 @@ const LauncherMainPanel: React.FunctionComponent = () => {
   };
 
   return (<>
-    <CenterLayout marginTop={40}><Logo/></CenterLayout>
-    <CenterLayout marginTop={16}><Version prefix={"バージョン : "}/></CenterLayout>
-    <CenterLayout marginTop={72}><CreateProjectButton width={260}/></CenterLayout>
-    <CenterLayout>
-      <div style={{width: "260px"}}><Button large={true} fullWidth={true} onClick={handleClick}>既存のゲームプロジェクトを開く</Button></div>
-    </CenterLayout>
+    <div className={styles.main}>
+      <CenterLayout marginTop={40}><Logo/></CenterLayout>
+      <CenterLayout marginTop={16}><Version prefix={"バージョン : "}/></CenterLayout>
+      <CenterLayout marginTop={56}>
+        <div style={{width: "260px"}}><Button large={true} fullWidth={true} onClick={handleNewGameClick}>新規でゲームを作成する</Button></div>
+      </CenterLayout>
+      <CenterLayout marginTop={20}>
+        <div style={{width: "260px"}}><Button large={true} fullWidth={true} onClick={handleOpenGameClick}>既存のゲームプロジェクトを開く</Button></div>
+      </CenterLayout>
+    </div>
   </>)
 
 };
