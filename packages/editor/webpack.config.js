@@ -95,9 +95,14 @@ module.exports = [
         },
         {
           test: /\.css$/,
+          exclude: [/\.static.css$/],
           loaders: [
-            'style-loader', 'css-loader?modules'
+            'style-loader', 'css-loader?modules&url=false'
           ],
+        },
+        {
+          test: /\.static.css$/,
+          loaders: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(jpg|png|gif)$/,
@@ -144,7 +149,8 @@ module.exports = [
         },
         {
           test: /\.css$/,
-          loaders: ['style-loader', 'css-loader?modules'],
+          exclude: [/\.static.css$/],
+          loaders: ['style-loader', 'css-loader?modules&url=false'],
         },
         {
           test: /\.(jpg|png|gif)$/,
@@ -191,7 +197,12 @@ module.exports = [
         },
         {
           test: /\.css$/,
+          exclude: [/\.static.css$/],
           loaders: ['style-loader', 'css-loader?modules&url=false'],
+        },
+        {
+          test: /\.static.css$/,
+          loaders: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(jpg|png|gif)$/,

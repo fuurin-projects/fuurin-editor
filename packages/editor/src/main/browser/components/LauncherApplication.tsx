@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Project} from "../../ts/common/Preference";
 import ProjectList from "./launcher/ProjectList";
 import {LauncherMainPanel} from "./organism/LauncherMainPanel/LauncherMainPanel";
+import "../css/global.static.css";
 
 interface Prop {
 
