@@ -5,6 +5,7 @@ import {FolderTree, ItemDoubleClickEvent} from "../../../../folder_tree/FolderTr
 import {TileRepository} from "../../../../../repository/TileRepository";
 import {useDispatch} from "react-redux";
 import {EditorStore} from "../../../../../stores/EditorStore";
+import {Button} from "../../../../atoms/Button/Button";
 
 
 export const TileActivityComponent: React.FunctionComponent = () => {
@@ -32,7 +33,7 @@ export const TileActivityComponent: React.FunctionComponent = () => {
 
     <div className={styles.tool}>
       <AddTile/>
-      <button>グループを新規追加</button>
+      <Button>グループを新規追加</Button>
     </div>
     {/*<TileList/>*/}
     <div className={styles.list}>

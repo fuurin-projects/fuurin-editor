@@ -2,6 +2,7 @@ import React, {FormEventHandler, useRef, useState} from "react";
 import styles from "./add_tile.css";
 import {TileRepository} from "../../../../../repository/TileRepository";
 import {DirInput} from "../../../../organism/DirInput/DirInput";
+import {Button} from "../../../../atoms/Button/Button";
 
 export const AddTile: React.FunctionComponent = () => {
 
@@ -47,7 +48,9 @@ export const AddTile: React.FunctionComponent = () => {
 
   return (<>
 
-    <button onClick={click}>Tileを新規追加</button>
+    <div style={{margin: '8px'}}>
+      <Button onClick={click}>Tileを新規追加</Button>
+    </div>
 
     <dialog className={styles.dialog} ref={ref} key={key}>
 

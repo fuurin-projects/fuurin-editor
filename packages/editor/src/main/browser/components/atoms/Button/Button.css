@@ -13,7 +13,7 @@
 }
 
 .normal {
-    border: solid 1px #adadad;
+    border: solid 0.5px #adadad;
 }
 
 .normal:hover {
