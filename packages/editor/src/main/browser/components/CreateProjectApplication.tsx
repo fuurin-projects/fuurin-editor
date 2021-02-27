@@ -6,8 +6,8 @@ import * as ReactDOM from 'react-dom';
 import NewProjectFieldGroup from "./create_project/NewProjectFieldGroup";
 import BottomButtonLayout, {BottomButtonLayoutBottom, BottomButtonLayoutMain} from "./layout/BottomButtonLayout/BottomButtonLayout";
 import NormalButton from "./button/NormalButton";
-import CancelButton from "./button/CancelButton";
 import ProjectRepository from "../repository/ProjectRepository";
+import {WindowsCloseButton} from "./molecules/WindowsCloseButton/WindowsCloseButton";
 
 const LauncherApplication: React.FunctionComponent = (props): React.ReactElement => {
 
@@ -24,7 +24,7 @@ const LauncherApplication: React.FunctionComponent = (props): React.ReactElement
         <NewProjectFieldGroup name={name} setName={setName} dir={dir} setDir={setDir}/>
       </BottomButtonLayoutMain>
       <BottomButtonLayoutBottom>
-        <NormalButton type={"current"} text={"作成"} margin={"14px 14px 14px 0"} click={handleClick}/><CancelButton/>
+        <NormalButton type={"current"} text={"作成"} click={handleClick}/><WindowsCloseButton/>
       </BottomButtonLayoutBottom>
     </BottomButtonLayout>
   );

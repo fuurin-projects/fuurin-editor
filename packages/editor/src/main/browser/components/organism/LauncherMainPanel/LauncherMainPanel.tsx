@@ -32,14 +32,17 @@ const LauncherMainPanel: React.FunctionComponent = () => {
       <CenterLayout marginTop={40}><Logo/></CenterLayout>
       <CenterLayout marginTop={16}><Version prefix={"バージョン : "}/></CenterLayout>
       <CenterLayout marginTop={56}>
-        <div style={{width: "260px"}}><Button large={true} fullWidth={true} onClick={handleNewGameClick}>新規でゲームを作成する</Button></div>
+        <div style={{width: "260px"}}><Button large={true} widthType={'full'} onClick={handleNewGameClick}>新規でゲームを作成する</Button></div>
       </CenterLayout>
       <CenterLayout marginTop={20}>
-        <div style={{width: "260px"}}><Button large={true} fullWidth={true} onClick={handleOpenGameClick}>既存のゲームプロジェクトを開く</Button></div>
+        <div style={{width: "260px"}}><Button large={true} widthType={'full'} onClick={handleOpenGameClick}>既存のゲームプロジェクトを開く</Button></div>
       </CenterLayout>
     </div>
   </>)
 
 };
 
-export {LauncherMainPanel}
+export
+{
+  LauncherMainPanel
+}

@@ -10,3 +10,7 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.bottom > button {
+    margin: 14px 14px 14px 0;
+}

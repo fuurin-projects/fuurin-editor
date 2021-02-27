@@ -2,7 +2,7 @@ import React, {MouseEventHandler, useCallback, useState} from "react";
 import styles from "./DirInput.css"
 import SystemRepository from "../../../repository/SystemRepository";
 import WindowRepository from "../../../repository/WindowRepository";
-import NormalButton from "../../button/NormalButton";
+import {Button} from "../../atoms/Button/Button";
 
 type Prop = {
   isDir: boolean
@@ -59,7 +59,10 @@ const DirInput: React.FunctionComponent<Prop> = ({isDir, onChange, defaultDir, e
 
       {required && <input required className={styles.text} type="text" placeholder="Tile画像" value={dir} onChange={onChangeName}/>}
       {!required && <input className={styles.text} type="text" placeholder="Tile画像" value={dir} onChange={onChangeName}/>}
-      <NormalButton width={26} text={"…"} paddingLeft={6} margin={"0 0 0 8px"} click={handleClick}/>
+      <div className={styles.openButton}>
+        <Button widthType={"small"} onClick={handleClick}>…</Button>
+      </div>
+
     </span>
   </>)
 

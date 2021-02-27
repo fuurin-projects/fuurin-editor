@@ -1,30 +1,34 @@
 .main {
-    min-height: 24px;
-    min-width: 72px;
-    vertical-align: middle;
+    min-height: 26px;
+    height: 26px;
+    min-width: 88px;
+    display: inline-block;
     outline: none;
-    border-radius: 2px;
-    padding-top: 2px;
+    padding: 4px 8px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #e1e1e1;
+    transition: background-color 0.4s ease 0s;
+    vertical-align: top;
 }
 
 .normal {
-    border: #c9c9c9 2px solid;
-    background-color: #ffffff;
+    border: solid 1px #adadad;
 }
 
 .normal:hover {
-    background-color: var(--main-focus-background-color);
+    border-color: #0078d7;
+    background-color: var(--main-button-background-color-hover);
 }
 
 .primitive {
-    color: #ffffff;
-    border: #6688c6 2px solid;
-    background-color: #0078ff;
+    border: solid 1.5px #0078ff;
 }
 
 .primitive:hover {
-    color: #0078ff;
-    background-color: #ffffff;
+    border-width: 1px;
+    border-color: #0078d7;
+    background-color: var(--main-button-background-color-hover);
 }
 
 .normal_size {
@@ -33,8 +37,15 @@
 
 .large_size {
     min-height: 40px;
+    padding: 12px 8px;
 }
 
 .full_width {
     width: 100%;
+}
+
+.small_width {
+    min-width: 26px;
+    width: 26px;
+    padding-left: 6px;
 }

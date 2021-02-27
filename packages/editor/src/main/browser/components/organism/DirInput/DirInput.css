@@ -5,3 +5,9 @@
     width: calc(100% - 34px);
     height: var(--main-input-height);
 }
+
+.openButton {
+    margin: 0 0 0 8px;
+    padding: 0;
+    display: inline;
+}

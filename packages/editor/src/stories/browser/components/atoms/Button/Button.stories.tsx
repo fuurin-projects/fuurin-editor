@@ -11,8 +11,8 @@ export default {
   },
 } as Meta;
 
-const Template: Story<PropsWithChildren<Prop>> = ({children, onClick, primitive, large, fullWidth}) =>
-  <Button onClick={onClick} primitive={primitive} large={large} fullWidth={fullWidth}>{children}</Button>;
+const Template: Story<PropsWithChildren<Prop>> = ({children, onClick, primitive, large, widthType}) =>
+  <Button onClick={onClick} primitive={primitive} large={large} widthType={widthType}>{children}</Button>;
 
 export const デフォルト = Template.bind({});
 デフォルト.args = {
@@ -21,7 +21,7 @@ export const デフォルト = Template.bind({});
 
 export const プリミティブ = Template.bind({});
 プリミティブ.args = {
-  children: "OK",
+  children: "作成",
   primitive: true
 };
 
@@ -34,5 +34,10 @@ export const ラージ = Template.bind({});
 export const フルワイド = Template.bind({});
 フルワイド.args = {
   children: "OK",
-  fullWidth: true
+  widthType: 'full'
+};
+export const スモール = Template.bind({});
+スモール.args = {
+  children: "…",
+  widthType: 'small'
 };
