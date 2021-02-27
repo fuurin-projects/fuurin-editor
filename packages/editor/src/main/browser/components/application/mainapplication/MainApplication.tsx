@@ -1,3 +1,5 @@
+import "../../../css/reset.static.css";
+import "../../../css/global.static.css";
 import * as React from 'react';
 import {useEffect} from 'react';
 import * as ReactDOM from 'react-dom';
@@ -10,7 +12,7 @@ import {GameRepository} from "../../../repository/GameRepository";
 import {DevGameStore} from "../../../stores/DevGameStore";
 import {StopButton} from "../../button/StopButton/StopButton";
 import {ActivityContainer} from "../../activity/activity_container/ActivityContainer";
-import "../../../css/global.static.css";
+
 
 //reduxを設定するためのラッパー
 const MainApplicationContainer: React.FunctionComponent = (props) => {

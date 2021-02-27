@@ -1,9 +1,10 @@
+import "../css/reset.static.css";
+import "../css/global.static.css";
 import React, {useCallback, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {Project} from "../../ts/common/Preference";
 import ProjectList from "./launcher/ProjectList";
 import {LauncherMainPanel} from "./organism/LauncherMainPanel/LauncherMainPanel";
-import "../css/global.static.css";
 
 interface Prop {
 

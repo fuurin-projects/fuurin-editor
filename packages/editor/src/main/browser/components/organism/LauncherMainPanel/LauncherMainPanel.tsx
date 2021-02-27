@@ -10,6 +10,7 @@ import ProjectRepository from "../../../repository/ProjectRepository";
 
 const LauncherMainPanel: React.FunctionComponent = () => {
 
+  //新規でゲームプロジェクトを作成する
   const handleNewGameClick = async () => {
     await WindowRepository.instance().showCreateProjectWindow();
   }

@@ -1,3 +1,5 @@
+import "../css/reset.static.css";
+import "../css/global.static.css";
 import * as React from 'react';
 import {useState} from 'react';
 import * as ReactDOM from 'react-dom';

@@ -153,6 +153,10 @@ module.exports = [
           loaders: ['style-loader', 'css-loader?modules&url=false'],
         },
         {
+          test: /\.static.css$/,
+          loaders: ['style-loader', 'css-loader'],
+        },
+        {
           test: /\.(jpg|png|gif)$/,
           use: [
             {
