@@ -1,8 +1,8 @@
 import React, {MouseEventHandler, useCallback, useState} from "react";
-import styles from "./dir_input.css";
-import NormalButton from "../../button/NormalButton";
-import WindowRepository from "../../../repository/WindowRepository";
+import styles from "./DirInput.css"
 import SystemRepository from "../../../repository/SystemRepository";
+import WindowRepository from "../../../repository/WindowRepository";
+import NormalButton from "../../button/NormalButton";
 
 type Prop = {
   isDir: boolean
@@ -12,7 +12,7 @@ type Prop = {
   required?: boolean
 }
 
-export const DirInput: React.FunctionComponent<Prop> = ({isDir, onChange, defaultDir, extensions, required}) => {
+const DirInput: React.FunctionComponent<Prop> = ({isDir, onChange, defaultDir, extensions, required}) => {
 
   const [dir, setDir] = useState("");
 
@@ -64,3 +64,5 @@ export const DirInput: React.FunctionComponent<Prop> = ({isDir, onChange, defaul
   </>)
 
 };
+
+export {DirInput, Prop}

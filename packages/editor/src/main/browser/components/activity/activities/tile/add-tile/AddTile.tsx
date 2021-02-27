@@ -1,7 +1,7 @@
 import React, {FormEventHandler, useRef, useState} from "react";
 import styles from "./add_tile.css";
-import {DirInput} from "../../../../form/dir_input/DirInput";
 import {TileRepository} from "../../../../../repository/TileRepository";
+import {DirInput} from "../../../../organism/DirInput/DirInput";
 
 export const AddTile: React.FunctionComponent = () => {
 

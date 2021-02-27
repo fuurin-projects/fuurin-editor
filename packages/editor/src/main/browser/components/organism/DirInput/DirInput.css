@@ -1,0 +1,7 @@
+.main {
+}
+
+.text {
+    width: calc(100% - 34px);
+    height: var(--main-input-height);
+}
