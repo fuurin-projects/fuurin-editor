@@ -1,11 +1,8 @@
 import React, {MouseEventHandler, useEffect, useRef} from "react";
-import SystemRepository from "../../repository/SystemRepository";
-import styles from "../../../css/create_project/ProjectDirField.css";
-import {Simulate} from "react-dom/test-utils";
-import WindowRepository from "../../repository/WindowRepository";
-import NormalButton from "../button/NormalButton";
-import input = Simulate.input;
-
+import styles from "./ProjectDirField.css"
+import SystemRepository from "../../../repository/SystemRepository";
+import WindowRepository from "../../../repository/WindowRepository";
+import {Button} from "../../atoms/Button/Button";
 
 interface Prop {
   name: string
@@ -16,8 +13,6 @@ interface Prop {
 
 const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
 
-  console.log("ProjectDirField");
-  // const [dir, setDir] = useState("");
   const isOpenFileDialog = useRef(false);
 
   useEffect(() => {
@@ -53,7 +48,6 @@ const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
       isOpenFileDialog.current = true;
       props.setDir(selectDir.filePaths[0]);
 
-
       //Game名が unknown_game のままの場合はフォルダ名で上書きする
       if (props.name === "unknown_game") {
         const fileList = selectDir.filePaths[0].split(window.sep);
@@ -66,10 +60,12 @@ const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
   return (
     <>
       <input className={styles.field} type={"text"} onChange={onChangeDir} value={props.dir}/>
-      <NormalButton width={26} text={"…"} paddingLeft={6} margin={"0 0 0 8px"} click={onClick}/>
+      <div className={styles.openButton}>
+        <Button widthType={"small"} onClick={onClick}>…</Button>
+      </div>
     </>
   );
 
 };
 
-export default ProjectDirField;
+export {ProjectDirField, Prop}
