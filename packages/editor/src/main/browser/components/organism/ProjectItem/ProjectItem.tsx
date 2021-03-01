@@ -1,17 +1,16 @@
 import React, {MouseEvent, MouseEventHandler} from "react";
-import {Project} from "../../../ts/common/Preference";
-import styles from "../../../css/launcher/ProjectItem.css";
-import WindowRepository from "../../repository/WindowRepository";
-import ProjectRepository from "../../repository/ProjectRepository";
+import styles from "./ProjectItem.css"
+import {Project} from "../../../../ts/common/Preference";
+import WindowRepository from "../../../repository/WindowRepository";
+import ProjectRepository from "../../../repository/ProjectRepository";
 
-
-interface Props {
+interface Prop {
 
   project: Project
 
 }
 
-const ProjectItem: React.FunctionComponent<Props> = (props) => {
+const ProjectItem: React.FunctionComponent<Prop> = (props) => {
 
   const handlerClick: MouseEventHandler<HTMLDivElement> = (event: MouseEvent<HTMLDivElement>): void => {
 
@@ -39,4 +38,4 @@ const ProjectItem: React.FunctionComponent<Props> = (props) => {
 
 };
 
-export default ProjectItem;
+export {ProjectItem, Prop}

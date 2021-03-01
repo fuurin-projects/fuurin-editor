@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Project} from "../../../ts/common/Preference";
-import ProjectItem from "./ProjectItem";
 import ProjectRepository from "../../repository/ProjectRepository";
+import {ProjectItem} from "../organism/ProjectItem/ProjectItem";
 
 interface Props {
   onProjectLoaded?: (projectList: Project[]) => void
