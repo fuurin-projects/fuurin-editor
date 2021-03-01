@@ -1,10 +1,11 @@
 import React, {FormEventHandler, useRef, useState} from "react";
-import styles from "./add_tile.css";
-import {TileRepository} from "../../../../../repository/TileRepository";
-import {DirInput} from "../../../../organism/DirInput/DirInput";
-import {Button} from "../../../../atoms/Button/Button";
+import styles from "./AddTileButton.css"
+import {TileRepository} from "../../../repository/TileRepository";
+import {Button} from "../../atoms/Button/Button";
+import {DirInput} from "../DirInput/DirInput";
+import {ButtonFooter} from "../../molecules/ButtonFooter/ButtonFooter";
 
-export const AddTile: React.FunctionComponent = () => {
+const AddTileButton: React.FunctionComponent = () => {
 
   const ref = useRef<HTMLDialogElement>(null);
   const refForm = useRef<HTMLFormElement>(null);
@@ -48,9 +49,7 @@ export const AddTile: React.FunctionComponent = () => {
 
   return (<>
 
-    <div style={{margin: '8px'}}>
-      <Button onClick={click}>Tileを新規追加</Button>
-    </div>
+    <Button onClick={click}>Tileを新規追加</Button>
 
     <dialog className={styles.dialog} ref={ref} key={key}>
 
@@ -59,16 +58,18 @@ export const AddTile: React.FunctionComponent = () => {
         <div className={styles.dialog_main}>
           <span className={styles.label}>タイルの名前</span><span><input type="text" required placeholder="Tile名" className={styles.tile_name_field} onChange={handleTileNameChange}
                                                                    value={name}/></span>
-          <span className={styles.label}>タイルの画像</span><DirInput isDir={false} extensions={["png"]} onChange={onChangeName} required={true}/>
+          <span className={styles.label}>タイルの画像</span><DirInput isDir={false} extensions={["png"]} onChange={onChangeName} required={true} placeholder={"Tile画像のパス"}/>
         </div>
 
-        <div className={styles.footer}>
-          <button type="button" onClick={cancelClick} value="cancel">Cancel</button>
-          <button type="submit" value="ok">Ok</button>
-        </div>
+        <ButtonFooter>
+          <Button type="submit" primitive={true} value="ok">Ok</Button>
+          <Button type="button" onClick={cancelClick} value="cancel">Cancel</Button>
+        </ButtonFooter>
       </form>
     </dialog>
 
   </>)
 
 };
+
+export {AddTileButton}

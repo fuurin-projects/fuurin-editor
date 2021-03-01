@@ -1,11 +1,11 @@
 import React, {useCallback} from "react";
 import styles from "./tile_activity_component.css";
-import {AddTile} from "../add-tile/AddTile";
 import {FolderTree, ItemDoubleClickEvent} from "../../../../folder_tree/FolderTree";
 import {TileRepository} from "../../../../../repository/TileRepository";
 import {useDispatch} from "react-redux";
 import {EditorStore} from "../../../../../stores/EditorStore";
 import {Button} from "../../../../atoms/Button/Button";
+import {AddTileButton} from "../../../../organism/AddTileButton/AddTileButton";
 
 
 export const TileActivityComponent: React.FunctionComponent = () => {
@@ -32,7 +32,7 @@ export const TileActivityComponent: React.FunctionComponent = () => {
   return (<div className={styles.main}>
 
     <div className={styles.tool}>
-      <AddTile/>
+      <AddTileButton/>
       <Button>グループを新規追加</Button>
     </div>
     {/*<TileList/>*/}

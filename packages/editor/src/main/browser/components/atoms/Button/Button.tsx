@@ -6,6 +6,8 @@ type Prop = {
   large?: boolean
   widthType?: WidthType
   onClick?: MouseEventHandler<HTMLButtonElement>
+  type?: 'submit' | 'reset' | 'button';
+  value?: string;
 }
 
 type WidthType = 'normal' | 'full' | "small";
@@ -16,7 +18,9 @@ const Button: React.FunctionComponent<Prop> = (
     large = false,
     widthType = 'normal',
     onClick,
-    children
+    children,
+    type = "button",
+    value
   }) => {
 
   const style = primitive ? `${styles.main} ${styles.primitive}` : `${styles.main} ${styles.normal}`;
@@ -25,7 +29,7 @@ const Button: React.FunctionComponent<Prop> = (
   const styleLWS = widthType === 'small' ? `${styleLW} ${styles.small_width}` : `${styleLW}`;
 
   return (<>
-    <button type="button" className={styleLWS} onClick={onClick}>{children}</button>
+    <button type={type} value={value} className={styleLWS} onClick={onClick}>{children}</button>
   </>)
 
 };

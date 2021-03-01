@@ -10,9 +10,10 @@ type Prop = {
   extensions?: string[]
   onChange?: (value: string) => void
   required?: boolean
+  placeholder?: string
 }
 
-const DirInput: React.FunctionComponent<Prop> = ({isDir, onChange, defaultDir, extensions, required}) => {
+const DirInput: React.FunctionComponent<Prop> = ({isDir, onChange, defaultDir, extensions, required, placeholder}) => {
 
   const [dir, setDir] = useState("");
 
@@ -57,8 +58,11 @@ const DirInput: React.FunctionComponent<Prop> = ({isDir, onChange, defaultDir, e
   return (<>
     <span className={styles.main}>
 
-      {required && <input required className={styles.text} type="text" placeholder="Tile画像" value={dir} onChange={onChangeName}/>}
-      {!required && <input className={styles.text} type="text" placeholder="Tile画像" value={dir} onChange={onChangeName}/>}
+      {required &&
+      <input required className={styles.text} type="text" placeholder={placeholder ? placeholder : ""} value={dir} onChange={onChangeName}/>}
+      {!required &&
+      <input className={styles.text} type="text" placeholder={placeholder ? placeholder : ""} value={dir} onChange={onChangeName}/>}
+
       <div className={styles.openButton}>
         <Button widthType={"small"} onClick={handleClick}>…</Button>
       </div>
