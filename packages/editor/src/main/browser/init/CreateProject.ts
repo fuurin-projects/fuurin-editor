@@ -1,5 +1,4 @@
-import {createComponent} from "../components/CreateProjectApplication";
-
+import {createComponent} from "../components/pages/CreateProjectApplication/CreateProjectApplication";
 
 function main() {
 
