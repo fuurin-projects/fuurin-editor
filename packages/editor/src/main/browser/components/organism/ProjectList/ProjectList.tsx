@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {Project} from "../../../ts/common/Preference";
-import ProjectRepository from "../../repository/ProjectRepository";
-import {ProjectItem} from "../organism/ProjectItem/ProjectItem";
+import {Project} from "../../../../ts/common/Preference";
+import ProjectRepository from "../../../repository/ProjectRepository";
+import {ProjectItem} from "../ProjectItem/ProjectItem";
+
 
 interface Props {
   onProjectLoaded?: (projectList: Project[]) => void
@@ -46,4 +47,5 @@ const ProjectList: React.FunctionComponent<Props> = ({onProjectLoaded}) => {
 
 };
 
-export default ProjectList;
+
+export {ProjectList, Props}

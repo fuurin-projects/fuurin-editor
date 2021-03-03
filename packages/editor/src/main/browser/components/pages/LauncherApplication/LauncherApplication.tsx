@@ -1,10 +1,12 @@
-import "../css/reset.static.css";
-import "../css/global.static.css";
-import React, {useCallback, useState} from 'react';
-import ReactDOM from 'react-dom';
-import {Project} from "../../ts/common/Preference";
-import ProjectList from "./launcher/ProjectList";
-import {LauncherMainPanel} from "./organism/LauncherMainPanel/LauncherMainPanel";
+import "../../../css/reset.static.css";
+import "../../../css/global.static.css";
+import React, {useCallback, useState} from "react";
+import styles from "./LauncherApplication.css"
+import {Project} from "../../../../ts/common/Preference";
+import {LauncherMainPanel} from "../../organism/LauncherMainPanel/LauncherMainPanel";
+import ReactDOM from "react-dom";
+import {ProjectList} from "../../organism/ProjectList/ProjectList";
+
 
 interface Prop {
 
@@ -27,7 +29,7 @@ const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
 
   return (
 
-    <div style={{display: "flex", height: "100%"}}>
+    <div className={styles.main}>
       {
         projectList.length > 0 &&
         <div style={{width: "280px", backgroundColor: "#FFFFFF", overflowY: "auto"}}>
@@ -42,6 +44,8 @@ const LauncherApplication: React.FunctionComponent<Prop> = (props) => {
 
 };
 
-export function createComponent() {
+function createComponent() {
   ReactDOM.render(<LauncherApplication/>, document.querySelector('#launcher'));
 }
+
+export {LauncherApplication, createComponent}

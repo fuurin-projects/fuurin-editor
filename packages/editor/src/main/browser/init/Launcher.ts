@@ -1,6 +1,4 @@
-import {createComponent} from "../components/LauncherApplication";
-
-console.log("aa");
+import {createComponent} from "../components/pages/LauncherApplication/LauncherApplication";
 
 window.ipcRenderer.on('test-reply', (event, arg) => {
   console.log(arg)
