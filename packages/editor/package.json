@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron ../../build/app/",
     "copy_html": "cpx -C  ./src/main/html/** ../../build/app/html/",
-    "copy_resources": "cpx -C  ./src/main/resources/** ../../build/app/resources/",
+    "copy_resources": "cpx -C  ./src/main/resources/**/{*.html,*.js} ../../build/app/resources/",
     "clean_svg": "svgo --config=./svgo.yaml -f ./src/main/resources/images",
     "compile": "npx webpack",
     "watch": "npx webpack --watch",
