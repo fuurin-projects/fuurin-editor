@@ -12,7 +12,8 @@
     "copy_html": "yarn workspace editor run copy_html",
     "copy_resources": "yarn workspace editor run copy_resources",
     "compile": "yarn workspace editor run compile",
-    "build": "yarn workspace editor run build"
+    "build": "yarn workspace editor run build",
+    "assembly": "yarn workspace editor run assembly"
   },
   "workspaces": {
     "packages": [
