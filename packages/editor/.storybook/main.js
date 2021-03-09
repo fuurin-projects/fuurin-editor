@@ -33,6 +33,18 @@ module.exports = {
       include: path.resolve(__dirname, '../'),
     });
 
+    //SVGの設定
+    const assetRule = config.module.rules.find(({test}) => test.test('.svg'));
+    const assetLoader = {
+      loader: assetRule.loader,
+      options: assetRule.options || assetRule.query,
+    };
+    config.module.rules.unshift({
+      test: /\.svg$/,
+      issuer: /\.tsx?$/,
+      use: ['@svgr/webpack', assetLoader],
+    });
+
     // Return the altered config
     return config;
   },

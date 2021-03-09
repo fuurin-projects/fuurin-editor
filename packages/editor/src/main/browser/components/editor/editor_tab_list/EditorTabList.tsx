@@ -4,7 +4,7 @@ import styles from "./editor_tab_list.css";
 import {RootState} from "../../../stores/RootStore";
 import {EditorItem, EditorStore} from "../../../stores/EditorStore";
 import {EditorManager} from "../../../editor/EditorManager";
-import {IconTabClose} from "../../atoms/Icon/Icon";
+import {IconTabClose} from "../../atoms/Icons/Icons";
 
 export const EditorTabList: React.FunctionComponent = () => {
 
