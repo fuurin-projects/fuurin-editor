@@ -33,5 +33,9 @@
     display: inline-block;
     vertical-align: top;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url("../../../../resources/images/tab_close.svg");
+    /*background-image: url("../../../../resources/images/tab_close.svg");*/
+}
+
+.item_close > svg:hover * {
+    fill: #0078ff;
 }

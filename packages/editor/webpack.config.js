@@ -209,7 +209,26 @@ module.exports = [
           loaders: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.(jpg|png|gif|svg)$/,
+          test: /\.svg$/,
+          issuer: /\.tsx?$/,
+          enforce: 'pre', // SVGをReactのコードに変換後に他のローダーでパックする
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                // typescript: true,
+                //babel: false,
+                // ext: "tsx",
+              }
+            },
+            {
+              loader: 'url-loader'
+            }
+          ],
+        },
+        {
+          test: /\.(svg)$/,
+          issuer: /\.css$/,
           use: [
             {
               loader: 'file-loader',
@@ -221,6 +240,19 @@ module.exports = [
 
           ]
         },
+        {
+          test: /\.(jpg|png|gif)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: path.posix.join('../resources/images/'),
+              }
+            }
+
+          ]
+        }
       ]
     },
     resolve: {

@@ -4,6 +4,7 @@ import styles from "./editor_tab_list.css";
 import {RootState} from "../../../stores/RootStore";
 import {EditorItem, EditorStore} from "../../../stores/EditorStore";
 import {EditorManager} from "../../../editor/EditorManager";
+import {IconTabClose} from "../../atoms/Icon/Icon";
 
 export const EditorTabList: React.FunctionComponent = () => {
 
@@ -71,7 +72,7 @@ export const EditorTabListItem: React.FunctionComponent<EditorTabListItemProp> =
     <div style={customStyle} className={styles.item} onClick={handleClick}>
       <div className={styles.item_icon}/>
       <div className={styles.item_text}>{getDisplayText(path, name)}</div>
-      <button className={styles.item_close} onClick={handleCloseClick}/>
+      <button className={styles.item_close} onClick={handleCloseClick}><IconTabClose/></button>
     </div>
 
   </>)
