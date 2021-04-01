@@ -6,6 +6,10 @@ import {EditorItem, EditorStore} from "../../../stores/EditorStore";
 import {EditorManager} from "../../../editor/EditorManager";
 import {IconTabClose} from "../../atoms/Icons/Icons";
 
+/**
+ * 開いているファイルのタブを表示するコンポーネント
+ * @constructor
+ */
 export const EditorTabList: React.FunctionComponent = () => {
 
   const currentEditor = useSelector((state: RootState) => state.editor.currentEditor);
@@ -37,6 +41,14 @@ type EditorTabListItemProp = {
   isCurrent: boolean
 }
 
+/**
+ * ファイルタブ
+ * @param index タブの番号
+ * @param path ファイルの位置
+ * @param name 名前
+ * @param isCurrent カレントかどうか
+ * @constructor
+ */
 export const EditorTabListItem: React.FunctionComponent<EditorTabListItemProp> = ({index, path, name, isCurrent}) => {
 
   const dispatch = useDispatch();

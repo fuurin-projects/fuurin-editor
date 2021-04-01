@@ -5,7 +5,10 @@ import {EditorTabList} from "../editor_tab_list/EditorTabList";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../stores/RootStore";
 
-
+/**
+ * タブ部分とエディタ部分を合わせたコンポーネント
+ * @constructor
+ */
 export const EditorContainer: React.FunctionComponent = () => {
 
   const editorTabList = useSelector((state: RootState) => state.editor.editorList);

@@ -1,18 +1,16 @@
 import "../../../css/reset.static.css";
 import "../../../css/global.static.css";
-import * as React from 'react';
-import {useEffect} from 'react';
-import * as ReactDOM from 'react-dom';
-import {RunButton} from "../../button/RunButton/RunButton";
-import styles from "./main_application.css";
-import {RootState, RootStore} from "../../../stores/RootStore";
+import React, {useEffect} from "react";
+import styles from "./MainApplication.css"
 import {Provider, useDispatch, useSelector} from "react-redux";
-import {ReRunButton} from "../../button/ReRunButton/ReRunButton";
+import {RootState, RootStore} from "../../../stores/RootStore";
 import {GameRepository} from "../../../repository/GameRepository";
 import {DevGameStore} from "../../../stores/DevGameStore";
+import {ReRunButton} from "../../button/ReRunButton/ReRunButton";
+import {RunButton} from "../../button/RunButton/RunButton";
 import {StopButton} from "../../button/StopButton/StopButton";
 import {ActivityContainer} from "../../activity/activity_container/ActivityContainer";
-
+import * as ReactDOM from "react-dom";
 
 //reduxを設定するためのラッパー
 const MainApplicationContainer: React.FunctionComponent = (props) => {
@@ -25,7 +23,7 @@ const MainApplicationContainer: React.FunctionComponent = (props) => {
   )
 };
 
-export const MainApplication: React.FunctionComponent = (props): React.ReactElement => {
+const MainApplication: React.FunctionComponent = (props): React.ReactElement => {
 
   const isRun = useSelector((state: RootState) => state.devGame.run);
   const dispatch = useDispatch();
@@ -74,6 +72,8 @@ export const MainApplication: React.FunctionComponent = (props): React.ReactElem
 
 };
 
-export function createComponent() {
+function createComponent() {
   ReactDOM.render(<MainApplicationContainer/>, document.querySelector('#main'));
 }
+
+export {createComponent, MainApplication, MainApplicationContainer};
