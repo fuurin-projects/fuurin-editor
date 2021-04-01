@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./NewProjectFieldGroup.css"
 import {GridLayout, GridLayoutItem as Item} from "../../layout/GridLayout/GridLayout";
-import ProjectNameField from "../../create_project/ProjectNameField";
 import {ProjectDirField} from "../ProjectDirField/ProjectDirField";
+import {ProjectNameField} from "../ProjectNameField/ProjectNameField";
 
 type Prop = {
   name: string,
