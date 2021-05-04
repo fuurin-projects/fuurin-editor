@@ -1,11 +1,14 @@
 import React from "react";
-import {BuilderRepository} from "../../../repository/BuilderRepository";
-import {GameRepository} from "../../../repository/GameRepository";
-import {Icons} from "../../../Icons";
+import {BuilderRepository} from "../../../../repository/BuilderRepository";
+import {GameRepository} from "../../../../repository/GameRepository";
+import {Icons} from "../../../../Icons";
 import {ToolbarButton} from "../ToolbarButton/ToolbarButton";
 
+/**
+ * ゲームを起動するボタン
+ * @constructor
+ */
 export const RunButton: React.FunctionComponent = () => {
-
 
   const click = async () => {
 

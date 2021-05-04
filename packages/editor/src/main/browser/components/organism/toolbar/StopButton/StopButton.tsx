@@ -1,10 +1,14 @@
 import React from "react";
-import {GameRepository} from "../../../repository/GameRepository";
+import {GameRepository} from "../../../../repository/GameRepository";
 import {useSelector} from "react-redux";
-import {RootState} from "../../../stores/RootStore";
-import {Icons} from "../../../Icons";
+import {RootState} from "../../../../stores/RootStore";
+import {Icons} from "../../../../Icons";
 import {ToolbarButton} from "../ToolbarButton/ToolbarButton";
 
+/**
+ * ゲームを停止するボタン
+ * @constructor
+ */
 export const StopButton: React.FunctionComponent = () => {
 
   const isRun = useSelector((state: RootState) => state.devGame.run);

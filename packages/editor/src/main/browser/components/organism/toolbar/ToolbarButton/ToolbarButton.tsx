@@ -8,7 +8,7 @@ type ToolbarButtonProp = {
 }
 
 /**
- * 再起動ボタン
+ * ツールバーに設置するボタンのベースクラス
  * @constructor
  */
 export const ToolbarButton: React.FunctionComponent<ToolbarButtonProp> = ({onClick, image, disabled = false}) => {
@@ -16,7 +16,6 @@ export const ToolbarButton: React.FunctionComponent<ToolbarButtonProp> = ({onCli
   const customStyle = {
     backgroundImage: `url("${image}"`,
   };
-
 
   return (<>
     <button disabled={disabled} className={styles.main} onClick={onClick} style={customStyle}/>

@@ -1,10 +1,10 @@
 import React from "react";
-import {GameRepository} from "../../../repository/GameRepository";
-import {Icons} from "../../../Icons";
+import {GameRepository} from "../../../../repository/GameRepository";
+import {Icons} from "../../../../Icons";
 import {ToolbarButton} from "../ToolbarButton/ToolbarButton";
 
 /**
- * 再起動ボタン
+ * ゲームの再起動ボタン
  * @constructor
  */
 export const ReRunButton: React.FunctionComponent = () => {
