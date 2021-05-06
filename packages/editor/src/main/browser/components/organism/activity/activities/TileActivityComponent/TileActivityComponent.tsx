@@ -1,13 +1,16 @@
 import React, {useCallback} from "react";
-import styles from "./tile_activity_component.css";
+import styles from "./TileActivityComponent.css";
 import {FolderTree, ItemDoubleClickEvent} from "../../../../folder_tree/FolderTree";
 import {TileRepository} from "../../../../../repository/TileRepository";
 import {useDispatch} from "react-redux";
 import {EditorStore} from "../../../../../stores/EditorStore";
 import {Button} from "../../../../atoms/Button/Button";
-import {AddTileButton} from "../../../../organism/AddTileButton/AddTileButton";
+import {AddTileButton} from "../../../AddTileButton/AddTileButton";
 
-
+/**
+ * Tile情報を管理するActivity
+ * @constructor
+ */
 export const TileActivityComponent: React.FunctionComponent = () => {
 
   const dispatch = useDispatch();

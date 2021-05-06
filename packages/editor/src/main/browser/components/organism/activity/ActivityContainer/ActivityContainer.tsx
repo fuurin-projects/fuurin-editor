@@ -1,13 +1,16 @@
 import React from "react";
-import styles from "./activity_container.css";
-import {ActivityList} from "../activity_list/ActivityList";
+import styles from "./ActivityContainer.css";
 import {useSelector} from "react-redux";
-import {RootState} from "../../../stores/RootStore";
-import {ActivityPanel} from "../activity_panel/ActivityPanel";
-import {SplitPanel} from "../../layout/SplitPanel/SplitPanel";
-import {EditorContainer} from "../../organism/editor/EditorContainer/EditorContainer";
+import {RootState} from "../../../../stores/RootStore";
+import {ActivityList} from "../ActivityList/ActivityList";
+import {SplitPanel} from "../../../layout/SplitPanel/SplitPanel";
+import {ActivityPanel} from "../ActivityPanel/ActivityPanel";
+import {EditorContainer} from "../../editor/EditorContainer/EditorContainer";
 
-
+/**
+ * Activityとエディタを並べて表示するコンポーネント
+ * @constructor
+ */
 export const ActivityContainer: React.FunctionComponent = () => {
 
   const currentActivity = useSelector((state: RootState) => state.activity.currentActivity);

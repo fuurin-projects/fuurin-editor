@@ -1,9 +1,13 @@
 import React from "react";
-import styles from "./activity_panel.css";
+import styles from "./ActivityPanel.css";
 import {useSelector} from "react-redux";
-import {RootState} from "../../../stores/RootStore";
-import {TileActivityComponent} from "../activities/tile/tile_activity_component/TileActivityComponent";
+import {RootState} from "../../../../stores/RootStore";
+import {TileActivityComponent} from "../activities/TileActivityComponent/TileActivityComponent";
 
+/**
+ * カレントなActivityを表示するパネル
+ * @constructor
+ */
 export const ActivityPanel: React.FunctionComponent = () => {
 
   const currentActivity = useSelector((state: RootState) => state.activity.currentActivity);

@@ -1,10 +1,13 @@
 import React from "react";
-import styles from "./activity_list.css";
-import {ActivityButton} from "../activity_button/ActivityButton";
-import {Icons} from "../../../Icons";
+import styles from "./ActivityList.css";
+import {ActivityButton} from "../ActivityButton/ActivityButton";
+import {Icons} from "../../../../Icons";
 
+/**
+ * Activityを切り替えるボタンを表示するコンポーネント
+ * @constructor
+ */
 export const ActivityList: React.FunctionComponent = () => {
-
 
   return (<>
     <div className={styles.main}>

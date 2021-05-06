@@ -6,11 +6,11 @@ import {Provider, useDispatch, useSelector} from "react-redux";
 import {RootState, RootStore} from "../../../stores/RootStore";
 import {GameRepository} from "../../../repository/GameRepository";
 import {DevGameStore} from "../../../stores/DevGameStore";
-import {ActivityContainer} from "../../activity/activity_container/ActivityContainer";
 import * as ReactDOM from "react-dom";
 import {StopButton} from "../../organism/toolbar/StopButton/StopButton";
 import {RunButton} from "../../organism/toolbar/RunButton/RunButton";
 import {ReRunButton} from "../../organism/toolbar/ReRunButton/ReRunButton";
+import {ActivityContainer} from "../../organism/activity/ActivityContainer/ActivityContainer";
 
 //reduxを設定するためのラッパー
 const MainApplicationContainer: React.FunctionComponent = (props) => {

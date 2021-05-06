@@ -1,13 +1,20 @@
 import React from "react";
-import styles from "./activity_button.css";
+import styles from "./ActivityButton.css";
 import {useDispatch} from "react-redux";
-import {ActivityStore} from "../../../stores/ActivityStore";
+import {ActivityStore} from "../../../../stores/ActivityStore";
 
 interface Props {
   name: string,
   image?: string
 }
 
+/**
+ * アクティビティーを切り替えるボタン
+ *
+ * @param name 名前
+ * @param image ボタンの画像
+ * @constructor
+ */
 export const ActivityButton: React.FunctionComponent<Props> = ({name, image}) => {
 
   const dispatch = useDispatch();
