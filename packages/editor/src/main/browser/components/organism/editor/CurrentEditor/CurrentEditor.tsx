@@ -1,10 +1,16 @@
 import React from "react";
-import styles from "./current_editor.css";
+import styles from "./CurrentEditor.css";
 import {useSelector} from "react-redux";
-import {RootState} from "../../../stores/RootStore";
-import {EmptyEditor} from "../editors/empty_editor/EmptyEditor";
-import {EditorManager} from "../../../editor/EditorManager";
+import {RootState} from "../../../../stores/RootStore";
+import {EmptyEditorComponent} from "../editors/EmptyEditorComponent/EmptyEditorComponent";
+import {EditorManager} from "../../../../editor/EditorManager";
 
+/**
+ * 現在開いているファイルを表示するコンポーネント
+ *
+ * 実際のファイルの中身の描画は各種エディタコンポーネントが担当する
+ * @constructor
+ */
 const CurrentEditor: React.FunctionComponent = () => {
 
   const currentEditor = useSelector((state: RootState) => state.editor.currentEditor);
@@ -13,7 +19,7 @@ const CurrentEditor: React.FunctionComponent = () => {
   const getEditor = () => {
 
     if (currentEditor < 0) {
-      return <EmptyEditor/>
+      return <EmptyEditorComponent/>
     }
 
     const editorPath = editorTabList[currentEditor].path;

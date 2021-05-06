@@ -1,9 +1,9 @@
 import React from "react";
-import {CurrentEditor} from "../current_editor/CurrentEditor";
-import styles from "./editor_container.css";
-import {EditorTabList} from "../editor_tab_list/EditorTabList";
+import styles from "./EditorContainer.css";
 import {useSelector} from "react-redux";
-import {RootState} from "../../../stores/RootStore";
+import {RootState} from "../../../../stores/RootStore";
+import {CurrentEditor} from "../CurrentEditor/CurrentEditor";
+import {EditorTabList} from "../EditorTabList/EditorTabList";
 
 /**
  * タブ部分とエディタ部分を合わせたコンポーネント

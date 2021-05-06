@@ -1,6 +1,6 @@
 import {EditorProp, IEditor} from "./IEditor";
 import React from "react";
-import {NotFoundEditorComponent} from "../components/editor/editors/not_found_editor_component/NotFoundEditorComponent";
+import {NotFoundEditorComponent} from "../components/organism/editor/editors/NotFoundEditorComponent/NotFoundEditorComponent";
 
 export class NotFoundEditor implements IEditor {
 

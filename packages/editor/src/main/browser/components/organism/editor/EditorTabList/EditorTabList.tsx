@@ -1,10 +1,10 @@
 import React, {CSSProperties, MouseEventHandler, useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import styles from "./editor_tab_list.css";
-import {RootState} from "../../../stores/RootStore";
-import {EditorItem, EditorStore} from "../../../stores/EditorStore";
-import {EditorManager} from "../../../editor/EditorManager";
-import {IconTabClose} from "../../atoms/Icons/Icons";
+import styles from "./EditorTabList.css";
+import {RootState} from "../../../../stores/RootStore";
+import {EditorItem, EditorStore} from "../../../../stores/EditorStore";
+import {EditorManager} from "../../../../editor/EditorManager";
+import {IconTabClose} from "../../../atoms/Icons/Icons";
 
 /**
  * 開いているファイルのタブを表示するコンポーネント

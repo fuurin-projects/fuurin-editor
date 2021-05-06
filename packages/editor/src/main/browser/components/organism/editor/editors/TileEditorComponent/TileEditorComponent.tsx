@@ -1,12 +1,17 @@
 import React, {useEffect, useRef} from "react";
-import {EditorProp} from "../../../../editor/IEditor";
-import styles from "./tile_editor.css";
-import {TileRepository} from "../../../../repository/TileRepository";
-import {SplitPanel} from "../../../layout/SplitPanel/SplitPanel";
-import {SubPanel} from "../../../molecules/SubPanel/SubPanel";
-import {Text} from "../../../atoms/Text/Text";
+import {EditorProp} from "../../../../../editor/IEditor";
+import styles from "./TileEditorComponent.css";
+import {TileRepository} from "../../../../../repository/TileRepository";
+import {SplitPanel} from "../../../../layout/SplitPanel/SplitPanel";
+import {SubPanel} from "../../../../molecules/SubPanel/SubPanel";
+import {Text} from "../../../../atoms/Text/Text";
 
-
+/**
+ * Tile情報を表示するエディター
+ *
+ * @param path タイルのパス
+ * @constructor
+ */
 const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
 
   const refImage = useRef<HTMLImageElement>(null);
