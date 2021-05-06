@@ -11,10 +11,10 @@ export const ActivityList: React.FunctionComponent = () => {
 
   return (<>
     <div className={styles.main}>
-      <ActivityButton name={"general"} image={Icons.ACTIVITY_GENERAL}/>
-      <ActivityButton name={"tile"} image={Icons.ACTIVITY_TILE}/>
-      <ActivityButton name={"world"} image={Icons.ACTIVITY_WORLD}/>
-      <ActivityButton name={"setting"} image={Icons.ACTIVITY_SETTING}/>
+      <ActivityButton activityType={"general"} image={Icons.ACTIVITY_GENERAL}/>
+      <ActivityButton activityType={"tile"} image={Icons.ACTIVITY_TILE}/>
+      <ActivityButton activityType={"world"} image={Icons.ACTIVITY_WORLD}/>
+      <ActivityButton activityType={"setting"} image={Icons.ACTIVITY_SETTING}/>
     </div>
   </>)
 

@@ -1,21 +1,21 @@
 import React from "react";
 import styles from "./ActivityButton.css";
 import {useDispatch} from "react-redux";
-import {ActivityStore} from "../../../../stores/ActivityStore";
+import {ActivityStore, ActivityType} from "../../../../stores/ActivityStore";
 
 interface Props {
-  name: string,
+  activityType: ActivityType,
   image?: string
 }
 
 /**
  * アクティビティーを切り替えるボタン
  *
- * @param name 名前
+ * @param activityType 切り替えるアクティビティー
  * @param image ボタンの画像
  * @constructor
  */
-export const ActivityButton: React.FunctionComponent<Props> = ({name, image}) => {
+export const ActivityButton: React.FunctionComponent<Props> = ({activityType, image}) => {
 
   const dispatch = useDispatch();
 
@@ -25,8 +25,8 @@ export const ActivityButton: React.FunctionComponent<Props> = ({name, image}) =>
 
   const click = async () => {
 
-    console.log("ActivityStore:" + name);
-    dispatch(ActivityStore.actions.onActivity(name));
+    console.log("ActivityStore:" + activityType);
+    dispatch(ActivityStore.actions.onActivity(activityType));
 
   };
 

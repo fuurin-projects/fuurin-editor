@@ -1,19 +1,23 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+
+type ActivityType = "general" | "tile" | "world" | "setting";
+
+type SliceState = { currentActivity: ActivityType };
 
 // Stateの初期状態
-const initialState = {
+const initialState: SliceState = {
   currentActivity: "general"
 };
 
 // Sliceを生成する
 const slice = createSlice({
   name: "activity",
-  initialState,
+  initialState: initialState,
   reducers: {
-    onActivity: (state, action) => {
+    onActivity: (state, action: PayloadAction<ActivityType>) => {
       return Object.assign({}, state, {currentActivity: action.payload})
     },
   }
 });
 
-export {slice as ActivityStore};
+export {slice as ActivityStore, ActivityType};
