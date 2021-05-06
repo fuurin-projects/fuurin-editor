@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import {useLiveDate} from "../../hook/useLiveDate";
-import {VFile} from "../../../ts/common/VFile";
-import LiveDate from "../../repository/LiveDate";
-import styles from "./folder_tree.css";
+import {useLiveDate} from "../../../hook/useLiveDate";
+import {VFile} from "../../../../ts/common/VFile";
+import LiveDate from "../../../repository/LiveDate";
+import styles from "./FolderTree.css";
 
 
-export type FolderTreeProp = {
+type FolderTreeProp = {
   dir: string
   srcFun: (dir: string) => LiveDate<VFile[]>
   deep?: number
@@ -13,14 +13,24 @@ export type FolderTreeProp = {
   displayText?: (name: string) => string
 }
 
-export type ItemDoubleClickEvent = {
+type ItemDoubleClickEvent = {
   path: string
   name: string
 }
 
-export type ItemDoubleClickEventHandler = (e: ItemDoubleClickEvent) => void;
+type ItemDoubleClickEventHandler = (e: ItemDoubleClickEvent) => void;
 
-export const FolderTree: React.FunctionComponent<FolderTreeProp> = ({dir, srcFun, deep = 0, onItemDoubleClick, displayText}) => {
+/**
+ * LiveDate形式のデータをリスト表示するコンポーネント
+ *
+ * @param dir ディレクトリ
+ * @param srcFun 取得するメソッド
+ * @param deep 現在の深さ
+ * @param onItemDoubleClick ダブルクリック時の動作
+ * @param displayText Itemの表示する文字の処理
+ * @constructor
+ */
+const FolderTree: React.FunctionComponent<FolderTreeProp> = ({dir, srcFun, deep = 0, onItemDoubleClick, displayText}) => {
 
   const tiles = useLiveDate(srcFun(dir), []);
 
@@ -40,6 +50,10 @@ export const FolderTree: React.FunctionComponent<FolderTreeProp> = ({dir, srcFun
   </>)
 
 };
+
+export {FolderTreeProp, ItemDoubleClickEvent, ItemDoubleClickEventHandler, FolderTree}
+
+//内部処理関係
 
 type FolderProp = {
   path: string

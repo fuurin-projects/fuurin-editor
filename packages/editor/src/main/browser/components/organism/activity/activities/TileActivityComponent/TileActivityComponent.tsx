@@ -1,9 +1,9 @@
 import React, {useCallback} from "react";
 import styles from "./TileActivityComponent.css";
-import {FolderTree, ItemDoubleClickEvent} from "../../../../folder_tree/FolderTree";
 import {TileRepository} from "../../../../../repository/TileRepository";
 import {useDispatch} from "react-redux";
 import {EditorStore} from "../../../../../stores/EditorStore";
+import {FolderTree, ItemDoubleClickEvent} from "../../../../atoms/FolderTree/FolderTree";
 import {Button} from "../../../../atoms/Button/Button";
 import {AddTileButton} from "../../../AddTileButton/AddTileButton";
 
