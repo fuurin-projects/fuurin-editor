@@ -2,7 +2,7 @@ import React, {ReactNode} from "react";
 import styles from "./GridLayout.css"
 
 
-export class GridLayout extends React.Component<any, any> {
+class GridLayout extends React.Component<any, any> {
 
   render(): ReactNode {
     return (
@@ -14,7 +14,7 @@ export class GridLayout extends React.Component<any, any> {
 
 }
 
-export class GridLayoutItem extends React.Component<any, any> {
+class GridLayoutItem extends React.Component<any, any> {
   render(): ReactNode {
     return (
       <>
@@ -23,3 +23,5 @@ export class GridLayoutItem extends React.Component<any, any> {
     );
   }
 }
+
+export {GridLayout, GridLayoutItem}

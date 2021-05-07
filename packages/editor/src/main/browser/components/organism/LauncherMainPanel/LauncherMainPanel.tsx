@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./LauncherMainPanel.css";
-import CenterLayout from "../../layout/CenterLayout/CenterLayout";
+import {CenterLayout} from "../../atoms/CenterLayout/CenterLayout";
 import {Logo} from "../../atoms/Logo/Logo";
 import {Version} from "../../atoms/Version/Version";
 import {Button} from "../../atoms/Button/Button";

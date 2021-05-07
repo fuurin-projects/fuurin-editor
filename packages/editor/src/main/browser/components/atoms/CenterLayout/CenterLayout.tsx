@@ -5,7 +5,7 @@ interface Prop {
   marginTop: number
 }
 
-export default class CenterLayout extends React.Component<Partial<Prop>, any> {
+class CenterLayout extends React.Component<Partial<Prop>, any> {
 
   render(): ReactNode {
 
@@ -31,3 +31,5 @@ export default class CenterLayout extends React.Component<Partial<Prop>, any> {
   }
 
 }
+
+export {CenterLayout}

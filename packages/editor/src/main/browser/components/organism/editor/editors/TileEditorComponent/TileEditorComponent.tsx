@@ -2,9 +2,9 @@ import React, {useEffect, useRef} from "react";
 import {EditorProp} from "../../../../../editor/IEditor";
 import styles from "./TileEditorComponent.css";
 import {TileRepository} from "../../../../../repository/TileRepository";
-import {SplitPanel} from "../../../../layout/SplitPanel/SplitPanel";
 import {SubPanel} from "../../../../molecules/SubPanel/SubPanel";
 import {Text} from "../../../../atoms/Text/Text";
+import {SplitPanel} from "../../../../atoms/SplitPanel/SplitPanel";
 
 /**
  * Tile情報を表示するエディター

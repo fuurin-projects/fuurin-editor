@@ -6,6 +6,13 @@ export type SplitPanelPlop = {
   secondMain?: boolean
 }
 
+/**
+ * 画面を横に分割するコンポーネント
+ * @param defaultWidth デフォルトの幅
+ * @param secondMain 右か左のどちらを優先するか、 true なら右を優先
+ * @param children 子要素
+ * @constructor
+ */
 export const SplitPanel: React.FunctionComponent<SplitPanelPlop> = ({defaultWidth, secondMain = false, children}) => {
 
   const [width, setWidth] = useState(defaultWidth);

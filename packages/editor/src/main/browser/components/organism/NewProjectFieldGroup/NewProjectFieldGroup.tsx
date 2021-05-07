@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./NewProjectFieldGroup.css"
-import {GridLayout, GridLayoutItem as Item} from "../../layout/GridLayout/GridLayout";
+import {GridLayout, GridLayoutItem as Item} from "../../atoms/GridLayout/GridLayout";
 import {ProjectDirField} from "../ProjectDirField/ProjectDirField";
 import {ProjectNameField} from "../ProjectNameField/ProjectNameField";
 
