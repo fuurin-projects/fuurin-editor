@@ -6,13 +6,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "ed": "yarn workspace editor",
     "start": "yarn workspace editor run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy_html": "yarn workspace editor run copy_html",
-    "copy_css": "yarn workspace editor run copy_css",
     "copy_resources": "yarn workspace editor run copy_resources",
     "compile": "yarn workspace editor run compile",
-    "build": "yarn workspace editor run build"
+    "build": "yarn workspace editor run build",
+    "assembly": "yarn workspace editor run assembly"
   },
   "workspaces": {
     "packages": [

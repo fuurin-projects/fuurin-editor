@@ -42,4 +42,11 @@ export default class Channels {
 
   public static GET_TILE_IMAGE = "get_tile_image";
 
+  public static GET_TILE_IMAGE_PATH = "get_tile_image_path";
+
+  //==========
+  // Image
+  //==========
+  public static GET_IMAGE = "get_image";
+
 }

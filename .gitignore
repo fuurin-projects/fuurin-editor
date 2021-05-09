@@ -251,4 +251,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+packages/editor/src/stories2/**/*.*
+
 # End of https://www.gitignore.io/api/node,macos,windows,intellij+all

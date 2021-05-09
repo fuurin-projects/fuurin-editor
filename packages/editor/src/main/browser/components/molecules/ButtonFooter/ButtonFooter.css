@@ -1,0 +1,10 @@
+.main {
+    align-self: end;
+    height: 54px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main > * {
+    margin: 14px 14px 14px 0;
+}

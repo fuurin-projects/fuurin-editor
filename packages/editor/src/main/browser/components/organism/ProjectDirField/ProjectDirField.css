@@ -1,0 +1,12 @@
+.field {
+    width: calc(100% - 34px);
+    height: 26px;
+    padding-left: 4px;
+}
+
+
+.openButton {
+    margin: 0 0 0 8px;
+    padding: 0;
+    display: inline;
+}

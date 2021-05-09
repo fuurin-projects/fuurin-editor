@@ -1,0 +1,41 @@
+.main {
+    height: 28px;
+    width: 100%;
+    background-color: #f0f0f0;
+    border-bottom: #c9c9c9 1px solid;;
+    display: flex;
+}
+
+.item {
+    line-height: 28px;
+    padding: 0 8px;
+    cursor: default;
+    user-select: none;
+}
+
+.item:hover {
+    background-color: #dfdfdf;
+}
+
+.item_text {
+    display: inline-block;
+}
+
+.item_icon {
+    display: inline-block;
+}
+
+.item_close {
+    height: 16px;
+    width: 16px;
+    border: none;
+    margin: 4px 0 0 4px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: rgba(0, 0, 0, 0);
+    /*background-image: url("../../../../resources/images/tab_close.svg");*/
+}
+
+.item_close > svg:hover * {
+    fill: #0078ff;
+}

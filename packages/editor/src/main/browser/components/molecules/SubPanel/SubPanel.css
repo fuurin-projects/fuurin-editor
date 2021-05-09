@@ -1,0 +1,14 @@
+.container {
+    background-color: #f0f0f0;
+    height: 100%;
+}
+
+.title {
+    height: 28px;
+    line-height: 24px;
+    padding: 4px 8px 0 8px;
+}
+
+.content {
+    border-top: #c9c9c9 1px solid;
+}

@@ -21,8 +21,6 @@ jobs:
       - name: copy html
         run: yarn run copy_html
       - name: copy css
-        run: yarn run copy_css
-      - name: copy css
         run: yarn run copy_resources
       - name: compile copy_resources
         run: yarn run compile
