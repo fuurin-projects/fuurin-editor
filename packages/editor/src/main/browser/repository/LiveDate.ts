@@ -30,10 +30,10 @@ export default class LiveDate<V> {
 
     this.callbackList.set(callback, hock);
 
-    window.ipcRenderer.addListener(this.channelCode, hock);
+    window.electronBridge.ipcRenderer.addListener(this.channelCode, hock);
 
     //初回時は強制で最新のデータを発火
-    window.ipcRenderer.invoke(this.channel, this.subChannel);
+    window.electronBridge.ipcRenderer.invoke(this.channel, this.subChannel);
 
   }
 
@@ -41,7 +41,7 @@ export default class LiveDate<V> {
 
     const hock = this.callbackList.get(callback);
 
-    window.ipcRenderer.removeListener(this.channelCode, hock!);
+    window.electronBridge.ipcRenderer.removeListener(this.channelCode, hock!);
 
   }
 

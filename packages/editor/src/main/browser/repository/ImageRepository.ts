@@ -21,7 +21,7 @@ export class ImageRepository {
 
   public async getImage(imagePath: string): Promise<Blob | null> {
 
-    const imageData: ArrayBuffer | undefined = await window.ipcRenderer.invoke(Channels.GET_IMAGE, imagePath);
+    const imageData: ArrayBuffer | undefined = await window.electronBridge.ipcRenderer.invoke(Channels.GET_IMAGE, imagePath);
 
     if (imageData == null) {
       return null;

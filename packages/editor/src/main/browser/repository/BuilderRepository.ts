@@ -18,7 +18,7 @@ export class BuilderRepository {
 
   public async buildDev(): Promise<void> {
 
-    const message = await window.ipcRenderer.invoke(Channels.BUILD_DEV);
+    const message = await window.electronBridge.ipcRenderer.invoke(Channels.BUILD_DEV);
 
     console.log(message);
 

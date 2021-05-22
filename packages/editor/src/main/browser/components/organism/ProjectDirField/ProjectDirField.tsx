@@ -25,7 +25,7 @@ const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
     const getDesktopDir = async () => {
       console.log("getDesktopDir");
       const desktopDir = await SystemRepository.getDesktopDir();
-      const workDir = desktopDir + window.sep + props.name;
+      const workDir = desktopDir + window.electronBridge.sep + props.name;
       props.setDir(workDir);
     };
 
@@ -50,7 +50,7 @@ const ProjectDirField: React.FunctionComponent<Prop> = (props) => {
 
       //Game名が unknown_game のままの場合はフォルダ名で上書きする
       if (props.name === "unknown_game") {
-        const fileList = selectDir.filePaths[0].split(window.sep);
+        const fileList = selectDir.filePaths[0].split(window.electronBridge.sep);
         props.setName(fileList[fileList.length - 1]);
       }
     }

@@ -29,5 +29,12 @@ interface Window {
   ipcRenderer: IpcRenderer,
   // セパレター(区切り文字)
   sep: string
+
+  //コンテキストブリッジ
+  electronBridge: {
+    ipcRenderer: IpcRenderer,
+    // セパレター(区切り文字)
+    sep: string
+  }
 }
 

@@ -36,6 +36,8 @@ export class DevGameWindow implements IWindow {
       icon: Icons.getAppIcon(),
       webPreferences: {
         nodeIntegration: false,
+        contextIsolation: true,
+        enableRemoteModule: false,
         webviewTag: true
         //preload: path.resolve(app.getAppPath(), './js/preload.js'),
       }

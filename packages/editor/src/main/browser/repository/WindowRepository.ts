@@ -20,29 +20,29 @@ export default class WindowRepository {
 
   public showCreateProjectWindow(): Promise<void> {
 
-    return window.ipcRenderer.invoke(Channels.SHOW_CREATE_PROJECT_WINDOW, "create");
+    return window.electronBridge.ipcRenderer.invoke(Channels.SHOW_CREATE_PROJECT_WINDOW, "create");
 
   }
 
   public async showMainWindow(project: Project): Promise<void> {
 
-    return window.ipcRenderer.invoke(Channels.SHOW_PROJECT_WINDOW, project.name, project.dir);
+    return window.electronBridge.ipcRenderer.invoke(Channels.SHOW_PROJECT_WINDOW, project.name, project.dir);
 
   }
 
   public closeCurrentWindow(): Promise<void> {
-    return window.ipcRenderer.invoke(Channels.CLOSE_WINDOW, "close");
+    return window.electronBridge.ipcRenderer.invoke(Channels.CLOSE_WINDOW, "close");
   }
 
   public showSelectDirDialog(defaultDir: string): Promise<OpenDialogReturnValue> {
 
-    return window.ipcRenderer.invoke(Channels.SHOW_SELECT_DIR_DIALOG, defaultDir);
+    return window.electronBridge.ipcRenderer.invoke(Channels.SHOW_SELECT_DIR_DIALOG, defaultDir);
 
   }
 
   public showSelectFileDialog(defaultDir: string, extensions?: string[]): Promise<OpenDialogReturnValue> {
 
-    return window.ipcRenderer.invoke(Channels.SHOW_SELECT_FILE_DIALOG, defaultDir, extensions);
+    return window.electronBridge.ipcRenderer.invoke(Channels.SHOW_SELECT_FILE_DIALOG, defaultDir, extensions);
 
   }
 

@@ -27,6 +27,8 @@ export default class MainWindow implements IWindow {
       icon: Icons.getAppIcon(),
       webPreferences: {
         nodeIntegration: false,
+        contextIsolation: true,
+        enableRemoteModule: false,
         preload: path.resolve(app.getAppPath(), './js/preload.js'),
       }
     });
