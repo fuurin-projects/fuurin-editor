@@ -22,7 +22,7 @@ export default class ProjectRepository {
 
     console.log(`CreateProject: name=${gameName}, dir=${dir}`);
 
-    const message = await window.ipcRenderer.invoke(Channels.CREATE_PROJECT, gameName, dir);
+    const message = await window.electronBridge.ipcRenderer.invoke(Channels.CREATE_PROJECT, gameName, dir);
     console.log(message);
 
   }
@@ -31,7 +31,7 @@ export default class ProjectRepository {
 
     console.log(`deleteGameProject ${project.name}. ${project.dir}`);
 
-    const message = await window.ipcRenderer.invoke(Channels.DELETE_PROJECT, project.name, project.dir);
+    const message = await window.electronBridge.ipcRenderer.invoke(Channels.DELETE_PROJECT, project.name, project.dir);
     console.log(message);
   }
 
@@ -39,7 +39,7 @@ export default class ProjectRepository {
 
     console.log(`OpenProject: name=${gameName}, dir=${dir}`);
 
-    const message = await window.ipcRenderer.invoke(Channels.OPEN_PROJECT, gameName, dir);
+    const message = await window.electronBridge.ipcRenderer.invoke(Channels.OPEN_PROJECT, gameName, dir);
     console.log(message);
 
   }

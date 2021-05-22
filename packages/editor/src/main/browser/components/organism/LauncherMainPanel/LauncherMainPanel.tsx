@@ -21,7 +21,7 @@ const LauncherMainPanel: React.FunctionComponent = () => {
     const desktopDir: string = await SystemRepository.getDesktopDir();
     const selectDir = await WindowRepository.instance().showSelectDirDialog(desktopDir);
     // TODO: GameInfoを読み込む処理
-    const fileList = selectDir.filePaths[0].split(window.sep);
+    const fileList = selectDir.filePaths[0].split(window.electronBridge.sep);
     const gameName = fileList[fileList.length - 1];
     await ProjectRepository.instance().openGameProject(gameName, selectDir.filePaths[0]);
 

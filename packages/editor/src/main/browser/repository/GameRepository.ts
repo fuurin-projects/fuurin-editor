@@ -19,7 +19,7 @@ export class GameRepository {
 
   public async runDev(): Promise<void> {
 
-    const message = await window.ipcRenderer.invoke(Channels.RUN_DEV);
+    const message = await window.electronBridge.ipcRenderer.invoke(Channels.RUN_DEV);
 
     console.log(message);
 
@@ -27,7 +27,7 @@ export class GameRepository {
 
   public async stopDev(): Promise<void> {
 
-    const message = await window.ipcRenderer.invoke(Channels.STOP_DEV);
+    const message = await window.electronBridge.ipcRenderer.invoke(Channels.STOP_DEV);
 
     console.log(message);
 

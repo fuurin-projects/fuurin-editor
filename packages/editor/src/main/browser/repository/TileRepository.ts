@@ -21,7 +21,7 @@ export class TileRepository {
 
   public async registerTile(name: string, dir: string): Promise<void> {
 
-    const message = await window.ipcRenderer.invoke(Channels.REGISTER_TILE, name, dir);
+    const message = await window.electronBridge.ipcRenderer.invoke(Channels.REGISTER_TILE, name, dir);
 
     console.log(message);
 
@@ -39,7 +39,7 @@ export class TileRepository {
    */
   public async getTilePreviewImage(tilePath: string): Promise<Blob | null> {
 
-    const imagePath = await window.ipcRenderer.invoke(Channels.GET_TILE_IMAGE_PATH, tilePath);
+    const imagePath = await window.electronBridge.ipcRenderer.invoke(Channels.GET_TILE_IMAGE_PATH, tilePath);
 
     const imageData: Blob | null = await ImageRepository.instance().getImage(imagePath);
 
