@@ -7,8 +7,9 @@ import {SplitPanel} from "../../../../atoms/SplitPanel/SplitPanel";
 import {Table, TableData} from "../../../../atoms/Table/Table";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../../../stores/RootStore";
-import {EditorData, EditorStore, selectById} from "../../../../../stores/EditorStore";
+import {EditorStore, selectById} from "../../../../../stores/EditorStore";
 import {Sleep} from "../../../../../../ts/common/Sleep";
+import {EditorDataTile} from "../../../../../stores/EditorData";
 
 /**
  * Tile情報を表示するエディター
@@ -18,7 +19,7 @@ import {Sleep} from "../../../../../../ts/common/Sleep";
  */
 const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
 
-    const editorData: EditorData<TileState> | undefined = useSelector((state: RootState) => selectById(state.editor, path));
+    const editorData: EditorDataTile | undefined = useSelector((state: RootState) => selectById(state.editor, path) as EditorDataTile);
     const dispatch = useDispatch();
 
     const [originData, setOriginData] = useState<TileState | undefined>(undefined);
@@ -38,7 +39,7 @@ const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
 
         setOriginData(deta);
         dispatch(EditorStore.actions.updateEditorData({
-          path: path, data: deta as object, isDiff: false, canOverride: false
+          path: path, type: 'tile', data: deta as object, isDiff: false, canOverride: false
         }));
 
 
@@ -76,7 +77,7 @@ const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
       key: 'collision',
       type: 'boolean',
       name: 'プレイヤーの通行',
-      value: viewData ? Boolean((viewData as TileState).collision) : true,
+      value: viewData ? Boolean(viewData.collision) : true,
       option: {
         trueText: '可能',
         falseText: '不可'
@@ -91,7 +92,7 @@ const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
       };
 
       dispatch(EditorStore.actions.updateEditorData({
-        path: path, data: nowData, isDiff: isDiff(originData, nowData as TileState), canOverride: true
+        path: path, type: 'tile', data: nowData, isDiff: isDiff(originData, nowData as TileState), canOverride: true
       }));
 
     }

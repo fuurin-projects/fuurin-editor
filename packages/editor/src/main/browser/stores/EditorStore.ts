@@ -1,4 +1,5 @@
 import {createEntityAdapter, createSlice, EntityState, PayloadAction} from "@reduxjs/toolkit";
+import {EditorData} from "./EditorData";
 
 
 // interface EditorState {
@@ -7,17 +8,12 @@ import {createEntityAdapter, createSlice, EntityState, PayloadAction} from "@red
 //   editorDataList: EditorData<object>[]
 // }
 
-interface EditorData<T extends object> {
-  path: string
-  viewData?: T
-  isDiff: boolean
-}
 
-const editorDataAdapter = createEntityAdapter<EditorData<any>>({
+const editorDataAdapter = createEntityAdapter<EditorData>({
   selectId: (editorData) => editorData.path,
 });
 
-interface EditorState extends EntityState<EditorData<any>> {
+interface EditorState extends EntityState<EditorData> {
   currentEditor: number
   editorList: EditorItem[]
 }
@@ -100,6 +96,7 @@ const slice = createSlice({
 
         editorDataAdapter.addOne(state, {
           path: payload.path,
+          type: payload.type,
           viewData: payload.data,
           isDiff: payload.isDiff
         })
@@ -139,6 +136,7 @@ export type EditorItem = {
 
 interface EditorDataParam<T extends object> {
   path: string
+  type: string
   data: T
   isDiff: boolean,
   canOverride: boolean,
@@ -147,6 +145,6 @@ interface EditorDataParam<T extends object> {
 const {selectById, selectEntities} = editorDataAdapter.getSelectors();
 
 
-export {EditorDataParam, EditorData, selectById, selectEntities}
+export {EditorDataParam, selectById, selectEntities}
 
 
