@@ -2,7 +2,7 @@ import React, {CSSProperties, MouseEventHandler, useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "./EditorTabList.css";
 import {RootState} from "../../../../stores/RootStore";
-import {EditorItem, EditorStore} from "../../../../stores/EditorStore";
+import {EditorItem, EditorStore, selectEntities} from "../../../../stores/EditorStore";
 import {EditorManager} from "../../../../editor/EditorManager";
 import {IconTabClose} from "../../../atoms/Icons/Icons";
 
@@ -14,12 +14,22 @@ export const EditorTabList: React.FunctionComponent = () => {
 
   const currentEditor = useSelector((state: RootState) => state.editor.currentEditor);
   const editorTabList = useSelector((state: RootState) => state.editor.editorList);
+  const editorDataList = useSelector((state: RootState) => selectEntities(state.editor));
 
   const getItem = (currentEditor: number, editorTabList: Array<EditorItem>) => {
 
     return editorTabList.map((item, index: number) => {
+
+      const editorData = editorDataList[item.path];
+
+      const name = editorData ?
+        editorData.isDiff
+          ? "* " + item.name
+          : item.name
+        : item.name
+
       return (
-        <EditorTabListItem key={item.path} path={item.path} name={item.name} index={index} isCurrent={currentEditor == index}/>
+        <EditorTabListItem key={item.path} path={item.path} name={name} index={index} isCurrent={currentEditor == index}/>
       )
     })
 

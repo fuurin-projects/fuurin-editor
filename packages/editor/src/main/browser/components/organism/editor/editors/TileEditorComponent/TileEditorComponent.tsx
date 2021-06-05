@@ -1,10 +1,14 @@
-import React, {useEffect, useRef} from "react";
+import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import {EditorProp} from "../../../../../editor/IEditor";
 import styles from "./TileEditorComponent.css";
-import {TileRepository} from "../../../../../repository/TileRepository";
+import {TileRepository, TileState} from "../../../../../repository/TileRepository";
 import {SubPanel} from "../../../../molecules/SubPanel/SubPanel";
-import {Text} from "../../../../atoms/Text/Text";
 import {SplitPanel} from "../../../../atoms/SplitPanel/SplitPanel";
+import {Table, TableData} from "../../../../atoms/Table/Table";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../../../stores/RootStore";
+import {EditorData, EditorStore, selectById} from "../../../../../stores/EditorStore";
+import {Sleep} from "../../../../../../ts/common/Sleep";
 
 /**
  * Tile情報を表示するエディター
@@ -14,40 +18,115 @@ import {SplitPanel} from "../../../../atoms/SplitPanel/SplitPanel";
  */
 const TileEditorComponent: React.FunctionComponent<EditorProp> = ({path}) => {
 
-  const refImage = useRef<HTMLImageElement>(null);
+    const editorData: EditorData<TileState> | undefined = useSelector((state: RootState) => selectById(state.editor, path));
+    const dispatch = useDispatch();
 
-  useEffect(() => {
+    const [originData, setOriginData] = useState<TileState | undefined>(undefined);
 
-    const fun = async () => {
-      const blob: Blob | null = await TileRepository.instance().getTilePreviewImage(path);
+    const initLoaded = useRef(false);
 
-      if (blob) {
-        refImage.current!.src = URL.createObjectURL(blob);
-      } else {
-        refImage.current!.src = "";
+    console.log('abc ' + path + ' : ' + initLoaded.current)
+
+    useEffect(() => {
+
+      const fun = async () => {
+
+        const deta = await TileRepository.instance().getTileData(path)
+
+        console.log(deta);
+        await Sleep.sleep(400);
+
+        setOriginData(deta);
+        dispatch(EditorStore.actions.updateEditorData({
+          path: path, data: deta as object, isDiff: false, canOverride: false
+        }));
+
+
+        initLoaded.current = true;
+
+      };
+
+      fun();
+
+    }, [path]);
+
+    //画像部分
+    const refImage = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+
+      const fun = async () => {
+        const blob: Blob | null = await TileRepository.instance().getTilePreviewImage(path);
+
+        if (blob) {
+          refImage.current!.src = URL.createObjectURL(blob);
+        } else {
+          refImage.current!.src = "";
+        }
+
+      };
+
+      fun();
+
+    }, [path]);
+
+    const viewData = editorData?.viewData;
+
+    const data: TableData = [{
+      key: 'collision',
+      type: 'boolean',
+      name: 'プレイヤーの通行',
+      value: viewData ? Boolean((viewData as TileState).collision) : true,
+      option: {
+        trueText: '可能',
+        falseText: '不可'
       }
+    }]
 
-    };
+    const onChange = (key: string | null, event: ChangeEvent<HTMLSelectElement>) => {
 
-    fun();
+      const nowData = {
+        ...originData,
+        collision: event.currentTarget.value.toLowerCase() === "true"
+      };
 
-  }, [path]);
+      dispatch(EditorStore.actions.updateEditorData({
+        path: path, data: nowData, isDiff: isDiff(originData, nowData as TileState), canOverride: true
+      }));
 
-  return (<>
-    <SplitPanel defaultWidth={200} secondMain={true}>
-      <div className={styles.main}>
-        <div>
-          {path}
+    }
+
+    const isDiff = (originalData: TileState | undefined, nowData: TileState | undefined) => {
+      if (!originalData) {
+        return false;
+      }
+      if (!nowData) {
+        return false;
+      }
+      return originalData?.collision != nowData.collision
+    }
+
+    return (<>
+      <SplitPanel defaultWidth={200} secondMain={true}>
+        <div className={styles.main}>
+          <div>
+            {path}
+          </div>
+          <div className={styles.image_container}>
+            <img ref={refImage} className={styles.image} alt={"Tile画像"}/>
+          </div>
+          <div>その他</div>
         </div>
-        <div className={styles.image_container}>
-          <img ref={refImage} className={styles.image} alt={"Tile画像"}/>
-        </div>
-        <div>その他</div>
-      </div>
-      <SubPanel title={"プロパティー"}><Text>各種データ</Text></SubPanel>
-    </SplitPanel>
-  </>)
+        <SubPanel title={"プロパティー"}>
+          {!editorData
+            ? <div>読込中</div>
+            : <Table data={data} onChange={onChange}/>
+          }
+        </SubPanel>
+      </SplitPanel>
+    </>)
 
-};
+  }
+;
 
 export {TileEditorComponent};

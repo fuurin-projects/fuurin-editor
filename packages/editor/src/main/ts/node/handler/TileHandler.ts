@@ -29,7 +29,7 @@ export class TileHandler {
 
     });
 
-    //タイル情報を取得して返す
+    //タイル情報(ファイル)を取得して返す
     ipcMain.handle(Channels.TILE_LIST, async (event, ...args: any[]) => {
 
       console.log(`handle. ${Channels.TILE_LIST}`);
@@ -63,6 +63,25 @@ export class TileHandler {
         const project = window.getProject();
 
         return await TileBuilder.getTileImage(project, args[0]);
+
+      }
+
+      return null;
+
+    });
+
+    //Tile情報を返す
+    ipcMain.handle(Channels.GET_TILE_DATA, async (event, ...args: any[]) => {
+
+      console.log(`handle. ${Channels.GET_TILE_DATA}`);
+
+      const window = WindowManager.getWindowFromEvent(event);
+
+      if (window instanceof MainWindow) {
+
+        const project = window.getProject();
+
+        return await TileBuilder.getTileData(project, args[0]);
 
       }
 

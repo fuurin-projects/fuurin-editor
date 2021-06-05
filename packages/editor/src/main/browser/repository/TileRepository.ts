@@ -34,6 +34,16 @@ export class TileRepository {
   }
 
   /**
+   * Tile情報を取得する
+   * @param tilePath
+   */
+  public async getTileData(tilePath: string): Promise<TileState | undefined> {
+
+    return await window.electronBridge.ipcRenderer.invoke(Channels.GET_TILE_DATA, tilePath);
+
+  }
+
+  /**
    * Tileに紐付いているプレビュー的なメイン画像を返却する
    * @param tilePath
    */
@@ -51,3 +61,10 @@ export class TileRepository {
   }
 
 }
+
+type TileState = {
+  collision: boolean;
+  image: string;
+}
+
+export {TileState}

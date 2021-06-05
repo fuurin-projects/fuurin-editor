@@ -61,13 +61,36 @@ export class TileBuilder {
 
     const dataPath = `${this.TILE_DATA_PATH}/${tilePath}`;
 
-    const tileJson: TileState = JSON.parse(await fs.readFile(path.resolve(project.dir, dataPath), "utf8"));
+    const tileJson: TileStateJson = JSON.parse(await fs.readFile(path.resolve(project.dir, dataPath), "utf8"));
 
     const buffer: Buffer = await fs.readFile(path.resolve(project.dir, tileJson.image));
 
     const arrayBuffer = new Uint8Array(buffer).buffer;
 
     return arrayBuffer;
+
+  }
+
+  /**
+   * Tileのパスを元にタイル情報を返す
+   * @param project プロジェクト
+   * @param tilePath タイルのパス
+   */
+  public static async getTileData(project: Project, tilePath: string): Promise<TileStateJson | undefined> {
+
+    if (!tilePath.endsWith(".json")) {
+      return undefined;
+    }
+
+    if (tilePath.startsWith("tile@")) {
+      tilePath = tilePath.replace("tile@", "");
+    }
+
+    const dataPath = `${this.TILE_DATA_PATH}/${tilePath}`;
+
+    const tileJson: TileStateJson = JSON.parse(await fs.readFile(path.resolve(project.dir, dataPath), "utf8"));
+
+    return tileJson;
 
   }
 
@@ -88,7 +111,7 @@ export class TileBuilder {
 
     const dataPath = `${this.TILE_DATA_PATH}/${tilePath}`;
 
-    const tileJson: TileState = JSON.parse(await fs.readFile(path.resolve(project.dir, dataPath), "utf8"));
+    const tileJson: TileStateJson = JSON.parse(await fs.readFile(path.resolve(project.dir, dataPath), "utf8"));
 
     return tileJson.image ? tileJson.image : null;
 
@@ -97,7 +120,7 @@ export class TileBuilder {
 
 }
 
-type TileState = {
+type TileStateJson = {
 
   collision: boolean;
 
@@ -105,7 +128,7 @@ type TileState = {
 
 }
 
-const createTileState = (collision: boolean, image: string): TileState => {
+const createTileState = (collision: boolean, image: string): TileStateJson => {
   return {
     collision: collision,
     image: image
