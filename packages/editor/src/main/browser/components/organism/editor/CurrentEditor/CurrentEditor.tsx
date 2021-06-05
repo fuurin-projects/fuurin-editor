@@ -29,7 +29,7 @@ const CurrentEditor: React.FunctionComponent = () => {
 
     console.log(editorPath);
 
-    return <EditorComponent path={editorPath}/>
+    return <EditorComponent key={editorPath} path={editorPath}/>
 
   };
 
